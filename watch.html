@@ -132,7 +132,7 @@
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
                     <a href="index.html" class="flex items-center gap-2">
                         <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10">
-                        <span class="font-black text-lg text-gradient">Ahmed Abdelhamed Academy</span>
+                        <span class="font-black text-lg text-gradient">3 Engineers Academy</span>
                     </a>
                 </div>
                 
@@ -159,7 +159,7 @@
         <!-- Video Header Info -->
         <div class="text-center mb-6">
             <span class="text-xs text-blue-400 font-bold block mb-1" id="courseSubtitle">Revit Architecture Masterclass</span>
-            <h2 class="text-2xl font-black" id="sectionTitle">Unit 1 - The Foundation & Interface</h2>
+            <h2 class="text-2xl font-black" id="sectionTitle">Unit 1 - Revit Basics</h2>
             <h1 class="text-sm font-semibold text-gray-400 mt-1" id="lessonTitle">Loading Lesson...</h1>
         </div>
 
@@ -236,11 +236,11 @@
     <footer class="border-t border-slate-800 bg-slate-900/60 backdrop-blur-md py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <div>
-                <h3 class="font-bold text-base mb-1">Ahmed Abdelhamed Academy</h3>
+                <h3 class="font-bold text-base mb-1">3 Engineers Center</h3>
                 <p class="text-xs text-gray-400">An integrated educational platform offering professional engineering courses.</p>
             </div>
             <div class="text-xs text-gray-400">
-                <p>Email: courses@ahmedabdelhamed.com</p>
+                <p>Email: courses@3engineers.com</p>
                 <p>Phone: 01116512028</p>
             </div>
         </div>
@@ -277,21 +277,17 @@
             }
         };
 
+        // مصفوفة الفيديوهات الخاصة بقائمة التشغيل (Playlist) لتبدأ بالعمل فوراً بدون قاعدة بيانات
         const courseData = {
             title: "Revit Architecture Masterclass",
             modules: [
                 {
-                    title: "A Comprehensive Overview & Quick Start",
+                    title: "Revit Architecture Playlist Lectures",
                     lessons: [
-                        { id: "dQw4w9WgXcQ", title: "Video 1 (Course Overview - Part 1)", desc: "Introduction to the academy workflow and interface." },
-                        { id: "3JZ_D3ELwOQ", title: "Video 2 (Interface Navigation)", desc: "Understanding views, properties, and project browser." }
-                    ]
-                },
-                {
-                    title: "Unit 1 - The Foundation & Profile Optimization",
-                    lessons: [
-                        { id: "kJQP7kiw5Fk", title: "Video 3 (Levels and Grids Setup)", desc: "Creating accurate levels and structural axes." },
-                        { id: "5qap5aO4i9A", title: "Video 4 (Walls & Basic Components)", desc: "Drawing architectural walls, doors, and windows." }
+                        { id: "PLXSw13sOT9jc", title: "Lecture 01 - Course Introduction & Interface", desc: "Introduction to Revit Architecture workflow and navigation." },
+                        { id: "3JZ_D3ELwOQ", title: "Lecture 02 - Walls & Basic Components", desc: "Creating architectural walls, doors, and window elements." },
+                        { id: "kJQP7kiw5Fk", title: "Lecture 03 - Floors & Roofs", desc: "Building accurate slab profiles and architectural roofs." },
+                        { id: "5qap5aO4i9A", title: "Lecture 04 - Stairs & Railings", desc: "Designing multi-level architectural stairs and railings." }
                     ]
                 }
             ]
@@ -392,6 +388,7 @@
             currentIndex = index;
             const lesson = flatLessons[currentIndex];
 
+            // ربط مشغل يوتيوب بالفيديو المحدد
             document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${lesson.id}?autoplay=1`;
             document.getElementById('sectionTitle').innerText = lesson.modTitle;
             document.getElementById('lessonTitle').innerText = lesson.title;
