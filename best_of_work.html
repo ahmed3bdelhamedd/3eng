@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Best Of Work - Structural Diploma | 3 Engineers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    colors: { 
+                        brand: { 
+                            500: '#eab308', // Yellow 500
+                            600: '#ca8a04'  // Yellow 600
+                        } 
+                    } 
+                } 
+            }
+        }
+    </script>
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .dark body { background-color: #09090b; color: #f4f4f5; }
+        .light body { background-color: #fafafa; color: #18181b; }
+
+        .yellow-blueprint-bg {
+            background-image: 
+                linear-gradient(rgba(234, 179, 8, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(234, 179, 8, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+        }
+
+        .glass-nav { 
+            backdrop-filter: blur(16px); 
+            transition: all 0.3s ease;
+        }
+        .dark .glass-nav { background: rgba(9, 9, 11, 0.85); border-bottom: 1px solid rgba(234, 179, 8, 0.15); }
+        .light .glass-nav { background: rgba(255, 255, 255, 0.85); border-bottom: 1px solid rgba(228, 228, 231, 0.9); }
+
+        .glass-card { 
+            backdrop-filter: blur(12px); 
+            border-radius: 20px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .glass-card { background: linear-gradient(145deg, rgba(24, 24, 27, 0.8), rgba(9, 9, 11, 0.9)); border: 1px solid rgba(234, 179, 8, 0.15); }
+        .light .glass-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(244, 244, 5, 0.02)); border: 1px solid rgba(228, 228, 231, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #eab308, #facc15);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .dark [dir="rtl"] .glass-card::before, [dir="rtl"] .glass-card::before { left: 0; right: auto; }
+        .glass-card:hover { 
+            transform: translateY(-6px); 
+            border-color: rgba(234, 179, 8, 0.5); 
+            box-shadow: 0 20px 40px -15px rgba(234, 179, 8, 0.2);
+        }
+        .glass-card:hover::before { opacity: 1; }
+
+        .text-gradient { 
+            background: linear-gradient(135deg, #facc15, #eab308, #ca8a04); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+    </style>
+    
+    <script>
+        const savedTheme = localStorage.getItem('siteTheme') || 'dark';
+        document.documentElement.className = savedTheme;
+    </script>
+</head>
+<body class="antialiased relative">
+
+    <div class="yellow-blueprint-bg"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-yellow-500/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                    <a href="index.html" class="font-semibold transition text-gray-400 hover:text-yellow-400" data-i18n="nav_home">Home</a>
+                    <a href="index.html#courses" class="font-semibold transition text-gray-400 hover:text-yellow-400" data-i18n="nav_courses">Training Programs</a>
+                    <a href="best_of_work.html" class="font-semibold transition text-yellow-400 border-b-2 border-yellow-500 pb-1" data-i18n="nav_best_work">Best Of Work</a>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <!-- Language Toggle -->
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 hover:bg-yellow-500/20 transition flex items-center gap-1.5">
+                        <i class="fas fa-globe"></i> <span id="langText">AR</span>
+                    </button>
+
+                    <!-- Theme Toggle -->
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-zinc-800/50 dark:bg-zinc-800/80 text-gray-300 dark:text-yellow-400 border border-zinc-700 flex items-center justify-center transition hover:scale-105">
+                        <i id="themeIcon" class="fas fa-sun text-sm"></i>
+                    </button>
+
+                    <div>
+                        <a href="index.html" class="bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-400 hover:to-amber-500 text-zinc-950 font-black px-5 py-2.5 rounded-xl transition-all duration-300 shadow-lg shadow-yellow-500/20 text-xs sm:text-sm flex items-center gap-2">
+                            <i class="fas fa-arrow-left rtl:rotate-180"></i> <span data-i18n="back_home">Back to Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <section class="relative pt-36 pb-16 lg:pt-48 lg:pb-20 text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-sm font-bold mb-6 backdrop-blur-md shadow-sm">
+                <i class="fas fa-award"></i> <span data-i18n="badge_title">Structural Engineering Diploma Excellence</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
+                <span data-i18n="main_title1">Best Of Work &</span> <br>
+                <span class="text-gradient" data-i18n="main_title2">Structural Tasks Portfolio</span>
+            </h1>
+            <p class="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto" data-i18n="main_desc">
+                Explore the complete collection of professional tasks, structural models, calculations, and workshop drawings executed during the Structural Diploma via Google Drive resources.
+            </p>
+        </div>
+    </section>
+
+    <!-- Tasks Grid Section -->
+    <section class="pb-28 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tasksGrid">
+                
+                <!-- Task 0 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 00</span>
+                            <i class="fas fa-folder-open text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">A Limitless Model, Create Your Opportunity</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Initial foundational orientation project and introductory structural framework setup.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 1 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 01</span>
+                            <i class="fas fa-cubes text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Structural BIM Fundamentals</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Core concepts of structural grid setups, levels, analytical modeling, and system coordination.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 2 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 02</span>
+                            <i class="fas fa-drafting-compass text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 1</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Advanced structural elements modeling including foundations, columns, and retaining walls.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 3 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 03</span>
+                            <i class="fas fa-laptop-code text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 2</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Detailed framing layouts, slab systems (solid, flat, ribbed), and reinforcement detailing simulations.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 4 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 04</span>
+                            <i class="fas fa-project-diagram text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 3</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Complex geometrical profiles, ramps, staircases, and multi-story structural integrations.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 5 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 05</span>
+                            <i class="fas fa-layer-group text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Secret of Design Drawing - Part 1</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Decoding structural calculation sheets into execution shop drawings with code compliance.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 6 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 06</span>
+                            <i class="fas fa-pencil-ruler text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Secret of Design Drawing - Part 2</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Advanced reinforcement detailing for beams, moment frames, and seismic joint connections.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+                <!-- Task 7 -->
+                <div class="glass-card p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex justify-between items-start mb-4">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 07</span>
+                            <i class="fas fa-sitemap text-yellow-500/60 text-xl"></i>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">Structural Department System</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Establishing engineering office standards, template automation, and full project delivery workflow.</p>
+                    </div>
+                    <a href="https://drive.google.com/drive/u/0/folders/1OgT0yTTn2TrGbT6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_drive">View on Drive</span>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-zinc-200 dark:border-zinc-800/80 bg-white/60 dark:bg-zinc-900/60 backdrop-blur-md py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html">
+                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 transition">
+                </a>
+                <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://facebook.com/your-page" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-zinc-950 hover:bg-yellow-500 transition-all duration-300" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-zinc-950 hover:bg-yellow-500 transition-all duration-300" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-zinc-200 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-zinc-950 hover:bg-yellow-500 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Translations & Theme -->
+    <script>
+        const translations = {
+            en: {
+                page_title: "Best Of Work - Structural Diploma | 3 Engineers",
+                nav_home: "Home",
+                nav_courses: "Training Programs",
+                nav_best_work: "Best Of Work",
+                back_home: "Back to Home",
+                badge_title: "Structural Engineering Diploma Excellence",
+                main_title1: "Best Of Work &",
+                main_title2: "Structural Tasks Portfolio",
+                main_desc: "Explore the complete collection of professional tasks, structural models, calculations, and workshop drawings executed during the Structural Diploma via Google Drive resources.",
+                view_drive: "View on Drive",
+                footer_rights: "© 2026 3 Engineers Center. All rights reserved."
+            },
+            ar: {
+                page_title: "أفضل الأعمال - الدبلومة الإنشائية | 3 Engineers",
+                nav_home: "الرئيسية",
+                nav_courses: "البرامج التدريبية",
+                nav_best_work: "أفضل الأعمال",
+                back_home: "العودة للرئيسية",
+                badge_title: "تميز الدبلومة الهندسية الإنشائية",
+                main_title1: "معرض أعمال وتاسكات",
+                main_title2: "الدبلومة الإنشائية الاحترافية",
+                main_desc: "استعرض مجموعة الأعمال والتاسكات الهندسية المتكاملة، النماذج الإنشائية، وحسابات اللوحات التنفيذية التي تم إنجازها خلال الدبلومة عبر روابط Google Drive.",
+                view_drive: "عرض على درايف",
+                footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const htmlRoot = document.getElementById('htmlRoot');
+            htmlRoot.setAttribute('lang', currentLang);
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('langText').innerText = currentLang === 'en' ? 'AR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const htmlRoot = document.getElementById('htmlRoot');
+            const themeIcon = document.getElementById('themeIcon');
+            if (htmlRoot.classList.contains('dark')) {
+                htmlRoot.classList.remove('dark');
+                htmlRoot.classList.add('light');
+                localStorage.setItem('siteTheme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                htmlRoot.classList.remove('light');
+                htmlRoot.classList.add('dark');
+                localStorage.setItem('siteTheme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentTheme = localStorage.getItem('siteTheme') || 'dark';
+            const themeIcon = document.getElementById('themeIcon');
+            if (currentTheme === 'light') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+    </script>
+</body>
+</html>
