@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">3 Engineers Training Center</title>
+    <title data-i18n="page_title">3 Engineers Center | Professional Engineering & BIM Training</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
@@ -11,7 +11,16 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
-            theme: { extend: { colors: { brand: { 500: '#38bdf8', 600: '#0284c7' } } } }
+            theme: { 
+                extend: { 
+                    colors: { 
+                        brand: { 
+                            500: '#38bdf8', 
+                            600: '#0284c7' 
+                        } 
+                    } 
+                } 
+            }
         }
     </script>
     <!-- Cairo Font -->
@@ -53,32 +62,20 @@
             position: relative;
             overflow: hidden;
         }
-        .dark .glass-card { background: linear-gradient(145deg, rgba(15, 23, 42, 0.75), rgba(11, 17, 32, 0.85)); border: 1px solid rgba(56, 189, 248, 0.12); }
-        .light .glass-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .dark .glass-card { background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(11, 17, 32, 0.9)); border: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .glass-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.98)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            right: 0; top: 0; bottom: 0;
-            width: 4px;
-            background: linear-gradient(to bottom, #38bdf8, #818cf8);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
         .glass-card:hover { 
-            transform: translateY(-6px); 
-            border-color: rgba(56, 189, 248, 0.4); 
-            box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.15);
+            transform: translateY(-8px); 
+            border-color: rgba(56, 189, 248, 0.5); 
+            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
         }
-        .glass-card:hover::before { opacity: 1; }
 
         .text-gradient { 
             background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
-
-        .hidden-el { display: none !important; }
     </style>
     
     <script>
@@ -102,159 +99,97 @@
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-                    <a href="index.html" id="navHome" class="font-semibold transition pb-1 text-blue-400 border-b-2 border-blue-500" data-i18n="nav_home">Home</a>
-                    <a href="#courses" id="navCourses" class="font-semibold transition pb-1 text-gray-400 hover:text-white border-b-2 border-transparent" data-i18n="nav_courses">Training Programs</a>
-                    
-                    <!-- تم إضافة زر Best Of Work هنا -->
-                    <a href="best_of_work.html" id="navBestOfWork" class="font-semibold transition pb-1 text-gray-400 hover:text-yellow-400 border-b-2 border-transparent flex items-center gap-1.5">
-                        <i class="fas fa-award text-yellow-500 text-xs"></i> <span data-i18n="nav_best_work">Best Of Work</span>
-                    </a>
-                    
-                    <a href="src/main/resources/templates/admin_dashboard.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/40 border border-blue-500/30 px-3 py-1.5 rounded-lg shadow-sm">
-                        <i class="fas fa-tools ml-1 rtl:ml-0 rtl:mr-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
-                    </a>
+                    <a href="index.html" class="font-semibold transition text-blue-400 border-b-2 border-blue-500 pb-1" data-i18n="nav_home">Home</a>
+                    <a href="courses.html" class="font-semibold transition text-gray-400 hover:text-white" data-i18n="nav_courses">Training Programs</a>
+                    <a href="best_of_work.html" class="font-semibold transition text-gray-400 hover:text-yellow-400" data-i18n="nav_best_work">Best Of Work</a>
                 </div>
                 
                 <div class="flex items-center gap-3">
-                    <!-- زر تبديل اللغة -->
                     <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
                         <i class="fas fa-globe"></i> <span id="langText">AR</span>
                     </button>
 
-                    <!-- زر تبديل الثيم -->
                     <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
                         <i id="themeIcon" class="fas fa-sun text-sm"></i>
                     </button>
 
-                    <div id="guestLinks">
-                        <a href="login.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-6 py-2.5 rounded-xl font-bold transition-all duration-300 shadow-lg text-xs sm:text-sm" data-i18n="nav_start">Get Started</a>
-                    </div>
-                    <div id="userLinks" class="hidden-el flex items-center gap-3">
-                        <span id="userNameDisplay" class="font-bold text-xs sm:text-sm bg-slate-800/90 px-3.5 py-2 rounded-xl border border-slate-700 shadow-inner flex items-center"></span>
-                        <button onclick="logout()" class="text-red-400 hover:text-white hover:bg-red-600 transition text-xs font-bold border border-red-500/30 px-3 py-2 rounded-xl">
-                            <i class="fas fa-sign-out-alt"></i>
-                        </button>
-                    </div>
+                    <a href="login.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-2 rounded-xl font-bold transition shadow-lg text-xs sm:text-sm" data-i18n="nav_login">Login</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative pt-36 pb-24 lg:pt-48 lg:pb-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div>
-                    <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-6 backdrop-blur-md shadow-sm">
-                        <i class="fas fa-drafting-compass"></i> <span data-i18n="hero_badge">Certified Engineering Center</span>
-                    </div>
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
-                        <span data-i18n="hero_title1">Building Your</span> <br>
-                        <span class="text-gradient" data-i18n="hero_title2">Engineering & Professional Future</span>
-                    </h1>
-                    <p class="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-xl" data-i18n="hero_desc">
-                        3 Engineers platform provides you with top accredited training programs bridging the gap between academic study and practical real-world engineering projects.
-                    </p>
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#courses" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-blue-600/30 flex items-center gap-2 transform hover:-translate-y-0.5">
-                            <span data-i18n="hero_btn">Explore Tracks</span> <i class="fas fa-arrow-left rtl:rotate-180 text-xs mt-0.5"></i>
-                        </a>
-                        <!-- زر سريع لصفحة Best Of Work من الهيرو -->
-                        <a href="best_of_work.html" class="bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 px-6 py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2">
-                            <i class="fas fa-award"></i> <span data-i18n="hero_best_btn">Best Of Work</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <div class="hidden lg:flex justify-center relative">
-                    <div class="w-72 h-72 border-2 border-blue-500/20 rounded-full absolute animate-[spin_25s_linear_infinite]"></div>
-                    <div class="w-96 h-96 border border-indigo-500/15 rounded-full absolute animate-[spin_35s_linear_infinite_reverse]"></div>
-                    <div class="glass-card p-8 w-80 relative z-10 text-center shadow-2xl border-blue-500/30">
-                        <div class="w-16 h-16 bg-blue-600/20 border border-blue-500/40 rounded-2xl mx-auto flex items-center justify-center mb-5 text-blue-400 shadow-inner">
-                            <i class="fas fa-building text-3xl drop-shadow-[0_0_15px_rgba(56,189,248,0.6)]"></i>
-                        </div>
-                        <h3 class="text-xl font-bold mb-2" data-i18n="hero_card_title">Real Simulation</h3>
-                        <p class="text-sm text-gray-400 leading-relaxed" data-i18n="hero_card_desc">Practical application on integrated execution projects according to latest codes.</p>
-                    </div>
-                </div>
+    <section class="relative pt-36 pb-20 lg:pt-48 lg:pb-32 text-center">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-6 backdrop-blur-md shadow-sm animate-pulse">
+                <i class="fas fa-graduation-cap"></i> <span data-i18n="hero_badge">Next-Gen Engineering & BIM Academy</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight">
+                <span data-i18n="hero_title1">Build Your Future With</span> <br>
+                <span class="text-gradient" data-i18n="hero_title2">3 Engineers Center</span>
+            </h1>
+            <p class="text-base sm:text-lg text-gray-400 mb-10 leading-relaxed max-w-2xl mx-auto" data-i18n="hero_desc">
+                Professional structural and architectural BIM diplomas, advanced design courses, and an exclusive showcase of student excellence.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="courses.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-8 py-4 rounded-2xl transition shadow-xl text-base flex items-center gap-2">
+                    <span data-i18n="hero_btn_courses">Explore Programs</span> <i class="fas fa-arrow-right rtl:rotate-180"></i>
+                </a>
+                <a href="best_of_work.html" class="bg-slate-800/80 hover:bg-slate-800 text-yellow-400 border border-yellow-500/30 font-bold px-8 py-4 rounded-2xl transition shadow-xl text-base flex items-center gap-2">
+                    <span data-i18n="hero_btn_work">View Best Of Work</span> <i class="fas fa-award"></i>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- إحصائيات سريعة -->
-    <section class="border-y border-slate-200 dark:border-slate-800/80 bg-white/40 dark:bg-slate-900/40 backdrop-blur-md py-10 relative">
+    <!-- Featured Highlights Section -->
+    <section class="pb-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-slate-200 dark:divide-slate-800/80 rtl:divide-x-reverse">
-                <div class="p-2">
-                    <h4 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-1">+5000</h4>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-medium" data-i18n="stat_1">Training Hours</p>
-                </div>
-                <div class="p-2">
-                    <h4 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-1">+1200</h4>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-medium" data-i18n="stat_2">Trained Engineers</p>
-                </div>
-                <div class="p-2">
-                    <h4 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-1">+50</h4>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-medium" data-i18n="stat_3">Graduation Projects</p>
-                </div>
-                <div class="p-2">
-                    <h4 class="text-3xl font-black text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400 mb-1">100%</h4>
-                    <p class="text-sm text-gray-500 dark:text-gray-400 font-medium" data-i18n="stat_4">Continuous Support</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- قسم البرامج التدريبية -->
-    <section id="courses" class="py-28 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4"><span data-i18n="courses_heading">Training Programs &</span> <span class="text-gradient" data-i18n="courses_heading2">Engineering Tracks</span></h2>
-                <p class="text-gray-500 dark:text-gray-400 text-base" data-i18n="courses_sub">Choose your track and start your professional journey with practical steps.</p>
-            </div>
-            
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- BIM Track -->
-                <div class="glass-card p-8 flex flex-col group cursor-pointer" onclick="location.href='bim.html'">
-                    <div class="w-14 h-14 bg-blue-900/40 rounded-2xl flex items-center justify-center mb-6 text-blue-400 border border-blue-500/30 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
-                        <i class="fas fa-cubes text-2xl"></i>
+                
+                <!-- Card 1 -->
+                <div class="glass-card p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-blue-500/10 border border-blue-500/30 flex items-center justify-center text-blue-400 text-2xl mb-6">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3" data-i18n="feat1_title">Structural & Architectural BIM</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6" data-i18n="feat1_desc">Comprehensive training on Revit, structural modeling, shop drawings, and coordination protocols.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:text-blue-400 transition-colors" data-i18n="c1_title">Building Information Modeling (BIM)</h3>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 flex-grow leading-relaxed" data-i18n="c1_desc">
-                        Comprehensive diplomas for architectural and structural BIM technology, from modeling and clash detection to sheet extraction.
-                    </p>
-                    <a href="bim.html" class="text-blue-400 font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                        <span data-i18n="explore">Explore Track</span> <i class="fas fa-arrow-left rtl:rotate-180 text-xs"></i>
+                    <a href="courses.html" class="text-blue-400 font-bold text-sm flex items-center gap-2 hover:underline">
+                        <span data-i18n="learn_more">Learn More</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
                     </a>
                 </div>
 
-                <!-- Structural Track (مع رابط مباشر لـ Best Of Work) -->
-                <div class="glass-card p-8 flex flex-col group cursor-pointer" onclick="location.href='best_of_work.html'">
-                    <div class="w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center mb-6 text-yellow-500 border border-yellow-500/30 group-hover:bg-yellow-500 group-hover:text-zinc-950 transition-all duration-300">
-                        <i class="fas fa-award text-2xl"></i>
+                <!-- Card 2 -->
+                <div class="glass-card p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-yellow-500/10 border border-yellow-500/30 flex items-center justify-center text-yellow-400 text-2xl mb-6">
+                            <i class="fas fa-trophy"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3" data-i18n="feat2_title">Student Best Works</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6" data-i18n="feat2_desc">Explore real student deliverables, calculation reports, and professional engineering sheets.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:text-yellow-400 transition-colors" data-i18n="c2_title">Advanced Structural Design & Best Work</h3>
-                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 flex-grow leading-relaxed" data-i18n="c2_desc">
-                        Master structural analysis, high-rise towers, and explore the complete portfolio tasks via Google Drive resources.
-                    </p>
-                    <a href="best_of_work.html" class="text-yellow-500 font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                        <span data-i18n="explore_best">View Best Of Work</span> <i class="fas fa-arrow-left rtl:rotate-180 text-xs"></i>
+                    <a href="best_of_work.html" class="text-yellow-400 font-bold text-sm flex items-center gap-2 hover:underline">
+                        <span data-i18n="view_gallery">View Gallery</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
                     </a>
                 </div>
 
-                <!-- Upcoming Track -->
-                <div class="glass-card p-8 flex flex-col group cursor-pointer border-dashed border-slate-400 dark:border-slate-700 bg-transparent">
-                    <div class="w-14 h-14 bg-slate-200 dark:bg-slate-800/80 rounded-2xl flex items-center justify-center mb-6 text-slate-500 dark:text-slate-400 border border-slate-300 dark:border-slate-700">
-                        <i class="fas fa-plus text-2xl"></i>
+                <!-- Card 3 -->
+                <div class="glass-card p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="w-14 h-14 rounded-2xl bg-indigo-500/10 border border-indigo-500/30 flex items-center justify-center text-indigo-400 text-2xl mb-6">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3" data-i18n="feat3_title">Accredited Certificates</h3>
+                        <p class="text-sm text-gray-400 leading-relaxed mb-6" data-i18n="feat3_desc">Earn professional certificates recognized in the engineering market upon finishing practical tasks.</p>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-slate-600 dark:text-slate-300" data-i18n="c3_title">Upcoming Engineering Tracks</h3>
-                    <p class="text-slate-500 dark:text-slate-500 text-sm mb-8 flex-grow leading-relaxed" data-i18n="c3_desc">
-                        We are continuously working to develop and add new engineering diplomas in project management and technical office.
-                    </p>
-                    <span class="text-slate-500 font-bold text-sm flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-slate-500 animate-pulse"></span> <span data-i18n="soon">Coming Soon...</span>
-                    </span>
+                    <a href="courses.html" class="text-indigo-400 font-bold text-sm flex items-center gap-2 hover:underline">
+                        <span data-i18n="join_now">Join Programs</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
+                    </a>
                 </div>
+
             </div>
         </div>
     </section>
@@ -280,69 +215,49 @@
     <script>
         const translations = {
             en: {
-                page_title: "3 Engineers Training Center",
+                page_title: "3 Engineers Center | Professional Engineering & BIM Training",
                 nav_home: "Home",
                 nav_courses: "Training Programs",
                 nav_best_work: "Best Of Work",
-                nav_admin: "Admin Dashboard",
-                nav_start: "Get Started",
-                hero_badge: "Certified Engineering Center",
-                hero_title1: "Building Your",
-                hero_title2: "Engineering & Professional Future",
-                hero_desc: "3 Engineers platform provides you with top accredited training programs bridging the gap between academic study and practical real-world engineering projects.",
-                hero_btn: "Explore Tracks",
-                hero_best_btn: "Best Of Work",
-                hero_card_title: "Real Simulation",
-                hero_card_desc: "Practical application on integrated execution projects according to latest codes.",
-                stat_1: "Training Hours",
-                stat_2: "Trained Engineers",
-                stat_3: "Graduation Projects",
-                stat_4: "Continuous Support",
-                courses_heading: "Training Programs &",
-                courses_heading2: "Engineering Tracks",
-                courses_sub: "Choose your track and start your professional journey with practical steps.",
-                c1_title: "Building Information Modeling (BIM)",
-                c1_desc: "Comprehensive diplomas for architectural and structural BIM technology, from modeling and clash detection to sheet extraction.",
-                c2_title: "Advanced Structural Design & Best Work",
-                c2_desc: "Master structural analysis, high-rise towers, and explore the complete portfolio tasks via Google Drive resources.",
-                c3_title: "Upcoming Engineering Tracks",
-                c3_desc: "We are continuously working to develop and add new engineering diplomas in project management and technical office.",
-                explore: "Explore Track",
-                explore_best: "View Best Of Work",
-                soon: "Coming Soon...",
+                nav_login: "Login",
+                hero_badge: "Next-Gen Engineering & BIM Academy",
+                hero_title1: "Build Your Future With",
+                hero_title2: "3 Engineers Center",
+                hero_desc: "Professional structural and architectural BIM diplomas, advanced design courses, and an exclusive showcase of student excellence.",
+                hero_btn_courses: "Explore Programs",
+                hero_btn_work: "View Best Of Work",
+                feat1_title: "Structural & Architectural BIM",
+                feat1_desc: "Comprehensive training on Revit, structural modeling, shop drawings, and coordination protocols.",
+                feat2_title: "Student Best Works",
+                feat2_desc: "Explore real student deliverables, calculation reports, and professional engineering sheets.",
+                feat3_title: "Accredited Certificates",
+                feat3_desc: "Earn professional certificates recognized in the engineering market upon finishing practical tasks.",
+                learn_more: "Learn More",
+                view_gallery: "View Gallery",
+                join_now: "Join Programs",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
             ar: {
-                page_title: "مركز 3 Engineers للتدريب الهندسي",
+                page_title: "مركز 3 Engineers | التدريب الهندسي وتكنولوجيا البيم الاحترافي",
                 nav_home: "الرئيسية",
                 nav_courses: "البرامج التدريبية",
                 nav_best_work: "أفضل الأعمال",
-                nav_admin: "لوحة التحكم",
-                nav_start: "ابدا الآن",
-                hero_badge: "المركز الهندسي المعتمد",
-                hero_title1: "نبني مستقبلك",
-                hero_title2: "الهندسي والمهني",
-                hero_desc: "منصة 3 Engineers تقدم لك أقوى البرامج التدريبية المعتمدة التي تسد الفجوة بين الدراسة الأكاديمية والواقع العملي في كبرى المشاريع الهندسية.",
-                hero_btn: "تصفح المسارات",
-                hero_best_btn: "أفضل الأعمال",
-                hero_card_title: "محاكاة حقيقية",
-                hero_card_desc: "تطبيق عملي على مشاريع تنفيذية متكاملة وفقاً لأحدث الأكواد الهندسية.",
-                stat_1: "ساعة تدريبية",
-                stat_2: "مهندس متدرب",
-                stat_3: "مشروع تخرج تطبيقي",
-                stat_4: "دعم فني مستمر",
-                courses_heading: "البرامج التدريبية",
-                courses_heading2: "والمسارات الهندسية",
-                courses_sub: "اختر مسارك وابدأ رحلة الاحتراف بخطوات عملية ومدروسة.",
-                c1_title: "نمذجة معلومات البناء (BIM)",
-                c1_desc: "دبلومات متكاملة لتعلم تكنولوجيا الـ BIM المعمارية والإنشائية، من النمذجة وإدارة التعارضات وحتى استخراج اللوحات.",
-                c2_title: "التصميم الإنشائي المتقدم وأفضل الأعمال",
-                c2_desc: "احترف التحليل والتصميم الإنشائي للأبراج، وتصفح معرض الأعمال والتاسكات بالكامل عبر روابط درايف.",
-                c3_title: "مسارات هندسية قادمة",
-                c3_desc: "نعمل باستمرار على تطوير وإضافة دبلومات هندسية جديدة في مجالات إدارة المشروعات والمكتب الفني.",
-                explore: "استكشف المسار",
-                explore_best: "عرض أفضل الأعمال",
-                soon: "قريباً...",
+                nav_login: "تسجيل الدخول",
+                hero_badge: "أكاديمية الهندسة وتكنولوجيا البيم للجيل القادم",
+                hero_title1: "ابني مستقبلك الهندسي مع",
+                hero_title2: "مركز 3 Engineers",
+                hero_desc: "دبلومات البيم الإنشائي والمعماري الاحترافية، كورسات التصميم المتقدمة، ومعرض حصري لشغل الطلاب المتميزين.",
+                hero_btn_courses: "استكشف البرامج",
+                hero_btn_work: "شاهد أفضل الأعمال",
+                feat1_title: "البيم الإنشائي والمعماري",
+                feat1_desc: "تدريب شامل على الريفيت، النمذجة الإنشائية، ورشة الشوب دروينج، وبروتوكولات التنسيق.",
+                feat2_title: "أفضل أعمال الطلاب",
+                feat2_desc: "تصفح مشاريع الطلاب الحقيقية، تقارير الحسابات، واللوحات الهندسية الاحترافية.",
+                feat3_title: "شهادات معتمدة",
+                feat3_desc: "احصل على شهادات مهنية معتمدة في سوق العمل الهندسي بمجرد إتمام المهام العملية.",
+                learn_more: "اعرف المزيد",
+                view_gallery: "تصفح المعرض",
+                join_now: "انضم للبرامج",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
         };
@@ -382,37 +297,6 @@
             }
         }
 
-        const navHome = document.getElementById('navHome');
-        const navCourses = document.getElementById('navCourses');
-        const coursesSection = document.getElementById('courses');
-
-        function setActiveNav(target) {
-            if (target === 'home') {
-                navHome.classList.add('text-blue-400', 'border-blue-500');
-                navHome.classList.remove('text-gray-400', 'border-transparent');
-                navCourses.classList.remove('text-blue-400', 'border-blue-500');
-                navCourses.classList.add('text-gray-400', 'border-transparent');
-            } else {
-                navCourses.classList.add('text-blue-400', 'border-blue-500');
-                navCourses.classList.remove('text-gray-400', 'border-transparent');
-                navHome.classList.remove('text-blue-400', 'border-blue-500');
-                navHome.classList.add('text-gray-400', 'border-transparent');
-            }
-        }
-
-        navHome.addEventListener('click', () => setActiveNav('home'));
-        navCourses.addEventListener('click', () => setActiveNav('courses'));
-
-        window.addEventListener('scroll', () => {
-            const scrollPos = window.scrollY;
-            const coursesTop = coursesSection.offsetTop - 150;
-            if (scrollPos >= coursesTop) {
-                setActiveNav('courses');
-            } else {
-                setActiveNav('home');
-            }
-        });
-
         window.addEventListener('DOMContentLoaded', () => {
             const currentTheme = localStorage.getItem('siteTheme') || 'dark';
             const themeIcon = document.getElementById('themeIcon');
@@ -420,30 +304,7 @@
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
             }
-
-            try {
-                const userRole = localStorage.getItem('userRole');
-                const userName = localStorage.getItem('userName');
-
-                if (userRole) {
-                    document.getElementById('guestLinks').classList.add('hidden-el');
-                    document.getElementById('userLinks').classList.remove('hidden-el');
-                    document.getElementById('userNameDisplay').innerHTML = `<i class="fas fa-user-circle text-blue-400 ml-1.5 rtl:ml-0 rtl:mr-1.5 text-base"></i> ${userName || 'User'}`;
-
-                    if (userRole === 'admin') {
-                        document.getElementById('adminLink').classList.remove('hidden-el');
-                    }
-                }
-            } catch (error) {
-                console.error("Auth error:", error);
-            }
         });
-
-        function logout() {
-            localStorage.removeItem('userRole');
-            localStorage.removeItem('userName');
-            window.location.reload();
-        }
     </script>
 </body>
 </html>
