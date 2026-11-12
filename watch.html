@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">Watch Course - 3 Engineers Academy</title>
+    <title>Watch Course - Ahmed Abdelhamed Academy</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
@@ -60,7 +60,7 @@
             border-radius: 20px;
             transition: all 0.4s ease;
         }
-        .dark .glass-box { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
+        .dark .glass-box { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
         .light .glass-box { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
 
         .video-wrapper {
@@ -74,14 +74,31 @@
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
         }
 
-        .lesson-item {
-            transition: all 0.3s ease;
-            cursor: pointer;
+        .tab-btn {
+            background: none; border: none; padding: 12px 20px; font-size: 0.95rem; font-weight: 700; color: #94a3b8; cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; display: flex; align-items: center; gap: 8px; transition: all 0.2s ease;
         }
-        .dark .lesson-item { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(56, 189, 248, 0.1); }
-        .light .lesson-item { background: rgba(248, 250, 252, 1); border: 1px solid rgba(226, 232, 240, 1); }
-        .lesson-item:hover { transform: translateX(4px); border-color: rgba(56, 189, 248, 0.5); }
-        .lesson-item.active { border-color: #38bdf8; background: rgba(56, 189, 248, 0.15); }
+        .tab-btn.active { color: #38bdf8; border-bottom-color: #38bdf8; }
+        .tab-content { display: none; padding: 24px; }
+        .tab-content.active { display: block; }
+
+        .section-box {
+            border-radius: 12px; overflow: hidden; margin-bottom: 15px;
+        }
+        .dark .section-box { background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .section-box { background: #ffffff; border: 1px solid #e2e8f0; }
+
+        .section-header {
+            padding: 14px 18px; font-weight: 800; display: flex; justify-content: space-between; align-items: center; cursor: pointer; user-select: none; transition: background 0.2s ease;
+        }
+        .dark .section-header { background: #1e293b; color: #ffffff; }
+        .light .section-header { background: #f8fafc; color: #1e293b; }
+
+        .lesson-item {
+            display: flex; align-items: center; justify-content: space-between; padding: 12px 16px; border-radius: 8px; text-decoration: none; transition: all 0.2s ease; cursor: pointer;
+        }
+        .dark .lesson-item { background: #111827; border: 1px solid #1f2937; color: #f8fafc; }
+        .light .lesson-item { background: #ffffff; border: 1px solid #e2e8f0; color: #334155; }
+        .lesson-item:hover { border-color: #38bdf8; }
 
         .text-gradient { 
             background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); 
@@ -105,10 +122,10 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex items-center space-x-6 rtl:space-x-reverse">
-                    <a href="index.html" class="flex-shrink-0">
-                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10">
+                        <span class="font-black text-lg text-gradient">Ahmed Abdelhamed Academy</span>
                     </a>
-                    <h1 class="text-base font-bold text-gradient hidden sm:block" id="navCourseTitle">Revit Architecture Masterclass</h1>
                 </div>
                 
                 <div class="flex items-center gap-3">
@@ -119,165 +136,184 @@
                     <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
                         <i id="themeIcon" class="fas fa-sun text-sm"></i>
                     </button>
-
-                    <a href="courses.html" class="text-sm font-bold text-gray-300 hover:text-white flex items-center gap-2 bg-slate-800/60 px-4 py-2 rounded-xl border border-slate-700 transition">
-                        <i class="fas fa-arrow-left rtl:rotate-180"></i> <span data-i18n="back_courses">All Courses</span>
-                    </a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Main Content Layout -->
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
-        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
-            <!-- Left: Video Player & Info (2 Columns) -->
-            <div class="lg:col-span-2 space-y-6">
-                <div class="video-wrapper">
-                    <iframe id="youtubePlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+        
+        <!-- Video Header Info -->
+        <div class="text-center mb-6">
+            <span class="text-xs text-blue-400 font-bold block mb-1" id="courseSubtitle">Revit Architecture Masterclass</span>
+            <h2 class="text-2xl font-black" id="sectionTitle">Unit 1 - The Foundation & Interface</h2>
+            <h1 class="text-sm font-semibold text-gray-400 mt-1" id="lessonTitle">Loading Lesson...</h1>
+        </div>
+
+        <!-- Video Player Box -->
+        <div class="video-wrapper mb-8">
+            <iframe id="youtubePlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
+        </div>
+
+        <!-- Tabs Box (Curriculum, Overview, Instructor) -->
+        <div class="glass-box overflow-hidden mb-12">
+            <div class="flex border-b border-slate-700/50 px-6 bg-slate-900/40">
+                <button type="button" class="tab-btn active" onclick="switchTab(event, 'tab-curriculum')">
+                    <i class="fas fa-list-ul"></i> Curriculum
+                </button>
+                <button type="button" class="tab-btn" onclick="switchTab(event, 'tab-overview')">
+                    <i class="fas fa-file-alt"></i> Overview & Files
+                </button>
+                <button type="button" class="tab-btn" onclick="switchTab(event, 'tab-instructor')">
+                    <i class="fas fa-user-tie"></i> Instructor
+                </button>
+            </div>
+
+            <!-- Tab 1: Curriculum -->
+            <div id="tab-curriculum" class="tab-content active">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="font-extrabold text-lg">Course Modules</h3>
+                    <span class="text-sm font-bold text-emerald-400">04 / 04 Completed</span>
+                </div>
+                <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden mb-6">
+                    <div class="w-full h-full bg-emerald-500"></div>
                 </div>
 
-                <div class="glass-box p-6">
-                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold rounded-lg inline-block mb-3" id="currentLessonBadge">Lecture 01</span>
-                    <h2 class="text-2xl font-black mb-3" id="currentLessonTitle">Loading Lesson...</h2>
-                    <p class="text-sm text-gray-400 leading-relaxed" id="currentLessonDesc">
-                        Select any lesson from the course playlist on the right to start watching instantly.
-                    </p>
+                <div id="modulesContainer" class="space-y-4">
+                    <!-- Dynamic Modules -->
                 </div>
             </div>
 
-            <!-- Right: Playlist Lessons Sidebar (1 Column) -->
-            <div class="space-y-4">
-                <div class="glass-box p-5">
-                    <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2">
-                        <i class="fas fa-list-ul text-blue-400"></i> <span data-i18n="playlist_title">Course Playlist</span>
-                    </h3>
-                    <div id="playlistContainer" class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
-                        <!-- Dynamic Lessons injected via JS -->
+            <!-- Tab 2: Overview & Files -->
+            <div id="tab-overview" class="tab-content">
+                <h3 class="text-xl font-bold mb-3" id="overviewLessonName">Lesson Overview</h3>
+                <p class="text-gray-400 text-sm leading-relaxed mb-6" id="overviewLessonDesc">
+                    Detailed description and practical notes for this lecture. Follow along with the provided practice files.
+                </p>
+                <div class="border-t border-slate-700/50 pt-4">
+                    <h4 class="font-bold text-sm mb-3">Lesson Attachments:</h4>
+                    <a href="#" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-4 py-2.5 rounded-xl text-xs transition shadow">
+                        <i class="fas fa-file-pdf text-red-300"></i> Download Practice Files (PDF / CAD)
+                    </a>
+                </div>
+            </div>
+
+            <!-- Tab 3: Instructor -->
+            <div id="tab-instructor" class="tab-content">
+                <div class="flex items-center gap-5 flex-wrap">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Ahmed Abdelhamed" class="w-20 h-20 rounded-full object-cover border-2 border-blue-500 shadow">
+                    <div>
+                        <h3 class="text-xl font-bold">Ahmed Abdelhamed</h3>
+                        <p class="text-sm text-blue-400 font-medium mb-3">BIM & 3D Engineering Expert</p>
+                        <p class="text-xs text-gray-400 leading-relaxed max-w-xl">
+                            Specialized in architectural BIM, structural design, and advanced software training with over 10 years of professional market experience.
+                        </p>
                     </div>
                 </div>
             </div>
-
         </div>
+
     </main>
 
     <!-- Footer -->
     <footer class="border-t border-slate-800 bg-slate-900/60 backdrop-blur-md py-10">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-4">
-                <a href="index.html">
-                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 transition">
-                </a>
-                <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
+            <div>
+                <h3 class="font-bold text-base mb-1">Ahmed Abdelhamed Academy</h3>
+                <p class="text-xs text-gray-400">An integrated educational platform offering professional engineering courses.</p>
             </div>
-            <div class="flex gap-4">
-                <a href="https://facebook.com/your-page" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                <a href="https://linkedin.com/in/your-profile" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <div class="text-xs text-gray-400">
+                <p>Email: courses@ahmedabdelhamed.com</p>
+                <p>Phone: 01116512028</p>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript -->
     <script>
-        const translations = {
-            en: {
-                page_title: "Watch Course - 3 Engineers Academy",
-                back_courses: "All Courses",
-                playlist_title: "Course Playlist",
-                footer_rights: "© 2026 3 Engineers Center. All rights reserved."
-            },
-            ar: {
-                page_title: "مشاهدة الكورس - أكاديمية 3 Engineers",
-                back_courses: "جميع الكورسات",
-                playlist_title: "قائمة محاضرات الكورس",
-                footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
-            }
+        // دروس كورس الريفيت المعماري أو أي كورس تختاره
+        const courseData = {
+            title: "Revit Architecture Masterclass",
+            modules: [
+                {
+                    title: "A Comprehensive Overview & Quick Start",
+                    lessons: [
+                        { id: "dQw4w9WgXcQ", title: "Video 1 (Course Overview - Part 1)", desc: "Introduction to the academy workflow and interface." },
+                        { id: "3JZ_D3ELwOQ", title: "Video 2 (Interface Navigation)", desc: "Understanding views, properties, and project browser." }
+                    ]
+                },
+                {
+                    title: "Unit 1 - The Foundation & Profile Optimization",
+                    lessons: [
+                        { id: "kJQP7kiw5Fk", title: "Video 3 (Levels and Grids Setup)", desc: "Creating accurate levels and structural axes." },
+                        { id: "5qap5aO4i9A", title: "Video 4 (Walls & Basic Components)", desc: "Drawing architectural walls, doors, and windows." }
+                    ]
+                }
+            ]
         };
 
-        // دروس كورس الريفيت المعماري (يمكنك نسخ معرفات فيديوهات البليليست الخاصة بك ووضعها هنا)
-        const courseLessons = [
-            { id: "dQw4w9WgXcQ", title: "1. Introduction to Revit Architecture", desc: "Setting up project templates, levels, and grids from scratch." },
-            { id: "3JZ_D3ELwOQ", title: "2. Modeling Walls, Doors, and Windows", desc: "Creating architectural walls, editing types, and placing components." },
-            { id: "kJQP7kiw5Fk", title: "3. Floors, Roofs, and Ceilings", desc: "Building accurate slab profiles and sloped architectural roofs." },
-            { id: "5qap5aO4i9A", title: "4. Stairs, Ramps, and Railings", desc: "Designing multi-level stairs and custom architectural railings." }
-        ];
-
-        let currentLang = 'en';
-
-        function toggleLanguage() {
-            currentLang = currentLang === 'en' ? 'ar' : 'en';
-            const htmlRoot = document.getElementById('htmlRoot');
-            htmlRoot.setAttribute('lang', currentLang);
-            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
-            document.getElementById('langText').innerText = currentLang === 'en' ? 'AR' : 'EN';
-
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
-                }
-            });
+        function switchTab(evt, tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            evt.currentTarget.classList.add('active');
         }
 
-        function toggleTheme() {
-            const htmlRoot = document.getElementById('htmlRoot');
-            const themeIcon = document.getElementById('themeIcon');
-            if (htmlRoot.classList.contains('dark')) {
-                htmlRoot.classList.remove('dark');
-                htmlRoot.classList.add('light');
-                localStorage.setItem('siteTheme', 'light');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+        function loadModules() {
+            const container = document.getElementById('modulesContainer');
+            container.innerHTML = '';
+
+            courseData.modules.forEach((mod, modIdx) => {
+                const box = document.createElement('div');
+                box.className = 'section-box';
+                
+                let lessonsHtml = '';
+                mod.lessons.forEach((lesson, lIdx) => {
+                    lessonsHtml += `
+                        <div class="lesson-item" onclick="playLesson('${lesson.id}', '${mod.title}', '${lesson.title}', '${lesson.desc}')">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-play-circle text-blue-400 text-lg"></i>
+                                <span class="text-sm font-bold">${lesson.title}</span>
+                            </div>
+                            <span class="text-xs text-emerald-400 font-semibold"><i class="fas fa-check-circle"></i> Completed</span>
+                        </div>
+                    `;
+                });
+
+                box.innerHTML = `
+                    <div class="section-header" onclick="toggleSection(this)">
+                        <span><i class="fas fa-folder-open text-blue-400 mr-2"></i> ${mod.title}</span>
+                        <span class="text-xs text-blue-400 font-bold">View Videos <i class="fas fa-chevron-down"></i></span>
+                    </div>
+                    <div class="p-3 space-y-2 border-t border-slate-700/50">
+                        ${lessonsHtml}
+                    </div>
+                `;
+                container.appendChild(box);
+            });
+
+            // تشغيل أول درس افتراضياً
+            const first = courseData.modules[0].lessons[0];
+            playLesson(first.id, courseData.modules[0].title, first.title, first.desc);
+        }
+
+        function toggleSection(header) {
+            const body = header.nextElementSibling;
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
             } else {
-                htmlRoot.classList.remove('light');
-                htmlRoot.classList.add('dark');
-                localStorage.setItem('siteTheme', 'dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                body.style.display = 'none';
             }
         }
 
-        function loadPlaylist() {
-            const container = document.getElementById('playlistContainer');
-            container.innerHTML = '';
-
-            courseLessons.forEach((lesson, index) => {
-                const item = document.createElement('div');
-                item.className = `lesson-item p-3.5 rounded-xl flex items-center gap-3 ${index === 0 ? 'active' : ''}`;
-                item.id = `lesson-item-${index}`;
-                item.innerHTML = `
-                    <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-xs flex-shrink-0">
-                        0${index + 1}
-                    </div>
-                    <div class="overflow-hidden">
-                        <h4 class="text-sm font-bold truncate">${lesson.title}</h4>
-                        <span class="text-xs text-gray-400">Revit Architecture Lecture</span>
-                    </div>
-                `;
-                item.onclick = () => playLesson(index);
-                container.appendChild(item);
-            });
-
-            playLesson(0);
-        }
-
-        function playLesson(index) {
-            const lesson = courseLessons[index];
-            document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${lesson.id}?autoplay=1`;
-            document.getElementById('currentLessonBadge', 'Lecture 0' + (index + 1));
-            document.getElementById('currentLessonBadge').innerText = `Lecture 0${index + 1}`;
-            document.getElementById('currentLessonTitle').innerText = lesson.title;
-            document.getElementById('currentLessonDesc').innerText = lesson.desc;
-
-            document.querySelectorAll('.lesson-item').forEach((el, i) => {
-                if (i === index) {
-                    el.classList.add('active');
-                } else {
-                    el.classList.remove('active');
-                }
-            });
+        function playLesson(videoId, modTitle, lessonTitle, lessonDesc) {
+            document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+            document.getElementById('sectionTitle').innerText = modTitle;
+            document.getElementById('lessonTitle').innerText = lessonTitle;
+            document.getElementById('overviewLessonName').innerText = lessonTitle;
+            document.getElementById('overviewLessonDesc').innerText = lessonDesc;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         window.addEventListener('DOMContentLoaded', () => {
@@ -287,7 +323,7 @@
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
             }
-            loadPlaylist();
+            loadModules();
         });
     </script>
 </body>
