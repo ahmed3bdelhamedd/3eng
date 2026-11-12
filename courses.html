@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Engineering Courses & BIM Diplomas | 3 Engineers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    colors: { 
+                        brand: { 
+                            500: '#38bdf8', 
+                            600: '#0284c7' 
+                        } 
+                    } 
+                } 
+            }
+        }
+    </script>
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .dark body { background-color: #070b14; color: #f8fafc; }
+        .light body { background-color: #f1f5f9; color: #0f172a; }
+
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+        }
+
+        .glass-nav { 
+            backdrop-filter: blur(16px); 
+            transition: all 0.3s ease;
+        }
+        .dark .glass-nav { background: rgba(7, 11, 20, 0.9); border-bottom: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .glass-nav { background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+
+        .glass-card { 
+            backdrop-filter: blur(12px); 
+            border-radius: 20px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .glass-card { background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(11, 17, 32, 0.9)); border: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .glass-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(248, 250, 252, 0.98)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+
+        .glass-card:hover { 
+            transform: translateY(-8px); 
+            border-color: rgba(56, 189, 248, 0.5); 
+            box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25);
+        }
+
+        .text-gradient { 
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+    </style>
+    
+    <script>
+        const savedTheme = localStorage.getItem('siteTheme') || 'dark';
+        document.documentElement.className = savedTheme;
+    </script>
+</head>
+<body class="antialiased relative">
+
+    <div class="blueprint-bg"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
+                    <a href="index.html" class="font-semibold transition text-gray-400 hover:text-white" data-i18n="nav_home">Home</a>
+                    <a href="courses.html" class="font-semibold transition text-blue-400 border-b-2 border-blue-500 pb-1" data-i18n="nav_courses">Training Programs</a>
+                    <a href="best_of_work.html" class="font-semibold transition text-gray-400 hover:text-yellow-400" data-i18n="nav_best_work">Best Of Work</a>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
+                        <i class="fas fa-globe"></i> <span id="langText">AR</span>
+                    </button>
+
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
+                        <i id="themeIcon" class="fas fa-sun text-sm"></i>
+                    </button>
+
+                    <a href="login.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-2 rounded-xl font-bold transition shadow-lg text-xs sm:text-sm" data-i18n="nav_login">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header & Search Section -->
+    <section class="relative pt-36 pb-16 lg:pt-44 lg:pb-20 text-center">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-4">
+                <span class="text-gradient" data-i18n="courses_main_title">Engineering BIM Programs</span>
+            </h1>
+            <p class="text-gray-400 text-sm sm:text-base mb-10 max-w-xl mx-auto leading-relaxed" data-i18n="courses_sub_desc">
+                Explore accredited BIM diplomas, structural modeling, architectural Revit, and advanced engineering workflows.
+            </p>
+
+            <!-- Search Bar Box -->
+            <div class="glass-card p-3 max-w-2xl mx-auto flex flex-col sm:flex-row gap-3 shadow-2xl border-blue-500/30">
+                <div class="relative flex-grow">
+                    <i class="fas fa-search absolute top-1/2 -translate-y-1/2 left-4 text-gray-400"></i>
+                    <input type="text" id="searchInput" onkeyup="searchCourses()" placeholder="Search BIM courses..." class="w-full bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white focus:outline-none focus:border-blue-500 transition" data-i18n-placeholder="search_placeholder">
+                </div>
+                <button onclick="searchCourses()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg text-sm flex items-center justify-center gap-2">
+                    <i class="fas fa-search"></i> <span data-i18n="search_btn">Search</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Grid Section (BIM & Revit) -->
+    <section class="pb-28 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
+                
+                <!-- Course 1: Structural BIM Diploma -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=structural-bim'" data-title="structural bim diploma" data-desc="concrete elements reinforcement shop drawings clash detection">
+                    <div class="h-52 overflow-hidden relative bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop" alt="Structural BIM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">BIM Diploma</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Structural BIM Diploma</h3>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Master structural modeling, foundations, reinforcement shop drawings, and clash detection according to engineering codes.</p>
+                        </div>
+                        <a href="course-details.html?course=structural-bim" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                            <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course 2: Architectural BIM Diploma -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=architectural-bim'" data-title="architectural bim diploma" data-desc="architectural modeling families sheets coordination">
+                    <div class="h-52 overflow-hidden relative bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Architectural BIM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">BIM Diploma</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Architectural BIM Diploma</h3>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Comprehensive architectural modeling, custom family creation, rendering visualization, and professional drawing production.</p>
+                        </div>
+                        <a href="course-details.html?course=architectural-bim" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                            <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Course 3: Revit Architecture Masterclass -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=revit-arch'" data-title="revit architecture masterclass" data-desc="autodesk revit architecture from scratch to professional">
+                    <div class="h-52 overflow-hidden relative bg-slate-900">
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop" alt="Revit Architecture" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Autodesk Revit</span>
+                    </div>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Revit Architecture Masterclass</h3>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Learn Autodesk Revit Architecture from scratch, covering walls, floors, roofs, stairs, documentation, and presentation.</p>
+                        </div>
+                        <a href="course-details.html?course=revit-arch" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                            <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html">
+                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 transition">
+                </a>
+                <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://facebook.com/your-page" target="_blank" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const translations = {
+            en: {
+                page_title: "Engineering Courses & BIM Diplomas | 3 Engineers",
+                nav_home: "Home",
+                nav_courses: "Training Programs",
+                nav_best_work: "Best Of Work",
+                nav_login: "Login",
+                courses_main_title: "Engineering BIM Programs",
+                courses_sub_desc: "Explore accredited BIM diplomas, structural modeling, architectural Revit, and advanced engineering workflows.",
+                search_placeholder: "Search BIM courses...",
+                search_btn: "Search",
+                explore_course: "View Course Details",
+                footer_rights: "© 2026 3 Engineers Center. All rights reserved."
+            },
+            ar: {
+                page_title: "كورسات ودبلومات البيم الهندسية | 3 Engineers",
+                nav_home: "الرئيسية",
+                nav_courses: "البرامج التدريبية",
+                nav_best_work: "أفضل الأعمال",
+                nav_login: "تسجيل الدخول",
+                courses_main_title: "برامج ودبلومات البيم الهندسية",
+                courses_sub_desc: "تصفح دبلومات البيم المعتمدة، النمذجة الإنشائية، الريفيت المعماري، وأحدث مسارات العمل الهندسية.",
+                search_placeholder: "ابحث عن كورسات البيم...",
+                search_btn: "بحث",
+                explore_course: "عرض تفاصيل الكورس",
+                footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const htmlRoot = document.getElementById('htmlRoot');
+            htmlRoot.setAttribute('lang', currentLang);
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('langText').innerText = currentLang === 'en' ? 'AR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+
+            const searchInput = document.getElementById('searchInput');
+            if(translations[currentLang]['search_placeholder']) {
+                searchInput.setAttribute('placeholder', translations[currentLang]['search_placeholder']);
+            }
+        }
+
+        function toggleTheme() {
+            const htmlRoot = document.getElementById('htmlRoot');
+            const themeIcon = document.getElementById('themeIcon');
+            if (htmlRoot.classList.contains('dark')) {
+                htmlRoot.classList.remove('dark');
+                htmlRoot.classList.add('light');
+                localStorage.setItem('siteTheme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                htmlRoot.classList.remove('light');
+                htmlRoot.classList.add('dark');
+                localStorage.setItem('siteTheme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        function searchCourses() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.course-card');
+
+            cards.forEach(card => {
+                const title = card.getAttribute('data-title').toLowerCase();
+                const desc = card.getAttribute('data-desc').toLowerCase();
+                if (title.includes(query) || desc.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentTheme = localStorage.getItem('siteTheme') || 'dark';
+            const themeIcon = document.getElementById('themeIcon');
+            if (currentTheme === 'light') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+        });
+    </script>
+</body>
+</html>
