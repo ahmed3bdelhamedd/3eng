@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="page_title">Engineering Courses & BIM Diplomas | 3 Engineers</title>
+    <title data-i18n="page_title">Engineering & Training Programs | 3 Engineers</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
@@ -147,7 +147,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
                 
-                <!-- 1. الكورس الإنشائي متصل بـ structure.html -->
+                <!-- 1. الكورس الإنشائي (متصل بـ structure.html لتفاصيل الكورس، ثم زر حجز واتساب) -->
                 <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='structure.html'" data-title="structural design analysis" data-desc="structural analysis high rise towers csi software">
                     <div class="h-52 overflow-hidden relative bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop" alt="Structural Design" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -164,7 +164,7 @@
                     </div>
                 </div>
 
-                <!-- 2. الكورس المعماري متصل بـ bim.html -->
+                <!-- 2. الكورس المعماري BIM (متصل بـ bim.html لتفاصيل الكورس) -->
                 <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='bim.html'" data-title="architectural bim diploma" data-desc="architectural bim revit modeling clash detection">
                     <div class="h-52 overflow-hidden relative bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Architectural BIM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
@@ -181,19 +181,19 @@
                     </div>
                 </div>
 
-                <!-- 3. الكورسات الأخرى (الدريفت) متصلة بـ course-details.html -->
-                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=3dsmax'" data-title="3ds max course" data-desc="3ds max rendering vray corona interior exterior">
+                <!-- 3. ريفيت معماري (متصل بصفحة المشاهدة watch.html مباشرة) -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='watch.html?course=revit-arch'" data-title="revit architecture masterclass" data-desc="autodesk revit architecture from scratch to professional">
                     <div class="h-52 overflow-hidden relative bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=800&auto=format&fit=crop" alt="3DS MAX Course" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Masterclass</span>
+                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop" alt="Revit Architecture" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Autodesk Revit</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between">
                         <div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">3DS MAX Masterclass & Rendering</h3>
-                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Learn modeling, lighting, materials, and realistic rendering for interior and exterior architectural scenes.</p>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Revit Architecture Masterclass</h3>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Learn Autodesk Revit Architecture from scratch, covering walls, floors, roofs, stairs, documentation, and presentation.</p>
                         </div>
-                        <a href="course-details.html?course=3dsmax" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                            <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
+                        <a href="watch.html?course=revit-arch" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                            <span data-i18n="start_watching">Start Watching Now</span> <i class="fas fa-play rtl:rotate-180 text-xs"></i>
                         </a>
                     </div>
                 </div>
@@ -233,6 +233,7 @@
                 search_placeholder: "Search courses...",
                 search_btn: "Search",
                 explore_course: "View Course Details",
+                start_watching: "Start Watching Now",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
             ar: {
@@ -246,6 +247,7 @@
                 search_placeholder: "ابحث عن الكورسات...",
                 search_btn: "بحث",
                 explore_course: "عرض تفاصيل الكورس",
+                start_watching: "ابدأ المشاهدة الآن",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
         };
