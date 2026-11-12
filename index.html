@@ -4,94 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3 Engineers Training Center</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cairo Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body { 
             font-family: 'Cairo', sans-serif; 
-            background-color: #050a15; 
+            background-color: #0b1120; 
             color: #f8fafc; 
             overflow-x: hidden;
         }
 
-        /* تأثيرات بصرية إبداعية */
-        .glow-circle {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(100px);
-            z-index: -1;
-            animation: float 10s ease-in-out infinite;
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0) scale(1); }
-            50% { transform: translateY(-20px) scale(1.05); }
-        }
-
-        /* شريط التنقل الشفاف (Glassmorphism) */
-        .glass-nav { 
-            background: rgba(5, 10, 21, 0.7); 
-            backdrop-filter: blur(16px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-        }
-
-        /* تصميم الكروت الإبداعي */
-        .creative-card {
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.4));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .creative-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #38bdf8, transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s ease;
-        }
-
-        .creative-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.2);
-            border-color: rgba(56, 189, 248, 0.2);
-        }
-        
-        .creative-card:hover::before {
-            transform: translateX(100%);
-        }
-
-        /* زر التسجيل المميز */
-        .btn-creative {
-            background: linear-gradient(45deg, #2563eb, #38bdf8);
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-        .btn-creative::before {
-            content: '';
+        /* خلفية هندسية (Blueprint Grid) خفيفة جداً */
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(45deg, #38bdf8, #2563eb);
-            z-index: -1;
+            z-index: -2;
+        }
+
+        .glass-nav { 
+            background: rgba(11, 17, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid rgba(56, 189, 248, 0.1); 
+        }
+
+        .glass-card { 
+            background: rgba(15, 23, 42, 0.6); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.05); 
+            border-radius: 12px; 
+            transition: all 0.4s ease; 
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* خط جانبي للكروت يعطي طابع هندسي */
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            right: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: #38bdf8;
             opacity: 0;
             transition: opacity 0.3s ease;
         }
-        .btn-creative:hover::before { opacity: 1; }
-        .btn-creative:hover {
-            box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
-            transform: scale(1.05);
+
+        .glass-card:hover { 
+            transform: translateY(-5px); 
+            border-color: rgba(56, 189, 248, 0.3); 
         }
+        .glass-card:hover::before { opacity: 1; }
 
         .text-gradient { 
-            background: linear-gradient(to right, #60a5fa, #c084fc); 
+            background: linear-gradient(135deg, #38bdf8, #818cf8); 
             -webkit-background-clip: text; 
             -webkit-text-fill-color: transparent; 
         }
@@ -99,52 +72,45 @@
         .hidden-el { display: none !important; }
     </style>
 </head>
-<body class="antialiased">
+<body class="antialiased relative">
 
-    <!-- خلفيات مضيئة -->
-    <div class="glow-circle w-[600px] h-[600px] bg-blue-600/10 top-0 right-[-100px]"></div>
-    <div class="glow-circle w-[500px] h-[500px] bg-purple-600/10 bottom-[20%] left-[-100px]" style="animation-delay: -5s;"></div>
+    <!-- الخلفية الهندسية -->
+    <div class="blueprint-bg"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] bg-blue-600/10 rounded-full blur-[120px] -z-10 pointer-events-none"></div>
 
     <!-- Navbar -->
     <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- اللوجو -->
-                <div class="flex-shrink-0 relative z-10">
-                    <a href="index.html">
-                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 transform hover:scale-105 transition duration-300">
-                    </a>
+                <div class="flex-shrink-0">
+                    <a href="index.html"><img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10"></a>
                 </div>
                 
-                <!-- الروابط -->
+                <!-- روابط التنقل -->
                 <div class="hidden md:flex items-center space-x-8 space-x-reverse">
-                    <a href="index.html" class="text-white font-bold transition border-b-2 border-blue-500 pb-1">الرئيسية</a>
-                    <a href="#courses" class="text-gray-400 hover:text-white font-semibold transition pb-1">المسارات التدريبية</a>
-                    
-                    <!-- رابط لوحة الإدارة (يظهر للأدمن فقط عبر JS) -->
-                    <a href="admin.html" id="adminLink" class="hidden-el group flex items-center gap-2 text-sm font-bold bg-slate-800/80 hover:bg-slate-700 border border-slate-600 hover:border-blue-500 px-4 py-2 rounded-full transition-all">
-                        <i class="fas fa-crown text-yellow-500 group-hover:rotate-12 transition-transform"></i>
-                        <span class="text-gray-200 group-hover:text-white">لوحة التحكم</span>
+                    <a href="index.html" class="text-gray-300 hover:text-white font-semibold transition border-b-2 border-blue-500 pb-1">الرئيسية</a>
+                    <a href="#courses" class="text-gray-300 hover:text-white font-semibold transition pb-1">البرامج التدريبية</a>
+                    <!-- رابط صفحة الإدارة (مخفي افتراضياً) -->
+                    <a href="admin.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/30 border border-blue-500/30 px-3 py-1.5 rounded">
+                        <i class="fas fa-tools"></i> لوحة التحكم
                     </a>
                 </div>
                 
-                <!-- الأزرار -->
-                <div id="guestLinks" class="flex items-center gap-5">
-                    <a href="login.html" class="text-gray-400 hover:text-white font-semibold transition text-sm">تسجيل الدخول</a>
-                    <!-- تغيير النص إلى "سجل الآن" -->
-                    <a href="login.html" class="btn-creative text-white px-7 py-2.5 rounded-full font-bold shadow-lg">
+                <!-- أزرار الزائر -->
+                <div id="guestLinks" class="flex items-center gap-4">
+                    <a href="login.html" class="text-gray-300 hover:text-white transition font-bold text-sm">تسجيل الدخول</a>
+                    <!-- تم تغيير النص إلى سجل الآن -->
+                    <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded font-semibold transition shadow-[0_0_15px_rgba(37,99,235,0.3)] hover:shadow-[0_0_20px_rgba(37,99,235,0.5)]">
                         سجل الآن
                     </a>
                 </div>
 
-                <!-- حساب المستخدم -->
+                <!-- أزرار المستخدم المسجل -->
                 <div id="userLinks" class="hidden-el flex items-center gap-4">
-                    <div class="flex items-center gap-3 bg-slate-800/50 border border-slate-700 rounded-full pl-4 pr-1 py-1">
-                        <span id="userNameDisplay" class="text-white font-bold text-sm"></span>
-                        <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 flex items-center justify-center font-bold text-xs">م</div>
-                    </div>
-                    <button onclick="logout()" class="text-gray-400 hover:text-red-400 transition" title="تسجيل الخروج">
-                        <i class="fas fa-sign-out-alt text-xl"></i>
+                    <span id="userNameDisplay" class="text-white font-bold text-sm bg-slate-800 px-3 py-1.5 rounded border border-slate-700"></span>
+                    <button onclick="logout()" class="text-red-400 hover:text-white hover:bg-red-600/80 transition text-sm font-bold border border-red-500/30 px-3 py-1.5 rounded">
+                        <i class="fas fa-sign-out-alt"></i> خروج
                     </button>
                 </div>
             </div>
@@ -152,82 +118,116 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <div class="inline-block mb-6 px-4 py-1.5 rounded-full bg-slate-800 border border-slate-700 backdrop-blur">
-                <span class="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300">
-                    ✨ بوابتك للاحتراف الهندسي
-                </span>
-            </div>
-            
-            <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-[1.2]">
-                شكل مستقبلك المهني مع <br>
-                <span class="text-gradient">3 Engineers</span>
-            </h1>
-            
-            <p class="text-lg md:text-xl text-gray-400 mb-10 max-w-2xl mx-auto leading-relaxed">
-                اكتسب الخبرة العملية من خلال برامج تدريبية متخصصة تحاكي بيئة العمل الحقيقية، مصممة بأحدث الأكواد الهندسية لضمان تفوقك في سوق العمل.
-            </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <!-- تغيير النص هنا أيضاً -->
-                <a href="#courses" class="btn-creative w-full sm:w-auto text-white px-10 py-4 rounded-full font-bold text-lg">
-                    تصفح المسارات المتاحة
-                </a>
-                <a href="#" class="w-full sm:w-auto px-10 py-4 rounded-full font-bold text-gray-300 hover:text-white bg-slate-800 hover:bg-slate-700 transition">
-                    تعرف علينا <i class="fas fa-play ml-2 text-xs"></i>
-                </a>
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="text-right">
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-6">
+                        <i class="fas fa-drafting-compass"></i> المركز الهندسي المعتمد
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-bold tracking-tight mb-6 leading-tight">
+                        نبني مستقبلك <br>
+                        <span class="text-gradient">الهندسي والمهني</span>
+                    </h1>
+                    <p class="text-lg text-gray-400 mb-8 leading-relaxed max-w-xl">
+                        منصة 3 Engineers تقدم لك أقوى البرامج التدريبية المعتمدة التي تسد الفجوة بين الدراسة الأكاديمية والواقع العملي في كبرى المشاريع الهندسية.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#courses" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded font-bold transition flex items-center gap-2">
+                            تصفح المسارات <i class="fas fa-arrow-left mt-1"></i>
+                        </a>
+                        <a href="#features" class="bg-slate-800 hover:bg-slate-700 border border-slate-600 text-white px-8 py-3 rounded font-bold transition">
+                            لماذا نحن؟
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- شكل هندسي في الـ Hero -->
+                <div class="hidden lg:flex justify-center relative">
+                    <div class="w-72 h-72 border-2 border-blue-500/30 rounded-full absolute animate-[spin_20s_linear_infinite]"></div>
+                    <div class="w-96 h-96 border border-indigo-500/20 rounded-full absolute animate-[spin_30s_linear_infinite_reverse]"></div>
+                    <div class="glass-card p-8 w-80 relative z-10 text-center shadow-2xl border-blue-500/30">
+                        <i class="fas fa-building text-6xl text-blue-400 mb-4 drop-shadow-[0_0_15px_rgba(56,189,248,0.5)]"></i>
+                        <h3 class="text-xl font-bold mb-2">محاكاة حقيقية</h3>
+                        <p class="text-sm text-gray-400">تطبيق عملي على مشاريع تنفيذية متكاملة وفقاً لأحدث الأكواد الهندسية.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- المسارات التدريبية -->
-    <section id="courses" class="py-24 bg-slate-900/40 border-t border-slate-800">
+    <!-- إحصائيات سريعة -->
+    <section class="border-y border-slate-800 bg-slate-900/30 py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-end mb-16">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-x-reverse divide-slate-800">
                 <div>
-                    <h2 class="text-3xl lg:text-4xl font-bold mb-4">مسارات <span class="text-gradient">التدريب المعتمدة</span></h2>
-                    <p class="text-gray-400">اختر تخصصك وابدأ التعلم بخطوات مدروسة.</p>
+                    <h4 class="text-3xl font-bold text-white mb-1">+5000</h4>
+                    <p class="text-sm text-gray-400">ساعة تدريبية</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl font-bold text-white mb-1">+1200</h4>
+                    <p class="text-sm text-gray-400">مهندس متدرب</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl font-bold text-white mb-1">+50</h4>
+                    <p class="text-sm text-gray-400">مشروع تخرج تطبيقي</p>
+                </div>
+                <div>
+                    <h4 class="text-3xl font-bold text-white mb-1">100%</h4>
+                    <p class="text-sm text-gray-400">دعم فني مستمر</p>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- قسم المسارات الهندسية -->
+    <section id="courses" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl lg:text-4xl font-bold mb-4">المسارات <span class="text-gradient">الهندسية المتاحة</span></h2>
+                <p class="text-gray-400">اختر مسارك وابدأ رحلة الاحتراف بخطوات عملية ومدروسة.</p>
+            </div>
             
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                 
-                <!-- كارت المسار 1 -->
-                <div class="creative-card p-8 group">
-                    <div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-400 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-cubes text-2xl text-white"></i>
+                <!-- كارت 1: مسار الـ BIM -->
+                <div class="glass-card p-6 flex flex-col group cursor-pointer">
+                    <div class="w-12 h-12 bg-blue-900/50 rounded flex items-center justify-center mb-6 text-blue-400 border border-blue-500/30 group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-cubes text-xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">نمذجة معلومات البناء</h3>
-                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
-                        دبلومة شاملة في الـ BIM المعماري والإنشائي، تغطي مراحل المشروع من النمذجة وحتى إدارة التعارضات.
+                    <h3 class="text-xl font-bold mb-3">نمذجة معلومات البناء (BIM)</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                        دبلومات متكاملة لتعلم تكنولوجيا الـ BIM المعمارية والإنشائية، من النمذجة وإدارة التعارضات وحتى استخراج اللوحات.
                     </p>
-                    <a href="bim.html" class="flex items-center gap-3 text-blue-400 font-bold group-hover:gap-5 transition-all">
-                        التفاصيل <i class="fas fa-arrow-left"></i>
+                    <a href="bim.html" class="text-blue-400 font-bold text-sm inline-flex items-center gap-2 group-hover:text-blue-300 transition">
+                        استكشف المسار <i class="fas fa-arrow-left text-xs"></i>
                     </a>
                 </div>
 
-                <!-- كارت المسار 2 -->
-                <div class="creative-card p-8 group">
-                    <div class="w-14 h-14 bg-gradient-to-br from-indigo-600 to-purple-500 rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-indigo-500/20 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-building text-2xl text-white"></i>
+                <!-- كارت 2: التصميم الإنشائي -->
+                <div class="glass-card p-6 flex flex-col group cursor-pointer">
+                    <div class="w-12 h-12 bg-indigo-900/50 rounded flex items-center justify-center mb-6 text-indigo-400 border border-indigo-500/30 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
+                        <i class="fas fa-building text-xl"></i>
                     </div>
-                    <h3 class="text-2xl font-bold mb-4">التصميم الإنشائي</h3>
-                    <p class="text-gray-400 text-sm mb-8 leading-relaxed">
-                        احترف تصميم الأبراج ومقاومة الزلازل باستخدام برامج التحليل الإنشائي وفقاً للكود المصري.
+                    <h3 class="text-xl font-bold mb-3">التصميم الإنشائي المتقدم</h3>
+                    <p class="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                        احترف التحليل والتصميم الإنشائي للأبراج والمنشآت الخرسانية ومقاومة أحمال الزلازل باستخدام برامج CSI والكود المصري.
                     </p>
-                    <a href="structure.html" class="flex items-center gap-3 text-indigo-400 font-bold group-hover:gap-5 transition-all">
-                        التفاصيل <i class="fas fa-arrow-left"></i>
+                    <a href="structure.html" class="text-indigo-400 font-bold text-sm inline-flex items-center gap-2 group-hover:text-indigo-300 transition">
+                        استكشف المسار <i class="fas fa-arrow-left text-xs"></i>
                     </a>
                 </div>
 
-                <!-- مسار قادم -->
-                <div class="creative-card p-8 flex flex-col justify-center items-center text-center border-dashed border-2 border-slate-700 bg-transparent opacity-60">
-                    <div class="w-12 h-12 rounded-full border border-slate-600 flex items-center justify-center mb-4">
-                        <i class="fas fa-plus text-slate-400"></i>
+                <!-- كارت 3: مسارات أخرى -->
+                <div class="glass-card p-6 flex flex-col group cursor-pointer border-dashed border-slate-600 bg-transparent">
+                    <div class="w-12 h-12 bg-slate-800 rounded flex items-center justify-center mb-6 text-slate-400">
+                        <i class="fas fa-plus text-xl"></i>
                     </div>
-                    <h3 class="text-lg font-bold text-slate-300 mb-2">مسارات قادمة</h3>
-                    <p class="text-slate-500 text-sm">نعمل على إضافة تخصصات هندسية جديدة.</p>
+                    <h3 class="text-xl font-bold mb-3 text-slate-300">مسارات هندسية قادمة</h3>
+                    <p class="text-slate-500 text-sm mb-6 flex-grow leading-relaxed">
+                        نعمل باستمرار على تطوير وإضافة دبلومات هندسية جديدة في مجالات إدارة المشروعات والمكتب الفني.
+                    </p>
+                    <span class="text-slate-500 font-bold text-sm">قريباً...</span>
                 </div>
 
             </div>
@@ -235,30 +235,33 @@
     </section>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800 bg-slate-900/80 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 mx-auto mb-6 opacity-70">
-            <p class="text-slate-500 text-sm mb-8">نصنع الفارق في مسيرتك الهندسية.</p>
-            <div class="flex justify-center gap-6 border-t border-slate-800 pt-8">
-                <p class="text-slate-600 text-xs">© 2026 جميع الحقوق محفوظة لـ 3 Engineers</p>
+    <footer class="border-t border-slate-800 bg-slate-900/50 py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-50 grayscale">
+                <span class="text-gray-500 text-sm">© 2026 جميع الحقوق محفوظة لمركز 3 Engineers</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="#" class="text-gray-500 hover:text-blue-400 transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="text-gray-500 hover:text-blue-400 transition"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" class="text-gray-500 hover:text-green-400 transition"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- سكربت التحكم في تسجيل الدخول -->
+    <!-- سكربت الصلاحيات والدخول -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const userRole = localStorage.getItem('userRole');
             const userName = localStorage.getItem('userName');
 
             if (userRole) {
-                // إخفاء أزرار الزوار
+                // المستخدم مسجل دخول
                 document.getElementById('guestLinks').classList.add('hidden-el');
-                // إظهار بيانات المستخدم
                 document.getElementById('userLinks').classList.remove('hidden-el');
-                document.getElementById('userNameDisplay').textContent = userName;
+                document.getElementById('userNameDisplay').innerHTML = `<i class="fas fa-user-circle text-gray-400 ml-1"></i> ${userName}`;
 
-                // لو المستخدم أدمن (admin@3eng.com)، أظهر لوحة التحكم
+                // لو أدمن
                 if (userRole === 'admin') {
                     document.getElementById('adminLink').classList.remove('hidden-el');
                 }
