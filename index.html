@@ -105,7 +105,11 @@
                     <a href="index.html" id="navHome" class="font-semibold transition pb-1 text-blue-400 border-b-2 border-blue-500" data-i18n="nav_home">Home</a>
                     <a href="#courses" id="navCourses" class="font-semibold transition pb-1 text-gray-400 hover:text-white border-b-2 border-transparent" data-i18n="nav_courses">Training Programs</a>
                     
-                    <!-- تم ضبط الرابط هنا ليطابق مسار الـ templates الجديد -->
+                    <!-- تم إضافة زر Best Of Work هنا -->
+                    <a href="best_of_work.html" id="navBestOfWork" class="font-semibold transition pb-1 text-gray-400 hover:text-yellow-400 border-b-2 border-transparent flex items-center gap-1.5">
+                        <i class="fas fa-award text-yellow-500 text-xs"></i> <span data-i18n="nav_best_work">Best Of Work</span>
+                    </a>
+                    
                     <a href="src/main/resources/templates/admin_dashboard.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/40 border border-blue-500/30 px-3 py-1.5 rounded-lg shadow-sm">
                         <i class="fas fa-tools ml-1 rtl:ml-0 rtl:mr-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
                     </a>
@@ -154,6 +158,10 @@
                     <div class="flex flex-wrap gap-4">
                         <a href="#courses" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-blue-600/30 flex items-center gap-2 transform hover:-translate-y-0.5">
                             <span data-i18n="hero_btn">Explore Tracks</span> <i class="fas fa-arrow-left rtl:rotate-180 text-xs mt-0.5"></i>
+                        </a>
+                        <!-- زر سريع لصفحة Best Of Work من الهيرو -->
+                        <a href="best_of_work.html" class="bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400 border border-yellow-500/30 px-6 py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2">
+                            <i class="fas fa-award"></i> <span data-i18n="hero_best_btn">Best Of Work</span>
                         </a>
                     </div>
                 </div>
@@ -220,17 +228,17 @@
                     </a>
                 </div>
 
-                <!-- Structural Track -->
-                <div class="glass-card p-8 flex flex-col group cursor-pointer" onclick="location.href='structure.html'">
-                    <div class="w-14 h-14 bg-indigo-900/40 rounded-2xl flex items-center justify-center mb-6 text-indigo-400 border border-indigo-500/30 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
-                        <i class="fas fa-building text-2xl"></i>
+                <!-- Structural Track (مع رابط مباشر لـ Best Of Work) -->
+                <div class="glass-card p-8 flex flex-col group cursor-pointer" onclick="location.href='best_of_work.html'">
+                    <div class="w-14 h-14 bg-yellow-500/20 rounded-2xl flex items-center justify-center mb-6 text-yellow-500 border border-yellow-500/30 group-hover:bg-yellow-500 group-hover:text-zinc-950 transition-all duration-300">
+                        <i class="fas fa-award text-2xl"></i>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 group-hover:text-indigo-400 transition-colors" data-i18n="c2_title">Advanced Structural Design</h3>
+                    <h3 class="text-xl font-bold mb-3 group-hover:text-yellow-400 transition-colors" data-i18n="c2_title">Advanced Structural Design & Best Work</h3>
                     <p class="text-gray-500 dark:text-gray-400 text-sm mb-8 flex-grow leading-relaxed" data-i18n="c2_desc">
-                        Master structural analysis and design for high-rise towers and concrete structures against seismic loads using CSI software.
+                        Master structural analysis, high-rise towers, and explore the complete portfolio tasks via Google Drive resources.
                     </p>
-                    <a href="structure.html" class="text-indigo-400 font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                        <span data-i18n="explore">Explore Track</span> <i class="fas fa-arrow-left rtl:rotate-180 text-xs"></i>
+                    <a href="best_of_work.html" class="text-yellow-500 font-bold text-sm inline-flex items-center gap-2 group-hover:gap-3 transition-all">
+                        <span data-i18n="explore_best">View Best Of Work</span> <i class="fas fa-arrow-left rtl:rotate-180 text-xs"></i>
                     </a>
                 </div>
 
@@ -275,6 +283,7 @@
                 page_title: "3 Engineers Training Center",
                 nav_home: "Home",
                 nav_courses: "Training Programs",
+                nav_best_work: "Best Of Work",
                 nav_admin: "Admin Dashboard",
                 nav_start: "Get Started",
                 hero_badge: "Certified Engineering Center",
@@ -282,6 +291,7 @@
                 hero_title2: "Engineering & Professional Future",
                 hero_desc: "3 Engineers platform provides you with top accredited training programs bridging the gap between academic study and practical real-world engineering projects.",
                 hero_btn: "Explore Tracks",
+                hero_best_btn: "Best Of Work",
                 hero_card_title: "Real Simulation",
                 hero_card_desc: "Practical application on integrated execution projects according to latest codes.",
                 stat_1: "Training Hours",
@@ -293,11 +303,12 @@
                 courses_sub: "Choose your track and start your professional journey with practical steps.",
                 c1_title: "Building Information Modeling (BIM)",
                 c1_desc: "Comprehensive diplomas for architectural and structural BIM technology, from modeling and clash detection to sheet extraction.",
-                c2_title: "Advanced Structural Design",
-                c2_desc: "Master structural analysis and design for high-rise towers and concrete structures against seismic loads using CSI software.",
+                c2_title: "Advanced Structural Design & Best Work",
+                c2_desc: "Master structural analysis, high-rise towers, and explore the complete portfolio tasks via Google Drive resources.",
                 c3_title: "Upcoming Engineering Tracks",
                 c3_desc: "We are continuously working to develop and add new engineering diplomas in project management and technical office.",
                 explore: "Explore Track",
+                explore_best: "View Best Of Work",
                 soon: "Coming Soon...",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
@@ -305,6 +316,7 @@
                 page_title: "مركز 3 Engineers للتدريب الهندسي",
                 nav_home: "الرئيسية",
                 nav_courses: "البرامج التدريبية",
+                nav_best_work: "أفضل الأعمال",
                 nav_admin: "لوحة التحكم",
                 nav_start: "ابدا الآن",
                 hero_badge: "المركز الهندسي المعتمد",
@@ -312,6 +324,7 @@
                 hero_title2: "الهندسي والمهني",
                 hero_desc: "منصة 3 Engineers تقدم لك أقوى البرامج التدريبية المعتمدة التي تسد الفجوة بين الدراسة الأكاديمية والواقع العملي في كبرى المشاريع الهندسية.",
                 hero_btn: "تصفح المسارات",
+                hero_best_btn: "أفضل الأعمال",
                 hero_card_title: "محاكاة حقيقية",
                 hero_card_desc: "تطبيق عملي على مشاريع تنفيذية متكاملة وفقاً لأحدث الأكواد الهندسية.",
                 stat_1: "ساعة تدريبية",
@@ -323,11 +336,12 @@
                 courses_sub: "اختر مسارك وابدأ رحلة الاحتراف بخطوات عملية ومدروسة.",
                 c1_title: "نمذجة معلومات البناء (BIM)",
                 c1_desc: "دبلومات متكاملة لتعلم تكنولوجيا الـ BIM المعمارية والإنشائية، من النمذجة وإدارة التعارضات وحتى استخراج اللوحات.",
-                c2_title: "التصميم الإنشائي المتقدم",
-                c2_desc: "احترف التحليل والتصميم الإنشائي للأبراج والمنشآت الخرسانية ومقاومة أحمال الزلازل باستخدام برامج CSI والكود المصري.",
+                c2_title: "التصميم الإنشائي المتقدم وأفضل الأعمال",
+                c2_desc: "احترف التحليل والتصميم الإنشائي للأبراج، وتصفح معرض الأعمال والتاسكات بالكامل عبر روابط درايف.",
                 c3_title: "مسارات هندسية قادمة",
                 c3_desc: "نعمل باستمرار على تطوير وإضافة دبلومات هندسية جديدة في مجالات إدارة المشروعات والمكتب الفني.",
                 explore: "استكشف المسار",
+                explore_best: "عرض أفضل الأعمال",
                 soon: "قريباً...",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
