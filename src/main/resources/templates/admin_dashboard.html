@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم الشاملة - 3 Engineers</title>
+    <title data-i18n="page_title">لوحة التحكم الشاملة - 3 Engineers</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
@@ -85,10 +85,14 @@
                     <a href="index.html" class="flex items-center gap-2">
                         <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10">
                     </a>
-                    <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold">لوحة الإدارة المركزية</span>
+                    <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold" data-i18n="badge_admin">لوحة الإدارة المركزية</span>
                 </div>
                 <div class="flex items-center gap-4">
-                    <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-800/80 border border-slate-700 hover:bg-slate-700 transition">
+                    <!-- زر تبديل اللغة -->
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
+                        <i class="fas fa-globe"></i> <span id="langText">AR</span>
+                    </button>
+                    <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-800/80 border border-slate-700 hover:bg-slate-700 transition" data-i18n="back_home">
                         ← العودة للرئيسية
                     </a>
                 </div>
@@ -105,13 +109,13 @@
                     3e
                 </div>
                 <div>
-                    <h1 class="text-2xl sm:text-3xl font-black mb-1">لوحة تحكم منصة 3eng 🛠️</h1>
-                    <p class="text-sm text-gray-400">إدارة الكورسات، المحاضرات، بيانات المحاضرين، ومتابعة محتوى المركز بكل سهولة.</p>
+                    <h1 class="text-2xl sm:text-3xl font-black mb-1" data-i18n="main_title">لوحة تحكم منصة 3eng 🛠️</h1>
+                    <p class="text-sm text-gray-400" data-i18n="main_desc">إدارة الكورسات، المحاضرات، بيانات المحاضرين، ومتابعة محتوى المركز بكل سهولة.</p>
                 </div>
             </div>
             <div class="flex flex-wrap gap-3">
                 <a href="manage-lectures.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg flex items-center gap-2 transition">
-                    <span>منشئ محتوى الكورس والمحاضرات</span> <i class="fas fa-arrow-left"></i>
+                    <span data-i18n="lectures_btn">منشئ محتوى الكورس والمحاضرات</span> <i class="fas fa-arrow-left rtl:rotate-180"></i>
                 </a>
             </div>
         </div>
@@ -119,15 +123,15 @@
         <!-- إحصائيات سريعة -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
             <div class="glass-card p-6 border-blue-500/20">
-                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">إجمالي الكورسات المتاحة</span>
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider" data-i18n="stat_courses">إجمالي الكورسات المتاحة</span>
                 <h3 class="text-3xl font-black text-blue-400 mt-2" th:text="${totalCourses}">5</h3>
             </div>
             <div class="glass-card p-6 border-indigo-500/20">
-                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">عدد الطلاب المسجلين</span>
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider" data-i18n="stat_students">عدد الطلاب المسجلين</span>
                 <h3 class="text-3xl font-black text-indigo-400 mt-2" th:text="${totalStudents}">120</h3>
             </div>
             <div class="glass-card p-6 border-amber-500/20">
-                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider">طلبات الدفع المعلقة</span>
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider" data-i18n="stat_payments">طلبات الدفع المعلقة</span>
                 <h3 class="text-3xl font-black text-amber-400 mt-2" th:text="${pendingPayments}">0 ⏳</h3>
             </div>
         </div>
@@ -135,68 +139,68 @@
         <!-- قسم إضافة / تعديل كورس جديد مع تفاصيل المحاضر -->
         <div class="glass-card p-8 mb-8 border-blue-500/20">
             <h3 class="text-xl font-bold mb-6 text-blue-400 flex items-center gap-2">
-                <i class="fas fa-plus-circle"></i> <span>إضافة كورس جديد أو تعديل بياناته</span>
+                <i class="fas fa-plus-circle"></i> <span data-i18n="form_title">إضافة كورس جديد أو تعديل بياناته</span>
             </h3>
             
             <form action="#" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- تفاصيل الكورس -->
                 <div class="space-y-4 md:col-span-2">
-                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2">بيانات الكورس الأساسية</h4>
+                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2" data-i18n="sec_course">بيانات الكورس الأساسية</h4>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">عنوان الكورس:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_title">عنوان الكورس:</label>
                     <input type="text" name="title" required placeholder="مثال: دبلومة الـ BIM الإنشائي المتكاملة" class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">سعر الكورس (بالجنيه المصري):</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_price">سعر الكورس (بالجنيه المصري):</label>
                     <input type="number" step="0.01" name="price" required placeholder="0.00" class="admin-input">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-bold mb-2">وصف الكورس:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_desc">وصف الكورس:</label>
                     <textarea name="description" rows="3" required placeholder="تفاصيل ومحاور الكورس..." class="admin-input"></textarea>
                 </div>
 
                 <!-- بيانات المحاضر -->
                 <div class="space-y-4 md:col-span-2 pt-4">
-                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2">بيانات المحاضر والهوست</h4>
+                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2" data-i18n="sec_host">بيانات المحاضر والهوست</h4>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">اسم المحاضر:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_name">اسم المحاضر:</label>
                     <input type="text" name="instructor_name" placeholder="Ahmed Abdelhamed" class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">البريد الإلكتروني للمحاضر:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_email">البريد الإلكتروني للمحاضر:</label>
                     <input type="email" name="instructor_email" placeholder="instructor@3eng.com" class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">الموقع الإلكتروني للمحاضر:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_web">الموقع الإلكتروني للمحاضر:</label>
                     <input type="url" name="instructor_website" placeholder="https://..." class="admin-input">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">رابط لينكد إن للمحاضر:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_linkedin">رابط لينكد إن للمحاضر:</label>
                     <input type="url" name="instructor_linkedin" placeholder="https://linkedin.com/in/..." class="admin-input">
                 </div>
                 <div class="md:col-span-2">
-                    <label class="block text-sm font-bold mb-2">نبذة تعريفية عن المحاضر (Bio):</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_bio">نبذة تعريفية عن المحاضر (Bio):</label>
                     <textarea name="instructor_bio" rows="2" placeholder="خبرات وإنجازات المحاضر..." class="admin-input"></textarea>
                 </div>
 
                 <!-- الملفات والصور -->
                 <div class="space-y-4 md:col-span-2 pt-4">
-                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2">صور الغلاف والملفات</h4>
+                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2" data-i18n="sec_media">صور الغلاف والملفات</h4>
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">صورة غلاف الكورس (Thumbnail):</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_thumb">صورة غلاف الكورس (Thumbnail):</label>
                     <input type="file" name="thumbnail" accept="image/*" class="admin-input p-2.5">
                 </div>
                 <div>
-                    <label class="block text-sm font-bold mb-2">صورة المحاضر الشخصية:</label>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_inst_img">صورة المحاضر الشخصية:</label>
                     <input type="file" name="instructor_image" accept="image/*" class="admin-input p-2.5">
                 </div>
 
                 <div class="md:col-span-2 mt-4">
                     <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
-                        <i class="fas fa-save"></i> <span>حفظ ونشر الكورس ← الانتقال لإدارة المحاضرات</span>
+                        <i class="fas fa-save"></i> <span data-i18n="btn_save">حفظ ونشر الكورس ← الانتقال لإدارة المحاضرات</span>
                     </button>
                 </div>
             </form>
@@ -205,17 +209,17 @@
         <!-- جدول الكورسات المضافة -->
         <div class="glass-card p-8">
             <h3 class="text-xl font-bold mb-6 text-blue-400 flex items-center gap-2">
-                <i class="fas fa-list-alt"></i> <span>الكورسات الحالية في المنصة</span>
+                <i class="fas fa-list-alt"></i> <span data-i18n="table_title">الكورسات الحالية في المنصة</span>
             </h3>
             <div class="overflow-x-auto">
-                <table class="w-full text-right border-collapse">
+                <table class="w-full text-right rtl:text-right ltr:text-left border-collapse">
                     <thead>
                         <tr class="border-b border-slate-700 text-gray-400 text-sm">
-                            <th class="p-3">عنوان الكورس</th>
-                            <th class="p-3">المحاضر</th>
-                            <th class="p-3">السعر</th>
-                            <th class="p-3 text-center">إدارة المحتوى</th>
-                            <th class="p-3 text-center">الإجراءات</th>
+                            <th class="p-3" data-i18n="th_title">عنوان الكورس</th>
+                            <th class="p-3" data-i18n="th_inst">المحاضر</th>
+                            <th class="p-3" data-i18n="th_price">السعر</th>
+                            <th class="p-3 text-center" data-i18n="th_content">إدارة المحتوى</th>
+                            <th class="p-3 text-center" data-i18n="th_actions">الإجراءات</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-800 text-sm">
@@ -225,13 +229,13 @@
                             <td class="p-3 text-emerald-400 font-bold">1500 EGP</td>
                             <td class="p-3 text-center">
                                 <a href="manage-lectures.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500/20 font-bold text-xs">
-                                    <i class="fas fa-video"></i> <span>الدروس والمحاضرات</span>
+                                    <i class="fas fa-video"></i> <span data-i18n="btn_lessons">الدروس والمحاضرات</span>
                                 </a>
                             </td>
                             <td class="p-3 text-center">
                                 <div class="flex items-center justify-center gap-2">
-                                    <button class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-gray-300 hover:text-white text-xs font-bold">تعديل</button>
-                                    <button class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 text-xs font-bold">حذف</button>
+                                    <button class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-gray-300 hover:text-white text-xs font-bold" data-i18n="btn_edit">تعديل</button>
+                                    <button class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 text-xs font-bold" data-i18n="btn_delete">حذف</button>
                                 </div>
                             </td>
                         </tr>
@@ -242,5 +246,97 @@
 
     </div>
 
+    <!-- كود الترجمة للغتين (عربي / إنجليزي) -->
+    <script>
+        const translations = {
+            ar: {
+                page_title: "لوحة التحكم الشاملة - 3 Engineers",
+                badge_admin: "لوحة الإدارة المركزية",
+                back_home: "← العودة للرئيسية",
+                main_title: "لوحة تحكم منصة 3eng 🛠️",
+                main_desc: "إدارة الكورسات، المحاضرات، بيانات المحاضرين، ومتابعة محتوى المركز بكل سهولة.",
+                lectures_btn: "منشئ محتوى الكورس والمحاضرات",
+                stat_courses: "إجمالي الكورسات المتاحة",
+                stat_students: "عدد الطلاب المسجلين",
+                stat_payments: "طلبات الدفع المعلقة",
+                form_title: "إضافة كورس جديد أو تعديل بياناته",
+                sec_course: "بيانات الكورس الأساسية",
+                lbl_title: "عنوان الكورس:",
+                lbl_price: "سعر الكورس (بالجنيه المصري):",
+                lbl_desc: "وصف الكورس:",
+                sec_host: "بيانات المحاضر والهوست",
+                lbl_name: "اسم المحاضر:",
+                lbl_email: "البريد الإلكتروني للمحاضر:",
+                lbl_web: "الموقع الإلكتروني للمحاضر:",
+                lbl_linkedin: "رابط لينكد إن للمحاضر:",
+                lbl_bio: "نبذة تعريفية عن المحاضر (Bio):",
+                sec_media: "صور الغلاف والملفات",
+                lbl_thumb: "صورة غلاف الكورس (Thumbnail):",
+                lbl_inst_img: "صورة المحاضر الشخصية:",
+                btn_save: "حفظ ونشر الكورس ← الانتقال لإدارة المحاضرات",
+                table_title: "الكورسات الحالية في المنصة",
+                th_title: "عنوان الكورس",
+                th_inst: "المحاضر",
+                th_price: "السعر",
+                th_content: "إدارة المحتوى",
+                th_actions: "الإجراءات",
+                btn_lessons: "الدروس والمحاضرات",
+                btn_edit: "تعديل",
+                btn_delete: "حذف"
+            },
+            en: {
+                page_title: "Comprehensive Admin Dashboard - 3 Engineers",
+                badge_admin: "Central Admin Panel",
+                back_home: "← Back to Home",
+                main_title: "3eng Platform Dashboard 🛠️",
+                main_desc: "Manage courses, lectures, instructor details, and track center content effortlessly.",
+                lectures_btn: "Course & Lectures Content Creator",
+                stat_courses: "Total Available Courses",
+                stat_students: "Registered Students",
+                stat_payments: "Pending Payments",
+                form_title: "Add New Course or Edit Details",
+                sec_course: "Core Course Details",
+                lbl_title: "Course Title:",
+                lbl_price: "Course Price (EGP):",
+                lbl_desc: "Course Description:",
+                sec_host: "Instructor & Host Details",
+                lbl_name: "Instructor Name:",
+                lbl_email: "Instructor Email:",
+                lbl_web: "Instructor Website:",
+                lbl_linkedin: "Instructor LinkedIn URL:",
+                lbl_bio: "Instructor Bio:",
+                sec_media: "Cover Images & Files",
+                lbl_thumb: "Course Thumbnail:",
+                lbl_inst_img: "Instructor Image:",
+                btn_save: "Save & Publish Course ← Go to Lectures",
+                table_title: "Current Platform Courses",
+                th_title: "Course Title",
+                th_inst: "Instructor",
+                th_price: "Price",
+                th_content: "Content Management",
+                th_actions: "Actions",
+                btn_lessons: "Lessons & Lectures",
+                btn_edit: "Edit",
+                btn_delete: "Delete"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlRoot = document.getElementById('htmlRoot');
+            htmlRoot.setAttribute('lang', currentLang);
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('langText').innerText = currentLang === 'ar' ? 'AR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+    </script>
 </body>
 </html>
