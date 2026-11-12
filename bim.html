@@ -1,23 +1,35 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تفاصيل الكورس - 3 Engineers</title>
+    <title data-i18n="page_title">BIM Comprehensive Diploma - 3 Engineers</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { 500: '#38bdf8', 600: '#0284c7' }
+                    }
+                }
+            }
+        }
+    </script>
     <!-- Cairo Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body { 
             font-family: 'Cairo', sans-serif; 
-            background-color: #070b14; 
-            color: #f8fafc; 
-            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
+        .dark body { background-color: #070b14; color: #f8fafc; }
+        .light body { background-color: #f1f5f9; color: #0f172a; }
 
         .blueprint-bg {
             background-image: 
@@ -30,17 +42,24 @@
         }
 
         .glass-nav { 
-            background: rgba(7, 11, 20, 0.9); 
             backdrop-filter: blur(16px); 
-            border-bottom: 1px solid rgba(56, 189, 248, 0.15); 
+            transition: all 0.3s ease;
         }
+        .dark .glass-nav { background: rgba(7, 11, 20, 0.9); border-bottom: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .glass-nav { background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
 
         .glass-card { 
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(11, 17, 32, 0.8)); 
             backdrop-filter: blur(12px); 
-            border: 1px solid rgba(56, 189, 248, 0.1); 
-            border-radius: 16px; 
-            transition: all 0.3s ease;
+            border-radius: 20px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+        }
+        .dark .glass-card { background: linear-gradient(145deg, rgba(15, 23, 42, 0.75), rgba(11, 17, 32, 0.85)); border: 1px solid rgba(56, 189, 248, 0.12); }
+        .light .glass-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+
+        .text-gradient { 
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
         }
     </style>
 </head>
@@ -51,7 +70,7 @@
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
     <!-- Navbar -->
-    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300 shadow-lg shadow-black/20">
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
@@ -59,13 +78,19 @@
                         <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
                     </a>
                 </div>
-                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
-                    <a href="index.html" class="text-gray-300 hover:text-white font-semibold transition pb-1">الرئيسية</a>
-                    <a href="index.html#courses" class="text-gray-300 hover:text-white font-semibold transition pb-1">البرامج التدريبية</a>
-                </div>
-                <div class="flex items-center gap-4">
-                    <a href="index.html" class="bg-slate-800 hover:bg-slate-700 text-gray-200 border border-slate-700 px-5 py-2 rounded-xl font-bold transition text-sm flex items-center gap-2">
-                        <i class="fas fa-arrow-right"></i> العودة للرئيسية
+                
+                <!-- أدوات التحكم في الهيدر -->
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
+                        <i class="fas fa-globe"></i> <span id="langText">AR</span>
+                    </button>
+
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
+                        <i id="themeIcon" class="fas fa-sun text-sm"></i>
+                    </button>
+
+                    <a href="index.html" class="bg-slate-800 hover:bg-slate-700 text-gray-200 border border-slate-700 px-4 py-2 rounded-xl font-bold transition text-xs sm:text-sm flex items-center gap-2">
+                        <i class="fas fa-arrow-left"></i> <span data-i18n="back_home">Back to Home</span>
                     </a>
                 </div>
             </div>
@@ -81,80 +106,77 @@
                 
                 <!-- عنوان ووصف الكورس -->
                 <div>
-                    <span class="inline-block bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-xs px-3.5 py-1.5 rounded-full mb-4">دبلومة هندسية معتمدة</span>
-                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white mb-6 leading-tight">
-                        دبلومة الـ <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">BIM المتكاملة</span>
+                    <span class="inline-block bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold text-xs px-3.5 py-1.5 rounded-full mb-4" data-i18n="badge">Professional Engineering Diploma</span>
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-6 leading-tight">
+                        <span data-i18n="title_main">BIM Comprehensive</span> <span class="text-gradient" data-i18n="title_gradient">Diploma</span>
                     </h1>
-                    <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
-                        هذه الدبلومة هي خلاصة سنوات من الخبرة العملية والتدريب في مشاريع كبرى. مصممة لتأخذك من الصفر وحتى الاحتراف الفعلي في تكنولوجيا نمذجة معلومات البناء.
+                    <p class="text-gray-600 dark:text-gray-300 text-base sm:text-lg leading-relaxed" data-i18n="description">
+                        This diploma is the result of years of professional experience in major projects. Designed to take you from absolute zero to professional mastery in Building Information Modeling.
                     </p>
                 </div>
 
-                <!-- فيديو توضيحي للكورس (Video Player) مع كفر الكورس -->
+                <!-- فيديو توضيحي مدمج (بدون أي علامات يوتيوب وبدون خروج من الصفحة) -->
                 <div class="glass-card p-3 rounded-2xl shadow-2xl border border-blue-500/20 overflow-hidden">
                     <div class="relative aspect-video rounded-xl overflow-hidden bg-slate-900 shadow-inner">
-                        <iframe class="w-full h-full rounded-lg" src="https://www.youtube.com/embed/DyF8c5nN6xc" title="فيديو توضيحي للدبلومة" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe class="w-full h-full rounded-lg" src="https://www.youtube-nocookie.com/embed/DyF8c5nN6xc?controls=1&modestbranding=1&rel=0&iv_load_policy=3" title="Course Intro Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
 
                 <!-- ماذا ستتعلم؟ -->
                 <div class="glass-card p-8">
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                        <i class="fas fa-check-circle text-blue-400"></i> ماذا ستتعلم في هذه الدبلومة؟
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-check-circle text-blue-400"></i> <span data-i18n="learn_title">What Will You Learn?</span>
                     </h2>
-                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-300 text-sm">
-                        <li class="flex items-start gap-3 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <span class="text-blue-400 font-bold">✓</span> فهم مفاهيم الـ BIM وبيئة العمل المشتركة.
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-600 dark:text-gray-300 text-sm">
+                        <li class="flex items-start gap-3 bg-slate-100 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="text-blue-400 font-bold">✓</span> <span data-i18n="l_1">Complete understanding of BIM concepts & CDE.</span>
                         </li>
-                        <li class="flex items-start gap-3 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <span class="text-blue-400 font-bold">✓</span> احتراف برنامج Revit المعماري والإنشائي من الصفر.
+                        <li class="flex items-start gap-3 bg-slate-100 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="text-blue-400 font-bold">✓</span> <span data-i18n="l_2">Mastering Autodesk Revit Architecture & Structure.</span>
                         </li>
-                        <li class="flex items-start gap-3 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <span class="text-blue-400 font-bold">✓</span> اكتشاف وإدارة التعارضات هندسياً باستخدام Navisworks.
+                        <li class="flex items-start gap-3 bg-slate-100 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="text-blue-400 font-bold">✓</span> <span data-i18n="l_3">Clash detection & coordination via Navisworks.</span>
                         </li>
-                        <li class="flex items-start gap-3 bg-slate-900/60 p-4 rounded-xl border border-slate-800">
-                            <span class="text-blue-400 font-bold">✓</span> استخراج اللوحات التنفيذية (Shop Drawings) بدقة عالية.
+                        <li class="flex items-start gap-3 bg-slate-100 dark:bg-slate-900/60 p-4 rounded-xl border border-slate-200 dark:border-slate-800">
+                            <span class="text-blue-400 font-bold">✓</span> <span data-i18n="l_4">Extracting accurate shop drawings & quantities.</span>
                         </li>
                     </ul>
                 </div>
 
                 <!-- منهج الكورس (Course Curriculum) -->
                 <div>
-                    <h2 class="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-                        <i class="fas fa-list-ol text-blue-400"></i> محتوى المنهج (Curriculum)
+                    <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+                        <i class="fas fa-list-ol text-blue-400"></i> <span data-i18n="curriculum_title">Course Curriculum</span>
                     </h2>
                     
                     <div class="space-y-4">
-                        <!-- بند 1 -->
-                        <div class="border border-slate-800 rounded-xl bg-slate-900/80 overflow-hidden shadow-sm">
-                            <button onclick="toggleAccordion('acc-1')" class="w-full px-6 py-4 text-right font-bold text-white flex justify-between items-center">
-                                <span>1. مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل</span>
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/80 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-1')" class="w-full px-6 py-4 text-left font-bold flex justify-between items-center">
+                                <span data-i18n="c_1">1. Introduction to BIM & Environment Setup</span>
                                 <i id="icon-acc-1" class="fas fa-chevron-up text-xs text-blue-400 transition-transform"></i>
                             </button>
-                            <div id="content-acc-1" class="px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-slate-800 pt-3">
-                                بناء أساس قوي في معايير الـ BIM، ربط الملفات، والمحاور والمستويات وتجهيز المشروع للعمل الجماعي.
+                            <div id="content-acc-1" class="px-6 pb-5 text-gray-500 dark:text-gray-400 text-sm leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-3" data-i18n="cd_1">
+                                Build a strong foundation in BIM standards, file linking, levels, grids, and project setup.
                             </div>
                         </div>
 
-                        <!-- بند 2 -->
-                        <div class="border border-slate-800 rounded-xl bg-slate-900/80 overflow-hidden shadow-sm">
-                            <button onclick="toggleAccordion('acc-2')" class="w-full px-6 py-4 text-right font-bold text-white flex justify-between items-center">
-                                <span>2. نمذجة الـ Revit المعماري والإنشائي</span>
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/80 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-2')" class="w-full px-6 py-4 text-left font-bold flex justify-between items-center">
+                                <span data-i18n="c_2">2. Revit Architecture & Structure Modeling</span>
                                 <i id="icon-acc-2" class="fas fa-chevron-down text-xs text-blue-400 transition-transform"></i>
                             </button>
-                            <div id="content-acc-2" class="hidden px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-slate-800 pt-3">
-                                العمل على الحوائط، الأسقف، الأساسات، الأعمدة، والتسليح الإنشائي بالتفصيل.
+                            <div id="content-acc-2" class="hidden px-6 pb-5 text-gray-500 dark:text-gray-400 text-sm leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-3" data-i18n="cd_2">
+                                Comprehensive modeling for walls, columns, foundations, and structural framing.
                             </div>
                         </div>
 
-                        <!-- بند 3 -->
-                        <div class="border border-slate-800 rounded-xl bg-slate-900/80 overflow-hidden shadow-sm">
-                            <button onclick="toggleAccordion('acc-3')" class="w-full px-6 py-4 text-right font-bold text-white flex justify-between items-center">
-                                <span>3. إدارة التعارضات واستخراج اللوحات</span>
+                        <div class="border border-slate-200 dark:border-slate-800 rounded-xl bg-white dark:bg-slate-900/80 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-3')" class="w-full px-6 py-4 text-left font-bold flex justify-between items-center">
+                                <span data-i18n="c_3">3. Clash Detection & Shop Drawings</span>
                                 <i id="icon-acc-3" class="fas fa-chevron-down text-xs text-blue-400 transition-transform"></i>
                             </button>
-                            <div id="content-acc-3" class="hidden px-6 pb-5 text-gray-400 text-sm leading-relaxed border-t border-slate-800 pt-3">
-                                تنفيذ تقارير التعارضات واستخراج الجداول الحصرية واللوحات النهائية.
+                            <div id="content-acc-3" class="hidden px-6 pb-5 text-gray-500 dark:text-gray-400 text-sm leading-relaxed border-t border-slate-200 dark:border-slate-800 pt-3" data-i18n="cd_3">
+                                Advanced coordination reports and extracting professional construction documents.
                             </div>
                         </div>
                     </div>
@@ -167,39 +189,39 @@
                 
                 <!-- كارت السعر والخصم -->
                 <div class="glass-card p-6 text-center border border-blue-500/30 shadow-xl">
-                    <div class="text-3xl font-black text-white mb-6 flex items-center justify-center gap-3">
-                        <span class="line-through text-gray-500 text-xl font-normal">7,999 ج.م</span>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">4,999 ج.م</span>
+                    <div class="text-3xl font-black mb-6 flex items-center justify-center gap-3">
+                        <span class="line-through text-gray-400 dark:text-gray-500 text-xl font-normal">7,999 EGP</span>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">4,999 EGP</span>
                     </div>
 
-                    <div class="space-y-3 text-right text-sm text-gray-300 mb-6 border-y border-slate-800 py-4">
+                    <div class="space-y-3 text-left text-sm text-gray-600 dark:text-gray-300 mb-6 border-y border-slate-200 dark:border-slate-800 py-4">
                         <div class="flex items-center gap-3">
-                            <i class="far fa-clock text-blue-400 w-5"></i> 80 ساعة تدريبية معتمدة
+                            <i class="far fa-clock text-blue-400 w-5"></i> <span data-i18n="p_hours">80 Training Hours</span>
                         </div>
                         <div class="flex items-center gap-3">
-                            <i class="fas fa-video text-blue-400 w-5"></i> متاح أونلاين وفي مقر المركز
+                            <i class="fas fa-video text-blue-400 w-5"></i> <span data-i18n="p_mode">Online & Center Available</span>
                         </div>
                     </div>
 
-                    <a href="https://wa.me/201116512028" class="block w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-blue-600/30 text-center">
-                        احجز مقعدك الآن عبر واتساب
+                    <a href="https://wa.me/201116512028" class="block w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-blue-600/30 text-center" data-i18n="buy_btn">
+                        Buy It Now (WhatsApp)
                     </a>
                 </div>
 
                 <!-- زر تحميل ملف تفاصيل الكورس -->
-                <a href="#" class="glass-card hover:bg-slate-800/80 text-white font-bold py-4 px-6 rounded-2xl text-center transition shadow-md flex items-center justify-center gap-3 border border-slate-700">
+                <a href="#" class="glass-card hover:opacity-90 font-bold py-4 px-6 rounded-2xl text-center transition shadow-md flex items-center justify-center gap-3 border border-slate-300 dark:border-slate-700">
                     <i class="fas fa-file-pdf text-red-400 text-lg"></i>
-                    <span>تحميل ملف تفاصيل الكورس (PDF)</span>
+                    <span data-i18n="pdf_btn">Download Course Syllabus (PDF)</span>
                 </a>
 
                 <!-- كارت المحاضر -->
-                <div class="glass-card p-6 border border-slate-800">
-                    <h3 class="text-lg font-bold text-white mb-4">محاضر الدبلومة</h3>
+                <div class="glass-card p-6 border border-slate-200 dark:border-slate-800">
+                    <h3 class="text-lg font-bold mb-4" data-i18n="instructor_title">Instructor</h3>
                     <div class="flex items-center gap-4">
-                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="المحاضر" class="w-16 h-16 rounded-2xl object-cover border border-blue-500/40 shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="Instructor" class="w-16 h-16 rounded-2xl object-cover border border-blue-500/40 shadow-sm">
                         <div>
-                            <h4 class="font-bold text-white">م. صلاح البدوي</h4>
-                            <p class="text-xs text-blue-400 font-semibold mt-0.5">خبير الـ BIM والتصميم الإنشائي</p>
+                            <h4 class="font-bold">Eng. Salah El-Badawy</h4>
+                            <p class="text-xs text-blue-400 font-semibold mt-0.5" data-i18n="instructor_role">BIM & Structural Expert</p>
                         </div>
                     </div>
                 </div>
@@ -210,22 +232,112 @@
     </main>
 
     <!-- Footer -->
-    <footer class="border-t border-slate-800/80 bg-slate-900/60 backdrop-blur-md py-10 mt-12">
+    <footer class="border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md py-10 mt-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
                 <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 grayscale hover:grayscale-0 transition">
-                <span class="text-gray-500 text-sm font-medium">© 2026 جميع الحقوق محفوظة لمركز 3 Engineers</span>
+                <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
             </div>
             <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/201116512028" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Accordion -->
+    <!-- JavaScript for Interactivity, Theme & Translation -->
     <script>
+        const translations = {
+            en: {
+                page_title: "BIM Comprehensive Diploma - 3 Engineers",
+                back_home: "Back to Home",
+                badge: "Professional Engineering Diploma",
+                title_main: "BIM Comprehensive",
+                title_gradient: "Diploma",
+                description: "This diploma is the result of years of professional experience in major projects. Designed to take you from absolute zero to professional mastery in Building Information Modeling.",
+                learn_title: "What Will You Learn?",
+                l_1: "Complete understanding of BIM concepts & CDE.",
+                l_2: "Mastering Autodesk Revit Architecture & Structure.",
+                l_3: "Clash detection & coordination via Navisworks.",
+                l_4: "Extracting accurate shop drawings & quantities.",
+                curriculum_title: "Course Curriculum",
+                c_1: "1. Introduction to BIM & Environment Setup",
+                cd_1: "Build a strong foundation in BIM standards, file linking, levels, grids, and project setup.",
+                c_2: "2. Revit Architecture & Structure Modeling",
+                cd_2: "Comprehensive modeling for walls, columns, foundations, and structural framing.",
+                c_3: "3. Clash Detection & Shop Drawings",
+                cd_3: "Advanced coordination reports and extracting professional construction documents.",
+                p_hours: "80 Training Hours",
+                p_mode: "Online & Center Available",
+                buy_btn: "Buy It Now (WhatsApp)",
+                pdf_btn: "Download Course Syllabus (PDF)",
+                instructor_title: "Instructor",
+                instructor_role: "BIM & Structural Expert",
+                footer_rights: "© 2026 3 Engineers Center. All rights reserved."
+            },
+            ar: {
+                page_title: "دبلومة الـ BIM المتكاملة - 3 Engineers",
+                back_home: "العودة للرئيسية",
+                badge: "دبلومة هندسية معتمدة",
+                title_main: "دبلومة الـ BIM",
+                title_gradient: "المتكاملة",
+                description: "هذه الدبلومة هي خلاصة سنوات من الخبرة العملية والتدريب في مشاريع كبرى. مصممة لتأخذك من الصفر وحتى الاحتراف الفعلي في تكنولوجيا نمذجة معلومات البناء.",
+                learn_title: "ماذا ستتعلم في هذه الدبلومة؟",
+                l_1: "فهم مفاهيم الـ BIM وبيئة العمل المشتركة.",
+                l_2: "احتراف برنامج Revit المعماري والإنشائي من الصفر.",
+                l_3: "اكتشاف وإدارة التعارضات هندسياً باستخدام Navisworks.",
+                l_4: "استخراج اللوحات التنفيذية (Shop Drawings) بدقة عالية.",
+                curriculum_title: "محتوى المنهج (Curriculum)",
+                c_1: "1. مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل",
+                cd_1: "بناء أساس قوي في معايير الـ BIM، ربط الملفات، والمحاور والمستويات وتجهيز المشروع للعمل الجماعي.",
+                c_2: "2. نمذجة الـ Revit المعماري والإنشائي",
+                cd_2: "العمل على الحوائط، الأسقف، الأساسات، الأعمدة، والتسليح الإنشائي بالتفصيل.",
+                c_3: "3. إدارة التعارضات واستخراج اللوحات",
+                cd_3: "تنفيذ تقارير التعارضات واستخراج الجداول الحصرية واللوحات النهائية.",
+                p_hours: "80 ساعة تدريبية معتمدة",
+                p_mode: "متاح أونلاين وفي مقر المركز",
+                buy_btn: "احجز مقعدك الآن عبر واتساب",
+                pdf_btn: "تحميل ملف تفاصيل الكورس (PDF)",
+                instructor_title: "محاضر الدبلومة",
+                instructor_role: "خبير الـ BIM والتصميم الإنشائي",
+                footer_rights: "© 2026 مركز 3 Engineers - جميع الحقوق محفوظة."
+            }
+        };
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const htmlRoot = document.getElementById('htmlRoot');
+            htmlRoot.setAttribute('lang', currentLang);
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('langText').innerText = currentLang === 'en' ? 'AR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const htmlRoot = document.getElementById('htmlRoot');
+            const themeIcon = document.getElementById('themeIcon');
+            if (htmlRoot.classList.contains('dark')) {
+                htmlRoot.classList.remove('dark');
+                htmlRoot.classList.add('light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                htmlRoot.classList.remove('light');
+                htmlRoot.classList.add('dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
         function toggleAccordion(id) {
             const content = document.getElementById('content-' + id);
             const icon = document.getElementById('icon-' + id);
