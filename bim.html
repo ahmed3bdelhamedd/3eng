@@ -4,38 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>دبلومة BIM - 3 Engineers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html"><img src="New Lgogo_Gray Logo.png" alt="3 Engineers Logo"></a>
-        </div>
-        <nav>
-            <a href="index.html">العودة للرئيسية</a>
-        </nav>
-    </header>
+<body class="antialiased">
 
-    <section class="hero" style="padding: 50px 20px; text-align: right; max-width: 800px; margin: auto;">
-        <h1>دبلومة الـ BIM المتكاملة</h1>
-        <p style="color: var(--text-muted);">تعلم تكنولوجيا نمذجة معلومات البناء وتطبيقها على المشاريع الهندسية الحقيقية.</p>
-        
-        <div class="card" style="margin-top: 30px;">
-            <h3>تفاصيل الكورس</h3>
-            <ul>
-                <li><strong>المدة:</strong> 80 ساعة تدريبية</li>
-                <li><strong>المحاضر:</strong> م. صلاح البدوي</li>
-                <li><strong>البرامج المستخدمة:</strong> Revit, Navisworks, Dynamo</li>
-            </ul>
-            <br>
-            <h3>المحتوى العلمي:</h3>
-            <p>1. مقدمة في الـ BIM ومعايير ISO 19650<br>
-               2. النمذجة المعمارية والإنشائية باستخدام Revit<br>
-               3. حصر الكميات واكتشاف التعارضات (Clash Detection)<br>
-               4. أتمتة المهام باستخدام Dynamo</p>
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <a href="index.html"><img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-12"></a>
+                </div>
+                <div class="hidden md:flex">
+                    <a href="index.html" class="text-gray-300 hover:text-white font-semibold transition">&rarr; العودة للرئيسية</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Course Details Header -->
+    <section class="pt-32 pb-12 lg:pt-40 lg:pb-20 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+                <span class="text-blue-400 font-semibold tracking-wide text-sm bg-blue-500/10 px-3 py-1 rounded-full">دبلومة احترافية</span>
+                <h1 class="text-4xl lg:text-5xl font-bold mt-4 mb-6">دبلومة الـ <span class="text-gradient">BIM المتكاملة</span></h1>
+                <p class="text-xl text-gray-400 mb-8">خطوتك الأولى لاحتراف تكنولوجيا نمذجة معلومات البناء وتطبيقها الفعلي من خلال مشاريع متكاملة، من النمذجة وحتى استخراج اللوحات والتسعير.</p>
+                
+                <div class="flex gap-4">
+                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <p class="text-sm text-gray-400">المدة الزمنية</p>
+                        <p class="font-bold text-lg">80 ساعة تدريبية</p>
+                    </div>
+                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
+                        <p class="text-sm text-gray-400">المحاضر</p>
+                        <p class="font-bold text-lg">م. صلاح البدوي</p>
+                    </div>
+                </div>
+            </div>
             
-            <a href="https://wa.me/201116512028" class="btn-primary" style="display: block; text-align: center; margin-top: 20px; text-decoration: none;">احجز مقعدك الآن (تواصل واتساب)</a>
+            <div class="glass-card p-8 text-center">
+                <h3 class="text-2xl font-bold mb-4">احجز مقعدك الآن</h3>
+                <p class="text-gray-400 mb-6">الكورس متاح أونلاين وفي مقر المركز. سيتم التواصل معك لتأكيد المواعيد وتفاصيل الحجز.</p>
+                <a href="https://wa.me/201116512028" class="inline-block w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl font-bold text-lg transition btn-glow">تواصل معنا عبر واتساب للتسجيل</a>
+            </div>
         </div>
     </section>
+
 </body>
 </html>
