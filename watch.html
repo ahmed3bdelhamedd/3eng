@@ -159,7 +159,7 @@
         <!-- Video Header Info -->
         <div class="text-center mb-6">
             <span class="text-xs text-blue-400 font-bold block mb-1" id="courseSubtitle">Revit Architecture Masterclass</span>
-            <h2 class="text-2xl font-black" id="sectionTitle">Unit 1 - Revit Basics</h2>
+            <h2 class="text-2xl font-black" id="sectionTitle">Unit 1 - Revit 2025 Features</h2>
             <h1 class="text-sm font-semibold text-gray-400 mt-1" id="lessonTitle">Loading Lesson...</h1>
         </div>
 
@@ -277,17 +277,16 @@
             }
         };
 
-        // مصفوفة الفيديوهات الخاصة بقائمة التشغيل (Playlist) لتبدأ بالعمل فوراً بدون قاعدة بيانات
+        // الفيديوهات الفعلية المطلوبة (إيه الجديد في ريفيت 2025، والجدران، والتسليح)
         const courseData = {
             title: "Revit Architecture Masterclass",
             modules: [
                 {
-                    title: "Revit Architecture Playlist Lectures",
+                    title: "Revit 2025 New Features & Updates",
                     lessons: [
-                        { id: "PLXSw13sOT9jc", title: "Lecture 01 - Course Introduction & Interface", desc: "Introduction to Revit Architecture workflow and navigation." },
-                        { id: "3JZ_D3ELwOQ", title: "Lecture 02 - Walls & Basic Components", desc: "Creating architectural walls, doors, and window elements." },
-                        { id: "kJQP7kiw5Fk", title: "Lecture 03 - Floors & Roofs", desc: "Building accurate slab profiles and architectural roofs." },
-                        { id: "5qap5aO4i9A", title: "Lecture 04 - Stairs & Railings", desc: "Designing multi-level architectural stairs and railings." }
+                        { id: "lZougmOfSk0", title: "إيه الجديد في ريفيت 2025 (Revit 2025 New Features)", desc: "تعرف على أهم التحديثات والمميزات الجديدة في إصدار ريفيت 2025." },
+                        { id: "qTbg0-4ytvY", title: "Walls Features", desc: "شرح تفصيلي لمميزات وأدوات الجدران (Walls Features) في ريفيت 2025." },
+                        { id: "d1j9WmPOPtE", title: "Reinforcement Modifications", desc: "تعديلات وتحسينات تسليح العناصر الإنشائية والمعمارية." }
                     ]
                 }
             ]
@@ -388,7 +387,6 @@
             currentIndex = index;
             const lesson = flatLessons[currentIndex];
 
-            // ربط مشغل يوتيوب بالفيديو المحدد
             document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${lesson.id}?autoplay=1`;
             document.getElementById('sectionTitle').innerText = lesson.modTitle;
             document.getElementById('lessonTitle').innerText = lesson.title;
