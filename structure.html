@@ -1,41 +1,198 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>التصميم الإنشائي - 3 Engineers</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Advanced Structural Design - 3 Engineers</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #f8fafc; 
+            color: #0f172a; 
+        }
+        .glass-sidebar {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
-<body>
-    <header class="navbar">
-        <div class="logo">
-            <a href="index.html"><img src="New Lgogo_Gray Logo.png" alt="3 Engineers Logo"></a>
-        </div>
-        <nav>
-            <a href="index.html">العودة للرئيسية</a>
-        </nav>
-    </header>
+<body class="antialiased min-h-screen">
 
-    <section class="hero" style="padding: 50px 20px; text-align: right; max-width: 800px; margin: auto;">
-        <h1>التصميم الإنشائي المتقدم</h1>
-        <p style="color: var(--text-muted);">احتراف تصميم الأبراج والمنشآت الخرسانية ومقاومة أحمال الزلازل والرياح.</p>
-        
-        <div class="card" style="margin-top: 30px;">
-            <h3>تفاصيل الكورس</h3>
-            <ul>
-                <li><strong>المدة:</strong> 95 ساعة تدريبية</li>
-                <li><strong>البرامج المستخدمة:</strong> ETABS, SAFE, SAP2000, CSI Detail, Prokon</li>
-                <li><strong>الأكواد:</strong> الكود المصري والـ ACI</li>
-            </ul>
-            <br>
-            <h3>المحتوى العلمي:</h3>
-            <p>1. التحليل الإنشائي للمنشآت المختلفة<br>
-               2. تصميم البلاطات والأعمدة والأساسات<br>
-               3. دراسة تأثير أحمال الزلازل والرياح<br>
-               4. استخراج اللوحات التنفيذية (Shop Drawings)</p>
-            
-            <a href="https://wa.me/201116512028" class="btn-primary" style="display: block; text-align: center; margin-top: 20px; text-decoration: none;">احجز مقعدك الآن (تواصل واتساب)</a>
+    <!-- Navbar / Tabs Bar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex space-x-8">
+                    <a href="#about" class="border-b-2 border-slate-900 text-slate-900 font-bold py-5 text-sm transition">About Course</a>
+                    <a href="#instructor" class="border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold py-5 text-sm transition">Instructor</a>
+                    <a href="#reviews" class="border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold py-5 text-sm transition">Reviews</a>
+                </div>
+                <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
         </div>
-    </section>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <!-- Left & Center Content (2 Columns) -->
+            <div class="lg:col-span-2 space-y-12">
+                
+                <!-- About Course Section -->
+                <section id="about">
+                    <div class="inline-block bg-indigo-50 text-indigo-600 font-bold text-xs px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Advanced Diploma</div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">ADVANCED STRUCTURAL DESIGN</h1>
+                    <p class="text-slate-600 text-base leading-relaxed mb-8">
+                        Master structural analysis and design for high-rise towers and concrete structures. Learn lateral load resistance against wind and earthquakes using CSI software (ETABS, SAFE, SAP2000) and both Egyptian Code and ACI standards.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">What Will You Learn?</h2>
+                    <ul class="space-y-3 text-slate-700 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Advanced structural analysis for complex structural systems.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Professional design of slabs, columns, shear walls, and foundations.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Comprehensive study of seismic and wind load effects on buildings.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Using CSI software suite (ETABS, SAFE, SAP2000, CSI Detail, Prokon).
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Extracting accurate construction shop drawings and reinforcement details.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Course Curriculum Section -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Course Curriculum</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Accordion Item 1 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-1')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>1. Advanced Structural Analysis Systems</span>
+                                <i id="icon-acc-1" class="fas fa-chevron-up text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-1" class="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Deep dive into structural modeling and analysis techniques for different structural layouts using SAP2000 and ETABS.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-2')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>2. Slabs, Columns & Foundations Design</span>
+                                <i id="icon-acc-2" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-2" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Practical design procedures for flat slabs, solid slabs, isolated/mat foundations using SAFE and manual checks.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-3')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>3. Seismic & Wind Load Analysis</span>
+                                <i id="icon-acc-3" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-3" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Evaluating lateral forces, dynamic analysis, and checking code limitations for tall structures.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-4')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>4. Shop Drawings & Detailing (CSI Detail & Prokon)</span>
+                                <i id="icon-acc-4" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-4" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Producing construction-ready reinforcement drawings and verifying design safety.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar (Pricing & Instructor Card) -->
+            <div class="space-y-6">
+                
+                <!-- Pricing & Buy Box -->
+                <div class="glass-sidebar p-6 text-center">
+                    <div class="text-3xl font-extrabold text-slate-900 mb-6 flex items-center justify-center gap-3">
+                        <span class="line-through text-slate-400 text-xl">8,999 LE</span>
+                        <span class="text-indigo-600">5,499 LE</span>
+                    </div>
+
+                    <div class="space-y-3 text-left text-sm text-slate-600 mb-6 border-y border-slate-100 py-4">
+                        <div class="flex items-center gap-3">
+                            <i class="far fa-clock text-slate-400 w-5"></i> 95 training hours
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-video text-slate-400 w-5"></i> Online & Center Available
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/201116512028" class="block w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-slate-900/20 mb-4 text-center">
+                        buy it now
+                    </a>
+                </div>
+
+                <!-- Download File Button -->
+                <a href="#" class="block bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl text-center transition shadow-md flex items-center justify-center gap-3">
+                    <span>Download the course details file - AR</span>
+                    <i class="fas fa-file-pdf text-red-400"></i>
+                </a>
+
+                <!-- Instructor Card -->
+                <div id="instructor" class="glass-sidebar p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4">Instructor</h3>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Instructor" class="w-16 h-16 rounded-full object-cover border-2 border-slate-200 shadow-sm">
+                        <div>
+                            <h4 class="font-bold text-slate-900">Ahmed Abdelhamed</h4>
+                            <p class="text-xs text-slate-500">Structural & BIM Expert</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
 </body>
 </html>
