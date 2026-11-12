@@ -1,191 +1,342 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" xmlns:th="http://www.thymeleaf.org" id="htmlRoot" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منشىء محتوى الكورس - 3 Engineers</title>
+    <title data-i18n="page_title">لوحة التحكم الشاملة - 3 Engineers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { brand: { 500: '#38bdf8', 600: '#0284c7' } } } }
+        }
+    </script>
     <!-- Cairo Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         body { 
             font-family: 'Cairo', sans-serif; 
-            background-color: #070b14; 
-            color: #f8fafc; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
         }
+        .dark body { background-color: #070b14; color: #f8fafc; }
+        .light body { background-color: #f1f5f9; color: #0f172a; }
+
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+        }
+
+        .glass-nav { 
+            backdrop-filter: blur(16px); 
+            transition: all 0.3s ease;
+        }
+        .dark .glass-nav { background: rgba(7, 11, 20, 0.9); border-bottom: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .glass-nav { background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+
         .glass-card { 
-            background: linear-gradient(145deg, rgba(15, 23, 42, 0.7), rgba(11, 17, 32, 0.8)); 
             backdrop-filter: blur(12px); 
-            border: 1px solid rgba(56, 189, 248, 0.1); 
-            border-radius: 16px; 
+            border-radius: 20px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); 
+            position: relative;
+            overflow: hidden;
+        }
+        .dark .glass-card { background: linear-gradient(145deg, rgba(15, 23, 42, 0.75), rgba(11, 17, 32, 0.85)); border: 1px solid rgba(56, 189, 248, 0.12); }
+        .light .glass-card { background: linear-gradient(145deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.95)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+
+        .admin-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-family: 'Cairo', sans-serif;
+            outline: none;
+            background: rgba(15, 23, 42, 0.6);
+            color: inherit;
+            transition: all 0.2s;
+        }
+        .admin-input:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
         }
     </style>
 </head>
-<body class="antialiased min-h-screen pb-12">
+<body class="antialiased relative min-h-screen pb-16">
 
-    <!-- شريط علوي -->
-    <header class="bg-slate-900/80 border-b border-slate-800 py-4 px-6 flex justify-between items-center mb-8">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-blue-600/20 border border-blue-500/40 flex items-center justify-center text-blue-400 font-bold">
-                أ
-            </div>
-            <div>
-                <h3 class="text-white font-bold text-sm">أحمد</h3>
-                <span class="text-xs text-gray-400">مدير النظام</span>
+    <div class="blueprint-bg"></div>
+
+    <!-- النافبار العلوي -->
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center gap-3">
+                    <a href="index.html" class="flex items-center gap-2">
+                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10">
+                    </a>
+                    <span class="text-xs px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 font-bold" data-i18n="badge_admin">لوحة الإدارة المركزية</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- زر تبديل اللغة -->
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
+                        <i class="fas fa-globe"></i> <span id="langText">AR</span>
+                    </button>
+                    <a href="index.html" class="px-4 py-2 rounded-xl text-sm font-bold bg-slate-800/80 border border-slate-700 hover:bg-slate-700 transition" data-i18n="back_home">
+                        ← العودة للرئيسية
+                    </a>
+                </div>
             </div>
         </div>
-        <h1 class="text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">منشىء محتوى الكورس</h1>
-        <a href="admin.html" class="text-sm font-bold text-gray-300 hover:text-white bg-slate-800 border border-slate-700 px-4 py-2 rounded-xl transition flex items-center gap-2">
-            العودة للوحة الإدارة <i class="fas fa-arrow-left"></i>
-        </a>
-    </header>
+    </nav>
 
-    <main class="max-w-4xl mx-auto px-4">
-        <!-- نموذج إضافة محاضرة جديدة -->
-        <div class="glass-card p-6 mb-8 shadow-xl">
-            <h2 class="text-lg font-bold text-white mb-4 flex items-center gap-2">
-                <i class="fas fa-plus-circle text-blue-400"></i> إضافة محاضرة جديدة للمنهج
-            </h2>
-            <form id="lectureForm" onsubmit="addLecture(event)" class="space-y-4">
-                <div>
-                    <label class="block text-sm text-gray-300 mb-2 font-semibold">عنوان المحاضرة</label>
-                    <input type="text" id="lecTitle" required placeholder="مثال: مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-2 font-semibold">مدة المحاضرة (بالدقائق)</label>
-                        <input type="number" id="lecDuration" required placeholder="45" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
-                    </div>
-                    <div>
-                        <label class="block text-sm text-gray-300 mb-2 font-semibold">نوع الفيديو / المنصة</label>
-                        <select id="lecPlatform" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
-                            <option value="Vimeo">Vimeo</option>
-                            <option value="YouTube">YouTube</option>
-                        </select>
-                    </div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
+
+        <!-- هيدر اللوحة الشامل -->
+        <div class="glass-card p-8 mb-8 flex flex-wrap justify-between items-center gap-6 bg-gradient-to-r from-blue-950/60 to-slate-900/80 border-blue-500/30">
+            <div class="flex items-center gap-4">
+                <div class="w-16 h-16 bg-blue-600/20 border border-blue-500/40 rounded-2xl flex items-center justify-center text-blue-400 text-2xl font-black shadow-inner">
+                    3e
                 </div>
                 <div>
-                    <label class="block text-sm text-gray-300 mb-2 font-semibold">كود التضمين (iframe) أو الرابط</label>
-                    <textarea id="lecIframe" rows="3" required placeholder="يرجى التأكد من نسخ كود الـ iframe كاملاً من إعدادات الخصوصية في فيديو Vimeo" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm"></textarea>
+                    <h1 class="text-2xl sm:text-3xl font-black mb-1" data-i18n="main_title">لوحة تحكم منصة 3eng 🛠️</h1>
+                    <p class="text-sm text-gray-400" data-i18n="main_desc">إدارة الكورسات، المحاضرات، بيانات المحاضرين، ومتابعة محتوى المركز بكل سهولة.</p>
                 </div>
-                <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3 rounded-xl transition shadow-lg shadow-blue-600/30 flex items-center gap-2">
-                    <i class="fas fa-save"></i> حفظ وإضافة للمنهج
-                </button>
+            </div>
+            <div class="flex flex-wrap gap-3">
+                <a href="manage-lectures.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-5 py-2.5 rounded-xl font-bold text-sm shadow-lg flex items-center gap-2 transition">
+                    <span data-i18n="lectures_btn">منشئ محتوى الكورس والمحاضرات</span> <i class="fas fa-arrow-left rtl:rotate-180"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- إحصائيات سريعة -->
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
+            <div class="glass-card p-6 border-blue-500/20">
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider" data-i18n="stat_courses">إجمالي الكورسات المتاحة</span>
+                <h3 class="text-3xl font-black text-blue-400 mt-2" th:text="${totalCourses}">5</h3>
+            </div>
+            <div class="glass-card p-6 border-indigo-500/20">
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider" data-i18n="stat_students">عدد الطلاب المسجلين</span>
+                <h3 class="text-3xl font-black text-indigo-400 mt-2" th:text="${totalStudents}">120</h3>
+            </div>
+            <div class="glass-card p-6 border-amber-500/20">
+                <span class="text-xs text-gray-400 font-bold uppercase tracking-wider" data-i18n="stat_payments">طلبات الدفع المعلقة</span>
+                <h3 class="text-3xl font-black text-amber-400 mt-2" th:text="${pendingPayments}">0 ⏳</h3>
+            </div>
+        </div>
+
+        <!-- قسم إضافة / تعديل كورس جديد مع تفاصيل المحاضر -->
+        <div class="glass-card p-8 mb-8 border-blue-500/20">
+            <h3 class="text-xl font-bold mb-6 text-blue-400 flex items-center gap-2">
+                <i class="fas fa-plus-circle"></i> <span data-i18n="form_title">إضافة كورس جديد أو تعديل بياناته</span>
+            </h3>
+            
+            <form action="#" method="POST" enctype="multipart/form-data" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- تفاصيل الكورس -->
+                <div class="space-y-4 md:col-span-2">
+                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2" data-i18n="sec_course">بيانات الكورس الأساسية</h4>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_title">عنوان الكورس:</label>
+                    <input type="text" name="title" required placeholder="مثال: دبلومة الـ BIM الإنشائي المتكاملة" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_price">سعر الكورس (بالجنيه المصري):</label>
+                    <input type="number" step="0.01" name="price" required placeholder="0.00" class="admin-input">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_desc">وصف الكورس:</label>
+                    <textarea name="description" rows="3" required placeholder="تفاصيل ومحاور الكورس..." class="admin-input"></textarea>
+                </div>
+
+                <!-- بيانات المحاضر -->
+                <div class="space-y-4 md:col-span-2 pt-4">
+                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2" data-i18n="sec_host">بيانات المحاضر والهوست</h4>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_name">اسم المحاضر:</label>
+                    <input type="text" name="instructor_name" placeholder="Ahmed Abdelhamed" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_email">البريد الإلكتروني للمحاضر:</label>
+                    <input type="email" name="instructor_email" placeholder="instructor@3eng.com" class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_web">الموقع الإلكتروني للمحاضر:</label>
+                    <input type="url" name="instructor_website" placeholder="https://..." class="admin-input">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_linkedin">رابط لينكد إن للمحاضر:</label>
+                    <input type="url" name="instructor_linkedin" placeholder="https://linkedin.com/in/..." class="admin-input">
+                </div>
+                <div class="md:col-span-2">
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_bio">نبذة تعريفية عن المحاضر (Bio):</label>
+                    <textarea name="instructor_bio" rows="2" placeholder="خبرات وإنجازات المحاضر..." class="admin-input"></textarea>
+                </div>
+
+                <!-- الملفات والصور -->
+                <div class="space-y-4 md:col-span-2 pt-4">
+                    <h4 class="text-sm font-bold text-gray-300 border-b border-slate-700 pb-2" data-i18n="sec_media">صور الغلاف والملفات</h4>
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_thumb">صورة غلاف الكورس (Thumbnail):</label>
+                    <input type="file" name="thumbnail" accept="image/*" class="admin-input p-2.5">
+                </div>
+                <div>
+                    <label class="block text-sm font-bold mb-2" data-i18n="lbl_inst_img">صورة المحاضر الشخصية:</label>
+                    <input type="file" name="instructor_image" accept="image/*" class="admin-input p-2.5">
+                </div>
+
+                <div class="md:col-span-2 mt-4">
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+                        <i class="fas fa-save"></i> <span data-i18n="btn_save">حفظ ونشر الكورس ← الانتقال لإدارة المحاضرات</span>
+                    </button>
+                </div>
             </form>
         </div>
 
-        <!-- قائمة المحاضرات المرفوعة حالياً مع أزرار التحكم في الترتيب -->
-        <div class="glass-card p-6 shadow-xl">
-            <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg font-bold text-white flex items-center gap-2">
-                    <i class="fas fa-list-ol text-blue-400"></i> المحاضرات المرفوعة حالياً
-                </h2>
-                <span class="text-xs text-gray-400 bg-slate-800 px-3 py-1 rounded-full border border-slate-700">يمكنك ترتيب المحاضرات بالأسهم</span>
-            </div>
-            
-            <div id="lecturesList" class="space-y-4">
-                <!-- سيتم تعبئة المحاضرات ديناميكياً هنا -->
+        <!-- جدول الكورسات المضافة -->
+        <div class="glass-card p-8">
+            <h3 class="text-xl font-bold mb-6 text-blue-400 flex items-center gap-2">
+                <i class="fas fa-list-alt"></i> <span data-i18n="table_title">الكورسات الحالية في المنصة</span>
+            </h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-right rtl:text-right ltr:text-left border-collapse">
+                    <thead>
+                        <tr class="border-b border-slate-700 text-gray-400 text-sm">
+                            <th class="p-3" data-i18n="th_title">عنوان الكورس</th>
+                            <th class="p-3" data-i18n="th_inst">المحاضر</th>
+                            <th class="p-3" data-i18n="th_price">السعر</th>
+                            <th class="p-3 text-center" data-i18n="th_content">إدارة المحتوى</th>
+                            <th class="p-3 text-center" data-i18n="th_actions">الإجراءات</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-800 text-sm">
+                        <tr>
+                            <td class="p-3 font-bold text-white">دبلومة الـ BIM المتكاملة</td>
+                            <td class="p-3 text-gray-300">أحمد عبد الحميد</td>
+                            <td class="p-3 text-emerald-400 font-bold">1500 EGP</td>
+                            <td class="p-3 text-center">
+                                <a href="manage-lectures.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/30 hover:bg-blue-500/20 font-bold text-xs">
+                                    <i class="fas fa-video"></i> <span data-i18n="btn_lessons">الدروس والمحاضرات</span>
+                                </a>
+                            </td>
+                            <td class="p-3 text-center">
+                                <div class="flex items-center justify-center gap-2">
+                                    <button class="px-3 py-1.5 rounded-lg bg-slate-800 border border-slate-700 text-gray-300 hover:text-white text-xs font-bold" data-i18n="btn_edit">تعديل</button>
+                                    <button class="px-3 py-1.5 rounded-lg bg-red-500/10 border border-red-500/30 text-red-400 hover:bg-red-500/20 text-xs font-bold" data-i18n="btn_delete">حذف</button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-    </main>
 
+    </div>
+
+    <!-- كود الترجمة للغتين (عربي / إنجليزي) -->
     <script>
-        // بيانات افتراضية لو مفيش محاضرات مخزنة
-        let lectures = JSON.parse(localStorage.getItem('courseLectures')) || [
-            { title: "مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل", duration: "45", platform: "Vimeo" },
-            { title: "شرح واجهة برنامج Revit المعماري والإنشائي", duration: "60", platform: "Vimeo" }
-        ];
-
-        function renderLectures() {
-            const listContainer = document.getElementById('lecturesList');
-            listContainer.innerHTML = '';
-
-            if (lectures.length === 0) {
-                listContainer.innerHTML = `<p class="text-center text-gray-500 py-6 text-sm">لا توجد محاضرات مرفوعة حالياً.</p>`;
-                return;
+        const translations = {
+            ar: {
+                page_title: "لوحة التحكم الشاملة - 3 Engineers",
+                badge_admin: "لوحة الإدارة المركزية",
+                back_home: "← العودة للرئيسية",
+                main_title: "لوحة تحكم منصة 3eng 🛠️",
+                main_desc: "إدارة الكورسات، المحاضرات، بيانات المحاضرين، ومتابعة محتوى المركز بكل سهولة.",
+                lectures_btn: "منشئ محتوى الكورس والمحاضرات",
+                stat_courses: "إجمالي الكورسات المتاحة",
+                stat_students: "عدد الطلاب المسجلين",
+                stat_payments: "طلبات الدفع المعلقة",
+                form_title: "إضافة كورس جديد أو تعديل بياناته",
+                sec_course: "بيانات الكورس الأساسية",
+                lbl_title: "عنوان الكورس:",
+                lbl_price: "سعر الكورس (بالجنيه المصري):",
+                lbl_desc: "وصف الكورس:",
+                sec_host: "بيانات المحاضر والهوست",
+                lbl_name: "اسم المحاضر:",
+                lbl_email: "البريد الإلكتروني للمحاضر:",
+                lbl_web: "الموقع الإلكتروني للمحاضر:",
+                lbl_linkedin: "رابط لينكد إن للمحاضر:",
+                lbl_bio: "نبذة تعريفية عن المحاضر (Bio):",
+                sec_media: "صور الغلاف والملفات",
+                lbl_thumb: "صورة غلاف الكورس (Thumbnail):",
+                lbl_inst_img: "صورة المحاضر الشخصية:",
+                btn_save: "حفظ ونشر الكورس ← الانتقال لإدارة المحاضرات",
+                table_title: "الكورسات الحالية في المنصة",
+                th_title: "عنوان الكورس",
+                th_inst: "المحاضر",
+                th_price: "السعر",
+                th_content: "إدارة المحتوى",
+                th_actions: "الإجراءات",
+                btn_lessons: "الدروس والمحاضرات",
+                btn_edit: "تعديل",
+                btn_delete: "حذف"
+            },
+            en: {
+                page_title: "Comprehensive Admin Dashboard - 3 Engineers",
+                badge_admin: "Central Admin Panel",
+                back_home: "← Back to Home",
+                main_title: "3eng Platform Dashboard 🛠️",
+                main_desc: "Manage courses, lectures, instructor details, and track center content effortlessly.",
+                lectures_btn: "Course & Lectures Content Creator",
+                stat_courses: "Total Available Courses",
+                stat_students: "Registered Students",
+                stat_payments: "Pending Payments",
+                form_title: "Add New Course or Edit Details",
+                sec_course: "Core Course Details",
+                lbl_title: "Course Title:",
+                lbl_price: "Course Price (EGP):",
+                lbl_desc: "Course Description:",
+                sec_host: "Instructor & Host Details",
+                lbl_name: "Instructor Name:",
+                lbl_email: "Instructor Email:",
+                lbl_web: "Instructor Website:",
+                lbl_linkedin: "Instructor LinkedIn URL:",
+                lbl_bio: "Instructor Bio:",
+                sec_media: "Cover Images & Files",
+                lbl_thumb: "Course Thumbnail:",
+                lbl_inst_img: "Instructor Image:",
+                btn_save: "Save & Publish Course ← Go to Lectures",
+                table_title: "Current Platform Courses",
+                th_title: "Course Title",
+                th_inst: "Instructor",
+                th_price: "Price",
+                th_content: "Content Management",
+                th_actions: "Actions",
+                btn_lessons: "Lessons & Lectures",
+                btn_edit: "Edit",
+                btn_delete: "Delete"
             }
+        };
 
-            lectures.forEach((lec, index) => {
-                const item = document.createElement('div');
-                item.className = "bg-slate-900/80 border border-slate-800 p-4 rounded-xl flex items-center justify-between gap-4 transition hover:border-slate-700";
-                
-                item.innerHTML = `
-                    <div class="flex items-center gap-4 flex-grow">
-                        <span class="w-8 h-8 rounded-lg bg-blue-600/20 border border-blue-500/40 text-blue-400 font-bold flex items-center justify-center text-sm">${index + 1}</span>
-                        <div>
-                            <h4 class="text-white font-bold text-sm mb-1">${lec.title}</h4>
-                            <span class="text-xs text-gray-400 flex items-center gap-2">
-                                <i class="fas fa-video text-blue-400"></i> مربط بـ ${lec.platform} 
-                                <span class="w-1 h-1 rounded-full bg-gray-600"></span> 
-                                <i class="far fa-clock text-gray-500"></i> ${lec.duration} دقيقة
-                            </span>
-                        </div>
-                    </div>
-                    
-                    <!-- أزرار التحكم في الترتيب والحذف -->
-                    <div class="flex items-center gap-1.5">
-                        <button onclick="moveUp(${index})" title="تحريك لأعلى" class="w-8 h-8 rounded-lg bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition ${index === 0 ? 'opacity-30 cursor-not-allowed' : ''}">
-                            <i class="fas fa-chevron-up text-xs"></i>
-                        </button>
-                        <button onclick="moveDown(${index})" title="تحريك لأسفل" class="w-8 h-8 rounded-lg bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition ${index === lectures.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}">
-                            <i class="fas fa-chevron-down text-xs"></i>
-                        </button>
-                        <button onclick="deleteLecture(${index})" title="حذف" class="w-8 h-8 rounded-lg bg-red-900/20 text-red-400 hover:bg-red-600 hover:text-white border border-red-500/30 flex items-center justify-center transition ml-2">
-                            <i class="fas fa-trash text-xs"></i>
-                        </button>
-                    </div>
-                `;
-                listContainer.appendChild(item);
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const htmlRoot = document.getElementById('htmlRoot');
+            htmlRoot.setAttribute('lang', currentLang);
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('langText').innerText = currentLang === 'ar' ? 'AR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
             });
         }
-
-        function addLecture(e) {
-            e.preventDefault();
-            const title = document.getElementById('lecTitle').value;
-            const duration = document.getElementById('lecDuration').value;
-            const platform = document.getElementById('lecPlatform').value;
-            
-            lectures.push({ title, duration, platform });
-            localStorage.setItem('courseLectures', JSON.stringify(lectures));
-            
-            document.getElementById('lectureForm').reset();
-            renderLectures();
-        }
-
-        function moveUp(index) {
-            if (index > 0) {
-                const temp = lectures[index];
-                lectures[index] = lectures[index - 1];
-                lectures[index - 1] = temp;
-                localStorage.setItem('courseLectures', JSON.stringify(lectures));
-                renderLectures();
-            }
-        }
-
-        function moveDown(index) {
-            if (index < lectures.length - 1) {
-                const temp = lectures[index];
-                lectures[index] = lectures[index + 1];
-                lectures[index + 1] = temp;
-                localStorage.setItem('courseLectures', JSON.stringify(lectures));
-                renderLectures();
-            }
-        }
-
-        function deleteLecture(index) {
-            if (confirm('هل أنت متأكد من حذف هذه المحاضرة؟')) {
-                lectures.splice(index, 1);
-                localStorage.setItem('courseLectures', JSON.stringify(lectures));
-                renderLectures();
-            }
-        }
-
-        // تشغيل التعبئة عند تحميل الصفحة
-        document.addEventListener('DOMContentLoaded', renderLectures);
     </script>
 </body>
 </html>
