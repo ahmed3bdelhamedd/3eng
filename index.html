@@ -81,7 +81,6 @@
         .hidden-el { display: none !important; }
     </style>
     
-    <!-- تحميل الثيم المحفوظ فوراً لمنع أي وميض -->
     <script>
         const savedTheme = localStorage.getItem('siteTheme') || 'dark';
         document.documentElement.className = savedTheme;
@@ -89,17 +88,11 @@
 </head>
 <body class="antialiased relative">
 
-    <!-- شريط الإشعارات -->
-    <div class="bg-gradient-to-r from-blue-600 to-indigo-600 text-white text-xs sm:text-sm font-bold py-2 px-4 text-center relative z-50 flex items-center justify-center gap-2 shadow-md">
-        <i class="fas fa-bullhorn animate-bounce"></i>
-        <span data-i18n="notification_text">🚀 New Engineering Diplomas 2026 are now open for enrollment! Join us today.</span>
-    </div>
-
     <div class="blueprint-bg"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
-    <!-- Navbar -->
-    <nav class="glass-nav fixed w-full z-40 top-10 shadow-lg">
+    <!-- Navbar (ثابت في الأعلى ومستقر) -->
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0">
@@ -109,8 +102,8 @@
                 </div>
                 
                 <div class="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-                    <a href="index.html" class="font-semibold transition pb-1 hover:text-blue-400" data-i18n="nav_home">Home</a>
-                    <a href="#courses" class="font-semibold transition pb-1 hover:text-blue-400" data-i18n="nav_courses">Training Programs</a>
+                    <a href="index.html" id="navHome" class="font-semibold transition pb-1 text-blue-400 border-b-2 border-blue-500" data-i18n="nav_home">Home</a>
+                    <a href="#courses" id="navCourses" class="font-semibold transition pb-1 text-gray-400 hover:text-white border-b-2 border-transparent" data-i18n="nav_courses">Training Programs</a>
                     <a href="admin.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/40 border border-blue-500/30 px-3 py-1.5 rounded-lg shadow-sm">
                         <i class="fas fa-tools ml-1 rtl:ml-0 rtl:mr-1"></i> <span data-i18n="nav_admin">Admin Dashboard</span>
                     </a>
@@ -122,7 +115,7 @@
                         <i class="fas fa-globe"></i> <span id="langText">AR</span>
                     </button>
 
-                    <!-- زر تبديل الثيم (دارك / لايت) -->
+                    <!-- زر تبديل الثيم -->
                     <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
                         <i id="themeIcon" class="fas fa-sun text-sm"></i>
                     </button>
@@ -142,7 +135,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="relative pt-44 pb-24 lg:pt-56 lg:pb-32">
+    <section id="home" class="relative pt-36 pb-24 lg:pt-48 lg:pb-32">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div>
@@ -256,17 +249,20 @@
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- Footer (تمت إضافة روابط لكل عناصر الفوتر لتتمكن من وضع لينكاتك بسهولة) -->
     <footer class="border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md py-10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
-                <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 grayscale hover:grayscale-0 transition">
+                <a href="index.html">
+                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 transition">
+                </a>
                 <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
             </div>
+            <!-- روابط السوشيال ميديا (ضع رابطك الخاص بدل علامة #) -->
             <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/201116512028" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://facebook.com/your-page" target="_blank" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
@@ -276,7 +272,6 @@
         const translations = {
             en: {
                 page_title: "3 Engineers Training Center",
-                notification_text: "🚀 New Engineering Diplomas 2026 are now open for enrollment! Join us today.",
                 nav_home: "Home",
                 nav_courses: "Training Programs",
                 nav_admin: "Admin Dashboard",
@@ -307,7 +302,6 @@
             },
             ar: {
                 page_title: "مركز 3 Engineers للتدريب الهندسي",
-                notification_text: "🚀 تم فتح باب الحجز في الدبلومات الهندسية الجديدة لعام 2026! انضم إلينا اليوم.",
                 nav_home: "الرئيسية",
                 nav_courses: "البرامج التدريبية",
                 nav_admin: "لوحة التحكم",
@@ -373,7 +367,37 @@
             }
         }
 
-        // ضبط أيقونة الثيم عند التحميل بناءً على المحفوظ
+        const navHome = document.getElementById('navHome');
+        const navCourses = document.getElementById('navCourses');
+        const coursesSection = document.getElementById('courses');
+
+        function setActiveNav(target) {
+            if (target === 'home') {
+                navHome.classList.add('text-blue-400', 'border-blue-500');
+                navHome.classList.remove('text-gray-400', 'border-transparent');
+                navCourses.classList.remove('text-blue-400', 'border-blue-500');
+                navCourses.classList.add('text-gray-400', 'border-transparent');
+            } else {
+                navCourses.classList.add('text-blue-400', 'border-blue-500');
+                navCourses.classList.remove('text-gray-400', 'border-transparent');
+                navHome.classList.remove('text-blue-400', 'border-blue-500');
+                navHome.classList.add('text-gray-400', 'border-transparent');
+            }
+        }
+
+        navHome.addEventListener('click', () => setActiveNav('home'));
+        navCourses.addEventListener('click', () => setActiveNav('courses'));
+
+        window.addEventListener('scroll', () => {
+            const scrollPos = window.scrollY;
+            const coursesTop = coursesSection.offsetTop - 150;
+            if (scrollPos >= coursesTop) {
+                setActiveNav('courses');
+            } else {
+                setActiveNav('home');
+            }
+        });
+
         window.addEventListener('DOMContentLoaded', () => {
             const currentTheme = localStorage.getItem('siteTheme') || 'dark';
             const themeIcon = document.getElementById('themeIcon');
@@ -382,7 +406,6 @@
                 themeIcon.classList.add('fa-moon');
             }
 
-            // Auth check
             try {
                 const userRole = localStorage.getItem('userRole');
                 const userName = localStorage.getItem('userName');
