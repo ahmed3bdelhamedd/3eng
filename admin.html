@@ -33,7 +33,7 @@
     <!-- القائمة الجانبية -->
     <aside class="w-64 glass-panel flex flex-col hidden md:flex border-l border-slate-700">
         <div class="h-20 flex items-center justify-center border-b border-slate-700">
-            <!-- تم تعديل اللوجو هنا -->
+            <!-- اللوجو -->
             <img src="New Lgogo_Gray Logo.png" alt="3 Engineers Logo" class="h-10">
         </div>
         <nav class="flex-1 px-4 py-6 space-y-2">
@@ -111,10 +111,10 @@
                                     <td class="py-4 px-4 text-gray-300">م. صلاح البدوي</td>
                                     <td class="py-4 px-4"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">منشور</span></td>
                                     <td class="py-4 px-4 text-center">
-                                        <!-- زر فتح نافذة المحاضرات الخاصة بالكورس -->
-                                        <button onclick="openLecturesModal('دبلومة الـ BIM المتكاملة')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded text-sm transition">
-                                            <i class="fas fa-video"></i> المحاضرات (15)
-                                        </button>
+                                        <!-- تم التعديل: رابط لصفحة إدارة المحاضرات -->
+                                        <a href="manage-lectures.html" class="inline-block bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded text-sm transition">
+                                            <i class="fas fa-video"></i> إدارة المحاضرات
+                                        </a>
                                     </td>
                                     <td class="py-4 px-4 text-center">
                                         <button class="text-gray-400 hover:text-blue-400 mx-1 transition"><i class="fas fa-edit"></i></button>
@@ -125,9 +125,10 @@
                                     <td class="py-4 px-4 text-gray-300">م. أحمد حسن</td>
                                     <td class="py-4 px-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-xs">مسودة (Draft)</span></td>
                                     <td class="py-4 px-4 text-center">
-                                        <button onclick="openLecturesModal('التصميم الإنشائي المتقدم')" class="bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded text-sm transition">
+                                        <!-- تم التعديل: رابط لصفحة إدارة المحاضرات -->
+                                        <a href="manage-lectures.html" class="inline-block bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded text-sm transition">
                                             <i class="fas fa-video"></i> إضافة محاضرات
-                                        </button>
+                                        </a>
                                     </td>
                                     <td class="py-4 px-4 text-center">
                                         <button class="text-gray-400 hover:text-blue-400 mx-1 transition"><i class="fas fa-edit"></i></button>
@@ -235,70 +236,6 @@
         </div>
     </div>
 
-    <!-- ========================================== -->
-    <!-- 2. Modal: إدارة وإضافة المحاضرات (الفيديوهات) -->
-    <!-- ========================================== -->
-    <div id="lecturesModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl w-full max-w-3xl p-6 relative shadow-2xl h-[80vh] flex flex-col">
-            <button onclick="document.getElementById('lecturesModal').classList.add('hidden')" class="absolute top-4 left-4 text-gray-400 hover:text-white text-2xl">
-                &times;
-            </button>
-            <h2 class="text-2xl font-bold mb-2 border-b border-slate-700 pb-4 text-indigo-400">
-                إدارة المحاضرات
-            </h2>
-            <p id="lecturesCourseName" class="text-gray-300 mb-6 font-bold"></p>
-            
-            <!-- إضافة محاضرة جديدة -->
-            <div class="bg-slate-900 border border-indigo-500/30 p-4 rounded-xl mb-6">
-                <h3 class="text-sm font-bold mb-3 text-indigo-300">إضافة محاضرة جديدة</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 items-end">
-                    <div class="col-span-2">
-                        <label class="text-xs text-gray-400">عنوان المحاضرة</label>
-                        <input type="text" class="input-field" placeholder="مثال: المحاضرة الأولى - مقدمة Revit">
-                    </div>
-                    <div class="col-span-1">
-                        <button class="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-2.5 mt-1 rounded font-bold transition">
-                            <i class="fas fa-plus"></i> إضافة للمنهج
-                        </button>
-                    </div>
-                    <div class="col-span-3 mt-2">
-                        <label class="text-xs text-gray-400">كود التضمين من فيميو (Vimeo Embed)</label>
-                        <textarea class="input-field h-16 text-sm font-mono" placeholder='<iframe src="https://player.vimeo.com/...'>"></textarea>
-                    </div>
-                </div>
-            </div>
-
-            <!-- قائمة المحاضرات الحالية (Scrollable) -->
-            <div class="flex-1 overflow-y-auto pr-2">
-                <h3 class="text-sm font-bold mb-3 text-gray-400">المحاضرات المرفوعة حالياً:</h3>
-                
-                <!-- محاضرة 1 -->
-                <div class="bg-slate-800 border border-slate-700 p-3 rounded-lg flex justify-between items-center mb-2 hover:bg-slate-700 transition">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-blue-500/20 text-blue-400 w-8 h-8 rounded flex items-center justify-center font-bold">1</div>
-                        <div>
-                            <h4 class="font-bold text-sm">مقدمة في تكنولوجيا الـ BIM</h4>
-                            <p class="text-xs text-green-400"><i class="fas fa-check-circle"></i> فيديو فيميو مربوط</p>
-                        </div>
-                    </div>
-                    <button class="text-red-400 hover:text-red-500 p-2"><i class="fas fa-trash"></i></button>
-                </div>
-                
-                <!-- محاضرة 2 -->
-                <div class="bg-slate-800 border border-slate-700 p-3 rounded-lg flex justify-between items-center mb-2 hover:bg-slate-700 transition">
-                    <div class="flex items-center gap-3">
-                        <div class="bg-blue-500/20 text-blue-400 w-8 h-8 rounded flex items-center justify-center font-bold">2</div>
-                        <div>
-                            <h4 class="font-bold text-sm">تجهيز واجهة برنامج الريفيت</h4>
-                            <p class="text-xs text-green-400"><i class="fas fa-check-circle"></i> فيديو فيميو مربوط</p>
-                        </div>
-                    </div>
-                    <button class="text-red-400 hover:text-red-500 p-2"><i class="fas fa-trash"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- سكربت تفاعل الصفحة -->
     <script>
         // دالة التنقل بين التبويبات في القائمة الجانبية
@@ -320,12 +257,6 @@
                 'students': 'إدارة المتدربين'
             };
             document.getElementById('header-title').textContent = titles[tabId];
-        }
-
-        // دالة فتح نافذة المحاضرات وتمرير اسم الكورس
-        function openLecturesModal(courseName) {
-            document.getElementById('lecturesCourseName').textContent = "الكورس المختار: " + courseName;
-            document.getElementById('lecturesModal').classList.remove('hidden');
         }
     </script>
 </body>
