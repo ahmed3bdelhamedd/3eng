@@ -1,55 +1,212 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دبلومة BIM - 3 Engineers</title>
+    <title>BIM Comprehensive Diploma - 3 Engineers</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #f8fafc; 
+            color: #0f172a; 
+        }
+        .glass-sidebar {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
 </head>
-<body class="antialiased">
+<body class="antialiased min-h-screen">
 
-    <!-- Navbar -->
-    <nav class="glass-nav fixed w-full z-50 top-0">
+    <!-- Navbar / Tabs Bar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
-                <div class="flex-shrink-0">
-                    <a href="index.html"><img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-12"></a>
+            <div class="flex justify-between items-center h-16">
+                <div class="flex space-x-8">
+                    <a href="#about" class="border-b-2 border-slate-900 text-slate-900 font-bold py-5 text-sm transition">About Course</a>
+                    <a href="#instructor" class="border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold py-5 text-sm transition">Instructor</a>
+                    <a href="#reviews" class="border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold py-5 text-sm transition">Reviews</a>
                 </div>
-                <div class="hidden md:flex">
-                    <a href="index.html" class="text-gray-300 hover:text-white font-semibold transition">&rarr; العودة للرئيسية</a>
-                </div>
+                <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- Course Details Header -->
-    <section class="pt-32 pb-12 lg:pt-40 lg:pb-20 border-b border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-                <span class="text-blue-400 font-semibold tracking-wide text-sm bg-blue-500/10 px-3 py-1 rounded-full">دبلومة احترافية</span>
-                <h1 class="text-4xl lg:text-5xl font-bold mt-4 mb-6">دبلومة الـ <span class="text-gradient">BIM المتكاملة</span></h1>
-                <p class="text-xl text-gray-400 mb-8">خطوتك الأولى لاحتراف تكنولوجيا نمذجة معلومات البناء وتطبيقها الفعلي من خلال مشاريع متكاملة، من النمذجة وحتى استخراج اللوحات والتسعير.</p>
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <!-- Left & Center Content (2 Columns) -->
+            <div class="lg:col-span-2 space-y-12">
                 
-                <div class="flex gap-4">
-                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                        <p class="text-sm text-gray-400">المدة الزمنية</p>
-                        <p class="font-bold text-lg">80 ساعة تدريبية</p>
+                <!-- About Course Section -->
+                <section id="about">
+                    <div class="inline-block bg-blue-50 text-blue-600 font-bold text-xs px-3 py-1 rounded-full mb-3 uppercase tracking-wider">Professional Diploma</div>
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">BIM COMPREHENSIVE DIPLOMA</h1>
+                    <p class="text-slate-600 text-base leading-relaxed mb-8">
+                        This diploma is designed to take you from absolute basics to professional mastery in Building Information Modeling (BIM). Learn architectural and structural workflows, clash detection, shop drawings, and estimation practically through real-world projects.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">What Will You Learn?</h2>
+                    <ul class="space-y-3 text-slate-700 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Complete understanding of BIM concepts and common data environments (CDE).
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Mastering Autodesk Revit Architecture from scratch to advanced modeling.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Mastering Revit Structure for concrete and steel detailing.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Managing coordination and clash detection using Navisworks.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Creating accurate shop drawings and structural schedules.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Quantity takeoff and cost estimation workflows.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Course Curriculum Section -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Course Curriculum</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Accordion Item 1 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-1')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>1. Introduction to BIM & Environment Setup</span>
+                                <i id="icon-acc-1" class="fas fa-chevron-up text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-1" class="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Build a strong foundation in BIM standards, file linking, levels, grids, and project setup.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-2')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>2. Revit Architecture Modeling</span>
+                                <i id="icon-acc-2" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-2" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Walls, floors, roofs, stairs, curtain walls, and architectural detailing.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-3')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>3. Revit Structure Modeling</span>
+                                <i id="icon-acc-3" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-3" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Foundations, columns, framing, concrete reinforcement, and structural framing setups.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-4')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>4. Clash Detection & Coordination</span>
+                                <i id="icon-acc-4" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-4" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Using Autodesk Navisworks Manage for interference checks and issue reporting.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 5 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-5')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>5. Shop Drawings & Documentation</span>
+                                <i id="icon-acc-5" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-5" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Extracting professional sheets, schedules, tags, and construction documents.
+                            </div>
+                        </div>
                     </div>
-                    <div class="bg-slate-800/50 p-4 rounded-xl border border-slate-700">
-                        <p class="text-sm text-gray-400">المحاضر</p>
-                        <p class="font-bold text-lg">م. صلاح البدوي</p>
+                </section>
+            </div>
+
+            <!-- Right Sidebar (Pricing & Instructor Card) -->
+            <div class="space-y-6">
+                
+                <!-- Pricing & Buy Box -->
+                <div class="glass-sidebar p-6 text-center">
+                    <div class="text-3xl font-extrabold text-slate-900 mb-6 flex items-center justify-center gap-3">
+                        <span class="line-through text-slate-400 text-xl">7,999 LE</span>
+                        <span class="text-blue-600">4,999 LE</span>
+                    </div>
+
+                    <div class="space-y-3 text-left text-sm text-slate-600 mb-6 border-y border-slate-100 py-4">
+                        <div class="flex items-center gap-3">
+                            <i class="far fa-clock text-slate-400 w-5"></i> 80 training hours
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-video text-slate-400 w-5"></i> Online & Center Available
+                        </div>
+                    </div>
+
+                    <a href="https://wa.me/201116512028" class="block w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-slate-900/20 mb-4 text-center">
+                        buy it now
+                    </a>
+                </div>
+
+                <!-- Download File Button -->
+                <a href="#" class="block bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl text-center transition shadow-md flex items-center justify-center gap-3">
+                    <span>Download the course details file - AR</span>
+                    <i class="fas fa-file-pdf text-red-400"></i>
+                </a>
+
+                <!-- Instructor Card -->
+                <div id="instructor" class="glass-sidebar p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4">Instructor</h3>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=200" alt="صلاح البدوي" class="w-16 h-16 rounded-full object-cover border-2 border-slate-200 shadow-sm">
+                        <div>
+                            <h4 class="font-bold text-slate-900">م. صلاح البدوي</h4>
+                            <p class="text-xs text-slate-500">BIM Expert & Structural Engineer</p>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="glass-card p-8 text-center">
-                <h3 class="text-2xl font-bold mb-4">احجز مقعدك الآن</h3>
-                <p class="text-gray-400 mb-6">الكورس متاح أونلاين وفي مقر المركز. سيتم التواصل معك لتأكيد المواعيد وتفاصيل الحجز.</p>
-                <a href="https://wa.me/201116512028" class="inline-block w-full bg-green-500 hover:bg-green-600 text-white py-4 rounded-xl font-bold text-lg transition btn-glow">تواصل معنا عبر واتساب للتسجيل</a>
-            </div>
-        </div>
-    </section>
 
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
 </body>
 </html>
