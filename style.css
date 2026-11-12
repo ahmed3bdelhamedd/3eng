@@ -1,0 +1,84 @@
+:root {
+    --bg-dark: #0f0f0f;
+    --card-bg: #1a1a1a;
+    --text-main: #f0f0f0;
+    --text-muted: #a0a0a0;
+    --accent: #4a4a4a;
+    --primary-btn: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 50px;
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--accent);
+}
+
+.logo img {
+    height: 50px;
+}
+
+nav a {
+    color: var(--text-main);
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background-color: var(--primary-btn);
+    color: var(--bg-dark);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: var(--accent);
+    color: var(--text-main);
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-top: 15px;
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+}
+
+.courses-section {
+    padding: 50px;
+    text-align: center;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    text-align: right;
+}
