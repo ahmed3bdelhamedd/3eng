@@ -123,17 +123,17 @@
     <section class="relative pt-36 pb-16 lg:pt-44 lg:pb-20 text-center">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-4">
-                <span class="text-gradient" data-i18n="courses_main_title">Engineering BIM Programs</span>
+                <span class="text-gradient" data-i18n="courses_main_title">Engineering & Training Programs</span>
             </h1>
             <p class="text-gray-400 text-sm sm:text-base mb-10 max-w-xl mx-auto leading-relaxed" data-i18n="courses_sub_desc">
-                Explore accredited BIM diplomas, structural modeling, architectural Revit, and advanced engineering workflows.
+                Browse our specialized structural, BIM, and advanced professional engineering courses.
             </p>
 
             <!-- Search Bar Box -->
             <div class="glass-card p-3 max-w-2xl mx-auto flex flex-col sm:flex-row gap-3 shadow-2xl border-blue-500/30">
                 <div class="relative flex-grow">
                     <i class="fas fa-search absolute top-1/2 -translate-y-1/2 left-4 text-gray-400"></i>
-                    <input type="text" id="searchInput" onkeyup="searchCourses()" placeholder="Search BIM courses..." class="w-full bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white focus:outline-none focus:border-blue-500 transition" data-i18n-placeholder="search_placeholder">
+                    <input type="text" id="searchInput" onkeyup="searchCourses()" placeholder="Search courses..." class="w-full bg-slate-900/60 dark:bg-slate-900/80 border border-slate-700 rounded-xl py-3.5 pl-11 pr-4 text-sm text-white focus:outline-none focus:border-blue-500 transition" data-i18n-placeholder="search_placeholder">
                 </div>
                 <button onclick="searchCourses()" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-8 py-3.5 rounded-xl transition shadow-lg text-sm flex items-center justify-center gap-2">
                     <i class="fas fa-search"></i> <span data-i18n="search_btn">Search</span>
@@ -142,57 +142,57 @@
         </div>
     </section>
 
-    <!-- Courses Grid Section (BIM & Revit) -->
+    <!-- Courses Grid Section -->
     <section class="pb-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="coursesGrid">
                 
-                <!-- Course 1: Structural BIM Diploma -->
-                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=structural-bim'" data-title="structural bim diploma" data-desc="concrete elements reinforcement shop drawings clash detection">
+                <!-- 1. الكورس الإنشائي متصل بـ structure.html -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='structure.html'" data-title="structural design analysis" data-desc="structural analysis high rise towers csi software">
                     <div class="h-52 overflow-hidden relative bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop" alt="Structural BIM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">BIM Diploma</span>
+                        <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop" alt="Structural Design" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 right-3 bg-yellow-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Structural</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between">
                         <div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Structural BIM Diploma</h3>
-                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Master structural modeling, foundations, reinforcement shop drawings, and clash detection according to engineering codes.</p>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Advanced Structural Design & Analysis</h3>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Master structural analysis and design for high-rise towers and concrete structures using professional tools.</p>
                         </div>
-                        <a href="course-details.html?course=structural-bim" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <a href="structure.html" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
                             <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Course 2: Architectural BIM Diploma -->
-                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=architectural-bim'" data-title="architectural bim diploma" data-desc="architectural modeling families sheets coordination">
+                <!-- 2. الكورس المعماري متصل بـ bim.html -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='bim.html'" data-title="architectural bim diploma" data-desc="architectural bim revit modeling clash detection">
                     <div class="h-52 overflow-hidden relative bg-slate-900">
                         <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Architectural BIM" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">BIM Diploma</span>
+                        <span class="absolute top-3 right-3 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Architectural BIM</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between">
                         <div>
                             <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Architectural BIM Diploma</h3>
-                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Comprehensive architectural modeling, custom family creation, rendering visualization, and professional drawing production.</p>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Comprehensive architectural modeling, Revit architecture, family creation, and professional drawing production.</p>
                         </div>
-                        <a href="course-details.html?course=architectural-bim" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <a href="bim.html" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
                             <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
                         </a>
                     </div>
                 </div>
 
-                <!-- Course 3: Revit Architecture Masterclass -->
-                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=revit-arch'" data-title="revit architecture masterclass" data-desc="autodesk revit architecture from scratch to professional">
+                <!-- 3. الكورسات الأخرى (الدريفت) متصلة بـ course-details.html -->
+                <div class="glass-card flex flex-col group course-card cursor-pointer" onclick="location.href='course-details.html?course=3dsmax'" data-title="3ds max course" data-desc="3ds max rendering vray corona interior exterior">
                     <div class="h-52 overflow-hidden relative bg-slate-900">
-                        <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop" alt="Revit Architecture" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
-                        <span class="absolute top-3 right-3 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Autodesk Revit</span>
+                        <img src="https://images.unsplash.com/photo-1616469829941-c7200edec809?q=80&w=800&auto=format&fit=crop" alt="3DS MAX Course" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                        <span class="absolute top-3 right-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full shadow">Masterclass</span>
                     </div>
                     <div class="p-6 flex flex-col flex-grow justify-between">
                         <div>
-                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">Revit Architecture Masterclass</h3>
-                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Learn Autodesk Revit Architecture from scratch, covering walls, floors, roofs, stairs, documentation, and presentation.</p>
+                            <h3 class="text-lg font-bold mb-2 group-hover:text-blue-400 transition-colors">3DS MAX Masterclass & Rendering</h3>
+                            <p class="text-sm text-gray-400 mb-6 line-clamp-2">Learn modeling, lighting, materials, and realistic rendering for interior and exterior architectural scenes.</p>
                         </div>
-                        <a href="course-details.html?course=revit-arch" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <a href="course-details.html?course=3dsmax" class="w-full bg-blue-500/10 hover:bg-blue-600 text-blue-400 hover:text-white border border-blue-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
                             <span data-i18n="explore_course">View Course Details</span> <i class="fas fa-arrow-right rtl:rotate-180 text-xs"></i>
                         </a>
                     </div>
@@ -223,27 +223,27 @@
     <script>
         const translations = {
             en: {
-                page_title: "Engineering Courses & BIM Diplomas | 3 Engineers",
+                page_title: "Engineering & Training Programs | 3 Engineers",
                 nav_home: "Home",
                 nav_courses: "Training Programs",
                 nav_best_work: "Best Of Work",
                 nav_login: "Login",
-                courses_main_title: "Engineering BIM Programs",
-                courses_sub_desc: "Explore accredited BIM diplomas, structural modeling, architectural Revit, and advanced engineering workflows.",
-                search_placeholder: "Search BIM courses...",
+                courses_main_title: "Engineering & Training Programs",
+                courses_sub_desc: "Browse our specialized structural, BIM, and advanced professional engineering courses.",
+                search_placeholder: "Search courses...",
                 search_btn: "Search",
                 explore_course: "View Course Details",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
             ar: {
-                page_title: "كورسات ودبلومات البيم الهندسية | 3 Engineers",
+                page_title: "البرامج التدريبية والهندسية | 3 Engineers",
                 nav_home: "الرئيسية",
                 nav_courses: "البرامج التدريبية",
                 nav_best_work: "أفضل الأعمال",
                 nav_login: "تسجيل الدخول",
-                courses_main_title: "برامج ودبلومات البيم الهندسية",
-                courses_sub_desc: "تصفح دبلومات البيم المعتمدة، النمذجة الإنشائية، الريفيت المعماري، وأحدث مسارات العمل الهندسية.",
-                search_placeholder: "ابحث عن كورسات البيم...",
+                courses_main_title: "البرامج التدريبية والهندسية المتخصصة",
+                courses_sub_desc: "تصفح كورسات التصميم الإنشائي، دبلومات البيم المعماري، وبرامجنا الاحترافية المتقدمة.",
+                search_placeholder: "ابحث عن الكورسات...",
                 search_btn: "بحث",
                 explore_course: "عرض تفاصيل الكورس",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
