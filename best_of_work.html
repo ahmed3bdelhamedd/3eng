@@ -227,7 +227,6 @@
             }
         };
 
-        // هيكل بيانات التاسكات مطابق تماماً لمسميات فولديرات التاسكات الفعلية على جيت هاب
         const portfolioData = {
             abdallah: [
                 { id: 0, title: "Task 0 - A limitless model, create your opportunity", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.pdf", "Task-0-1.png"] },
@@ -321,9 +320,9 @@
                 const card = document.createElement('div');
                 card.className = "glass-card p-6 flex flex-col justify-between";
                 
-                // البحث عن أول صورة لعرضها كمعاينة في الكارت، وإذا لم توجد يتم عرض أيقونة PDF
                 const firstImg = task.files.find(f => f.toLowerCase().endsWith('.png') || f.toLowerCase().endsWith('.jpg'));
-                const previewPath = firstImg ? `best_of_work/${engFolder}/${task.folderName}/${firstImg}` : '';
+                const rawPath = `best_of_work/${engFolder}/${task.folderName}/${firstImg}`;
+                const previewPath = firstImg ? encodeURI(rawPath) : '';
                 
                 card.innerHTML = `
                     <div>
@@ -347,7 +346,7 @@
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains execution shop drawings, structural models, and calculation reports.</p>
                     </div>
                     <button onclick='openTaskGallery("${engFolder}", ${JSON.stringify(task)})' class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-folder-open"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
+                        <i class="fas fa-images"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
                     </button>
                 `;
                 container.appendChild(card);
@@ -364,7 +363,8 @@
             gridEl.innerHTML = '';
 
             task.files.forEach(file => {
-                const filePath = `best_of_work/${engFolder}/${task.folderName}/${file}`;
+                const rawFilePath = `best_of_work/${engFolder}/${task.folderName}/${file}`;
+                const filePath = encodeURI(rawFilePath);
                 const itemDiv = document.createElement('div');
                 itemDiv.className = "bg-zinc-800/60 border border-zinc-700 rounded-xl p-3 flex flex-col items-center justify-center gap-2 h-48 overflow-hidden relative group";
                 
