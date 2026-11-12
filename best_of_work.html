@@ -129,12 +129,10 @@
                 </div>
                 
                 <div class="flex items-center gap-3">
-                    <!-- Language Toggle -->
                     <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 hover:bg-yellow-500/20 transition flex items-center gap-1.5">
                         <i class="fas fa-globe"></i> <span id="langText">AR</span>
                     </button>
 
-                    <!-- Theme Toggle -->
                     <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-zinc-800/50 dark:bg-zinc-800/80 text-gray-300 dark:text-yellow-400 border border-zinc-700 flex items-center justify-center transition hover:scale-105">
                         <i id="themeIcon" class="fas fa-sun text-sm"></i>
                     </button>
@@ -157,10 +155,10 @@
             </div>
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
                 <span data-i18n="main_title1">Student Best Works &</span> <br>
-                <span class="text-gradient" data-i18n="main_title2">Structural Tasks Exhibition</span>
+                <span class="text-gradient" data-i18n="main_title2">On-Site Tasks Exhibition</span>
             </h1>
             <p class="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto" data-i18n="main_desc">
-                Browse through the integrated execution projects, structural modeling, and student deliverables directly here on the platform with instant interactive previews.
+                Browse through student structural deliverables, shop drawings, and PDF reports directly inside the website with our interactive document viewer.
             </p>
 
             <!-- Student Filter Tabs -->
@@ -173,19 +171,18 @@
         </div>
     </section>
 
-    <!-- Tasks Grid Section (Linked directly to R25 Student Folders content) -->
+    <!-- Tasks Grid Section -->
     <section class="pb-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tasksContainer">
                 
-                <!-- Task 0: Abdallah Nagy -->
+                <!-- Task 0: Abdallah Nagy (Image / PDF Preview) -->
                 <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task0_abdallah.jpg', 'Task 0: A Limitless Model', 'Executed by Abdallah Nagy (R25)')">
-                            <!-- ضع مسار صورة شغل الطالب الحقيقي هنا بدلاً من src -->
-                            <img src="task0_abdallah.jpg" alt="Task 0 Abdallah" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openViewer('img', 'task0_abdallah.jpg', 'Task 0: A Limitless Model', 'Executed by Abdallah Nagy')">
+                            <img src="task0_abdallah.jpg" alt="Task 0" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
+                                <i class="fas fa-eye text-2xl"></i> <span class="text-xs" data-i18n="preview_on_site">View On Site</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
@@ -193,20 +190,21 @@
                             <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">A Limitless Model, Create Your Opportunity</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Initial foundational orientation project and introductory structural framework setup from R25.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Initial foundational orientation project and introductory structural framework setup.</p>
                     </div>
-                    <a href="https://drive.google.com/drive/folders/1Ogt0yTTn2TcRgBt6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
-                    </a>
+                    <!-- زر لعرض الـ PDF أو الصور مباشرة داخل الموقع -->
+                    <button onclick="openViewer('pdf', 'task0_report.pdf', 'Task 0: Report & Calculations', 'Abdallah Nagy')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fas fa-file-pdf"></i> <span data-i18n="view_pdf">View PDF Report On-Site</span>
+                    </button>
                 </div>
 
                 <!-- Task 1: Youssef Adel -->
                 <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task1_youssef.jpg', 'Task 1: BIM Fundamentals', 'Executed by Youssef Adel (R25)')">
-                            <img src="task1_youssef.jpg" alt="Task 1 Youssef" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop'">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openViewer('img', 'task1_youssef.jpg', 'Task 1: BIM Fundamentals', 'Executed by Youssef Adel')">
+                            <img src="task1_youssef.jpg" alt="Task 1" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
+                                <i class="fas fa-eye text-2xl"></i> <span class="text-xs" data-i18n="preview_on_site">View On Site</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
@@ -216,18 +214,18 @@
                         <h3 class="text-lg font-bold mb-2">Structural BIM Fundamentals</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Core concepts of structural grid setups, levels, analytical modeling, and system coordination.</p>
                     </div>
-                    <a href="https://drive.google.com/drive/folders/1UPOCvVXxhBlGaQNrlW3TDdyiOrnwzWrc" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
-                    </a>
+                    <button onclick="openViewer('pdf', 'task1_report.pdf', 'Task 1: BIM Model Report', 'Youssef Adel')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fas fa-file-pdf"></i> <span data-i18n="view_pdf">View PDF Report On-Site</span>
+                    </button>
                 </div>
 
                 <!-- Task 2: Abdallah El Saman -->
                 <div class="glass-card p-6 flex flex-col justify-between" data-student="abdalsamad">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task2_abdalsaman.jpg', 'Task 2: Be Specialist in Modeling', 'Executed by Abdallah El Saman (R25)')">
-                            <img src="task2_abdalsaman.jpg" alt="Task 2 Abdallah El Saman" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop'">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openViewer('img', 'task2_abdalsaman.jpg', 'Task 2: Be Specialist in Modeling', 'Executed by Abdallah El Saman')">
+                            <img src="task2_abdalsaman.jpg" alt="Task 2" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
+                                <i class="fas fa-eye text-2xl"></i> <span class="text-xs" data-i18n="preview_on_site">View On Site</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
@@ -237,89 +235,32 @@
                         <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 1</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Advanced structural elements modeling including foundations, columns, and retaining walls.</p>
                     </div>
-                    <a href="https://drive.google.com/drive/folders/1zMVnPt4h9pxZ5g85r9cjpxSPWQIlb2u_" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
-                    </a>
-                </div>
-
-                <!-- Task 3: Abdallah Nagy -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task3_abdallah.jpg', 'Task 3: Be Specialist in Modeling - Part 2', 'Executed by Abdallah Nagy')">
-                            <img src="task3_abdallah.jpg" alt="Task 3 Abdallah" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 03</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 2</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Detailed framing layouts, slab systems, and reinforcement detailing simulations.</p>
-                    </div>
-                    <a href="https://drive.google.com/drive/folders/1Ogt0yTTn2TcRgBt6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
-                    </a>
-                </div>
-
-                <!-- Task 4: Youssef Adel -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task4_youssef.jpg', 'Task 4: Be Specialist in Modeling - Part 3', 'Executed by Youssef Adel')">
-                            <img src="task4_youssef.jpg" alt="Task 4 Youssef" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 04</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Youssef Adel</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 3</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Complex geometrical profiles, ramps, staircases, and multi-story structural integrations.</p>
-                    </div>
-                    <a href="https://drive.google.com/drive/folders/1UPOCvVXxhBlGaQNrlW3TDdyiOrnwzWrc" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
-                    </a>
-                </div>
-
-                <!-- Task 5: Abdallah El Saman -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdalsamad">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task5_abdalsaman.jpg', 'Task 5: Secret of Design Drawing - Part 1', 'Executed by Abdallah El Saman')">
-                            <img src="task5_abdalsaman.jpg" alt="Task 5 Abdallah El Saman" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1574689224896-b7e562148b89?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 05</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah El Saman</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Secret of Design Drawing - Part 1</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Decoding structural calculation sheets into execution shop drawings with code compliance.</p>
-                    </div>
-                    <a href="https://drive.google.com/drive/folders/1zMVnPt4h9pxZ5g85r9cjpxSPWQIlb2u_" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
-                    </a>
+                    <button onclick="openViewer('pdf', 'task2_report.pdf', 'Task 2: Modeling Calculations', 'Abdallah El Saman')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fas fa-file-pdf"></i> <span data-i18n="view_pdf">View PDF Report On-Site</span>
+                    </button>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- Advanced Lightbox Modal for Full View -->
-    <div id="lightboxModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center p-4 sm:p-8">
-        <button onclick="closeLightbox()" class="absolute top-6 right-6 text-white text-3xl hover:text-yellow-400 transition bg-zinc-800/80 w-12 h-12 rounded-full flex items-center justify-center border border-zinc-700">
-            <i class="fas fa-times"></i>
-        </button>
-        <div class="max-w-4xl w-full text-center">
-            <img id="lightboxImg" src="" alt="Enlarged Student Work" class="max-h-[75vh] mx-auto rounded-xl shadow-2xl border border-yellow-500/30 object-contain transform scale-95 transition-transform duration-300">
-            <div class="mt-4">
-                <h3 id="lightboxTitle" class="text-xl font-bold text-yellow-400"></h3>
-                <p id="lightboxSubtitle" class="text-sm text-gray-400 mt-1"></p>
+    <!-- On-Site Interactive Viewer Modal (Supports Images & PDFs directly inside the website) -->
+    <div id="siteViewerModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center p-4 sm:p-6">
+        <div class="w-full max-w-5xl flex justify-between items-center mb-4">
+            <div>
+                <h3 id="viewerTitle" class="text-xl font-bold text-yellow-400"></h3>
+                <p id="viewerSubtitle" class="text-sm text-gray-400"></p>
             </div>
+            <button onclick="closeViewer()" class="text-white text-2xl hover:text-yellow-400 transition bg-zinc-800 w-10 h-10 rounded-full flex items-center justify-center border border-zinc-700">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-hidden flex items-center justify-center shadow-2xl relative">
+            <!-- Image Container -->
+            <img id="viewerImage" src="" alt="Work Preview" class="max-h-full max-w-full object-contain hidden">
+            <!-- PDF / Document Embedded Viewer -->
+            <iframe id="viewerIframe" src="" class="w-full h-full hidden border-0 bg-white"></iframe>
         </div>
     </div>
 
@@ -340,7 +281,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Filtering, Lightbox & Translations -->
+    <!-- JavaScript for On-Site Viewer & Translations -->
     <script>
         const translations = {
             en: {
@@ -351,9 +292,10 @@
                 back_home: "Back to Home",
                 badge_title: "Structural Engineering Diploma Showcase",
                 main_title1: "Student Best Works &",
-                main_title2: "Structural Tasks Exhibition",
-                main_desc: "Browse through the integrated execution projects, structural modeling, and student deliverables directly here on the platform with instant interactive previews.",
-                view_folder: "Open Student Folder",
+                main_title2: "On-Site Tasks Exhibition",
+                main_desc: "Browse through student structural deliverables, shop drawings, and PDF reports directly inside the website with our interactive document viewer.",
+                preview_on_site: "View On Site",
+                view_pdf: "View PDF Report On-Site",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
             ar: {
@@ -364,9 +306,10 @@
                 back_home: "العودة للرئيسية",
                 badge_title: "معرض مشاريع الدبلومة الهندسية الإنشائية",
                 main_title1: "أفضل أعمال الطلبة",
-                main_title2: "ومعرض التاسكات الإنشائية",
-                main_desc: "تصفح مشاريع التنفيذ والنمذجة الإنشائية واللوحات التنفيذية للطلبة (عبدالله Nagy، يوسف عادل، عبدالله السمان) مباشرة من داخل المنصة.",
-                view_folder: "فتح فولدر الطالب",
+                main_title2: "وعرض التاسكات داخل الموقع",
+                main_desc: "تصفح مشاريع الطلبة واللوحات وحسابات الـ PDF مباشرة من داخل الموقع دون الحاجة لمغادرة المنصة.",
+                preview_on_site: "معاينة بالموقع",
+                view_pdf: "عرض تقرير الـ PDF داخل الموقع",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
         };
@@ -430,36 +373,41 @@
             });
         }
 
-        // Lightbox Functions
-        function openLightbox(imgSrc, title, subtitle) {
-            const modal = document.getElementById('lightboxModal');
-            const modalImg = document.getElementById('lightboxImg');
-            const modalTitle = document.getElementById('lightboxTitle');
-            const modalSubtitle = document.getElementById('lightboxSubtitle');
+        // On-Site Viewer Functions (Images & PDFs)
+        function openViewer(type, fileSrc, title, subtitle) {
+            const modal = document.getElementById('siteViewerModal');
+            const imgEl = document.getElementById('viewerImage');
+            const iframeEl = document.getElementById('viewerIframe');
+            const titleEl = document.getElementById('viewerTitle');
+            const subtitleEl = document.getElementById('viewerSubtitle');
 
             modal.classList.remove('hidden');
-            modalImg.src = imgSrc;
-            modalTitle.innerText = title;
-            modalSubtitle.innerText = subtitle;
+            titleEl.innerText = title;
+            subtitleEl.innerText = subtitle;
 
-            setTimeout(() => {
-                modalImg.classList.remove('scale-95');
-                modalImg.classList.add('scale-100');
-            }, 10);
+            if (type === 'img') {
+                imgEl.src = fileSrc;
+                imgEl.classList.remove('hidden');
+                iframeEl.classList.add('hidden');
+            } else if (type === 'pdf') {
+                iframeEl.src = fileSrc;
+                iframeEl.classList.remove('hidden');
+                imgEl.classList.add('hidden');
+            }
         }
 
-        function closeLightbox() {
-            const modal = document.getElementById('lightboxModal');
-            const modalImg = document.getElementById('lightboxImg');
-            modalImg.classList.remove('scale-100');
-            modalImg.classList.add('scale-95');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 200);
+        function closeViewer() {
+            const modal = document.getElementById('siteViewerModal');
+            const imgEl = document.getElementById('viewerImage');
+            const iframeEl = document.getElementById('viewerIframe');
+            
+            modal.classList.add('hidden');
+            imgEl.src = '';
+            iframeEl.src = '';
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const currentTheme = localStorage.getItem('siteTheme')|| 'dark';
+            const currentTheme = localStorage.getItem('siteTheme') || 'dark';
             const themeIcon = document.getElementById('themeIcon');
             if (currentTheme === 'light') {
                 themeIcon.classList.remove('fa-sun');
