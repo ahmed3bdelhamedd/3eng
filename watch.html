@@ -63,7 +63,7 @@
         .dark .glass-box { background: rgba(15, 23, 42, 0.85); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
         .light .glass-box { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
 
-        .video-wrapper {
+        #custom-player-wrapper {
             position: relative;
             width: 100%;
             aspect-ratio: 16/9;
@@ -72,6 +72,15 @@
             overflow: hidden;
             border: 1px solid rgba(56, 189, 248, 0.3);
             box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        #yt-player-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            pointer-events: none; /* لمنع تفاعل اليوتيوب الافتراضي وإجبار التحكم عبر البار المخصص */
         }
 
         @keyframes watermarkFloat {
@@ -163,10 +172,46 @@
             <h1 class="text-sm font-semibold text-gray-400 mt-1" id="lessonTitle">Loading Lesson...</h1>
         </div>
 
-        <!-- Video Player Box with TO_BIM_2026 Watermark -->
-        <div class="video-wrapper mb-4 relative">
+        <!-- Custom Video Player Wrapper with Watermark & Custom Controls -->
+        <div id="custom-player-wrapper" class="mb-4">
             <div class="moving-watermark">TO_BIM_2026</div>
-            <iframe id="youtubePlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
+            
+            <div id="yt-player-container">
+                <div id="yt-player"></div>
+            </div>
+
+            <!-- Click Overlay for Play/Pause -->
+            <div id="click-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: calc(100% - 50px); z-index: 15; cursor: pointer;"></div>
+
+            <!-- Center Play Button -->
+            <div id="center-play-btn" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 70px; height: 70px; background: rgba(56, 189, 248, 0.9); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.8rem; cursor: pointer; z-index: 20; box-shadow: 0 4px 20px rgba(0,0,0,0.5); pointer-events: none;">
+                ▶
+            </div>
+
+            <!-- Custom Controls Bar (YouTube-like without YT branding) -->
+            <div id="custom-controls-bar" style="position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(to top, rgba(7,11,20,0.95), rgba(7,11,20,0.6), transparent); padding: 12px 16px 8px 16px; box-sizing: border-box; z-index: 25; display: flex; flex-direction: column; gap: 8px; direction: ltr;">
+                <div id="scrub-container" style="position: relative; width: 100%; height: 6px; background: rgba(255,255,255,0.25); border-radius: 4px; cursor: pointer;">
+                    <div id="scrub-buffered" style="position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: rgba(255,255,255,0.4); border-radius: 4px;"></div>
+                    <div id="scrub-progress" style="position: absolute; top: 0; left: 0; height: 100%; width: 0%; background: #38bdf8; border-radius: 4px;"></div>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: space-between; gap: 12px; color: #fff; font-size: 0.9rem;">
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <button id="ctrl-play-btn" type="button" style="background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer;">▶</button>
+                        <button id="ctrl-rewind-btn" type="button" style="background: none; border: none; color: #cbd5e1; font-size: 0.85rem; font-weight: bold; cursor: pointer;">-10s</button>
+                        <button id="ctrl-forward-btn" type="button" style="background: none; border: none; color: #cbd5e1; font-size: 0.85rem; font-weight: bold; cursor: pointer;">+10s</button>
+                        <span id="ctrl-time-display" style="font-size: 0.8rem; color: #e2e8f0; font-family: monospace;">00:00 / 00:00</span>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 12px;">
+                        <select id="ctrl-speed-select" style="background: rgba(15, 23, 42, 0.9); color: #fff; border: 1px solid #475569; padding: 2px 6px; border-radius: 6px; font-size: 0.78rem; cursor: pointer; outline: none;">
+                            <option value="1" selected>1.0x</option>
+                            <option value="1.25">1.25x</option>
+                            <option value="1.5">1.5x</option>
+                            <option value="2">2.0x</option>
+                        </select>
+                        <button id="ctrl-fullscreen-btn" type="button" style="background: none; border: none; color: #fff; font-size: 1rem; cursor: pointer;">⛶</button>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Next & Previous Navigation Bar -->
@@ -246,6 +291,9 @@
         </div>
     </footer>
 
+    <!-- YouTube IFrame API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
     <!-- JavaScript -->
     <script>
         const translations = {
@@ -277,7 +325,6 @@
             }
         };
 
-        // الفيديوهات الفعلية المطلوبة (إيه الجديد في ريفيت 2025، والجدران، والتسليح)
         const courseData = {
             title: "Revit Architecture Masterclass",
             modules: [
@@ -295,6 +342,7 @@
         let currentLang = 'en';
         let flatLessons = [];
         let currentIndex = 0;
+        let player = null;
 
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
@@ -371,10 +419,6 @@
                 `;
                 container.appendChild(box);
             });
-
-            if (flatLessons.length > 0) {
-                playLessonByIndex(0);
-            }
         }
 
         function toggleSection(header) {
@@ -382,12 +426,120 @@
             body.style.display = (body.style.display === 'none') ? 'block' : 'none';
         }
 
+        // يوتيوب آبي آي لتشغيل الفيديوهات والتحكم عبر البار المخصص
+        function onYouTubeIframeAPIReady() {
+            if (flatLessons.length === 0) flattenLessons();
+            const firstId = flatLessons[0].id;
+
+            player = new YT.Player('yt-player', {
+                height: '100%',
+                width: '100%',
+                videoId: firstId,
+                playerVars: { 'autoplay': 1, 'controls': 0, 'disablekb': 1, 'modestbranding': 1, 'rel': 0, 'iv_load_policy': 3 },
+                events: {
+                    'onReady': onPlayerReady,
+                    'onStateChange': onPlayerStateChange
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            playLessonByIndex(0);
+
+            // تفاعل زر التشغيل والإيقاف بالضغط على الفيديو أو الزر
+            const clickOverlay = document.getElementById('click-overlay');
+            const playBtn = document.getElementById('ctrl-play-btn');
+            const centerBtn = document.getElementById('center-play-btn');
+
+            const togglePlay = () => {
+                const state = player.getPlayerState();
+                if (state === YT.PlayerState.PLAYING) {
+                    player.pauseVideo();
+                    centerBtn.style.display = 'flex';
+                    playBtn.innerText = '▶';
+                } else {
+                    player.playVideo();
+                    centerBtn.style.display = 'none';
+                    playBtn.innerText = '❚❚';
+                }
+            };
+
+            clickOverlay.addEventListener('click', togglePlay);
+            playBtn.addEventListener('click', togglePlay);
+            centerBtn.addEventListener('click', togglePlay);
+
+            // أزرار التقديم والتأخير 10 ثواني
+            document.getElementById('ctrl-rewind-btn').addEventListener('click', () => {
+                player.seekTo(player.getCurrentTime() - 10, true);
+            });
+            document.getElementById('ctrl-forward-btn').addEventListener('click', () => {
+                player.seekTo(player.getCurrentTime() + 10, true);
+            });
+
+            // التحكم في السرعة
+            document.getElementById('ctrl-speed-select').addEventListener('change', function() {
+                player.setPlaybackRate(parseFloat(this.value));
+            });
+
+            // زر الشاشة الكاملة
+            document.getElementById('ctrl-fullscreen-btn').addEventListener('click', () => {
+                const wrapper = document.getElementById('custom-player-wrapper');
+                if (wrapper.requestFullscreen) { wrapper.requestFullscreen(); }
+                else if (wrapper.webkitRequestFullscreen) { wrapper.webkitRequestFullscreen(); }
+            });
+
+            // شريط التقدم (Scrubber)
+            const scrubContainer = document.getElementById('scrub-container');
+            scrubContainer.addEventListener('click', (e) => {
+                const rect = scrubContainer.getBoundingClientRect();
+                const pos = (e.clientX - rect.left) / rect.width;
+                player.seekTo(pos * player.getDuration(), true);
+            });
+
+            // تحديث شريط التقدم والوقت كل نصف ثانية
+            setInterval(() => {
+                if (player && player.getCurrentTime && player.getDuration) {
+                    const current = player.getCurrentTime();
+                    const duration = player.getDuration();
+                    if (duration > 0) {
+                        const percent = (current / duration) * 100;
+                        document.getElementById('scrub-progress').style.width = percent + '%';
+                        document.getElementById('ctrl-time-display').innerText = formatTime(current) + ' / ' + formatTime(duration);
+                    }
+                    if (player.getVideoLoadedFraction) {
+                        document.getElementById('scrub-buffered').style.width = (player.getVideoLoadedFraction() * 100) + '%';
+                    }
+                }
+            }, 500);
+        }
+
+        function onPlayerStateChange(event) {
+            const centerBtn = document.getElementById('center-play-btn');
+            const playBtn = document.getElementById('ctrl-play-btn');
+            if (event.data === YT.PlayerState.PLAYING) {
+                centerBtn.style.display = 'none';
+                playBtn.innerText = '❚❚';
+            } else {
+                centerBtn.style.display = 'flex';
+                playBtn.innerText = '▶';
+            }
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = Math.floor(seconds % 60);
+            return (m < 10 ? '0' + m : m) + ':' + (s < 10 ? '0' + s : s);
+        }
+
         function playLessonByIndex(index) {
             if (index < 0 || index >= flatLessons.length) return;
             currentIndex = index;
             const lesson = flatLessons[currentIndex];
 
-            document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${lesson.id}?autoplay=1`;
+            if (player && player.loadVideoById) {
+                player.loadVideoById(lesson.id);
+            }
+
             document.getElementById('sectionTitle').innerText = lesson.modTitle;
             document.getElementById('lessonTitle').innerText = lesson.title;
             document.getElementById('overviewLessonName').innerText = lesson.title;
@@ -428,6 +580,7 @@
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
             }
+            flattenLessons();
             loadModules();
         });
     </script>
