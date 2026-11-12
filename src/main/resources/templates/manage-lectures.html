@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>منشىء محتوى الكورس - 3 Engineers</title>
+    <title>منشىء محتوى الكورس والمحاضرات - 3 Engineers</title>
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
@@ -52,11 +52,11 @@
 
     <div class="blueprint-bg"></div>
 
-    <!-- شريط علوي موحد وثابت بنفس الهوية -->
+    <!-- شريط علوي موحد وثابت بنفس الهوية واللوجو -->
     <header class="glass-nav fixed w-full z-50 top-0 py-4 px-6 flex justify-between items-center shadow-lg">
         <div class="flex items-center gap-3">
             <a href="index.html" class="flex items-center gap-2">
-                <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-9">
+                <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-9 hover:opacity-90 transition">
             </a>
             <div class="hidden sm:block border-r border-slate-700 pr-3 mr-1">
                 <h3 class="text-white font-bold text-xs">أحمد عبد الحميد</h3>
@@ -74,12 +74,13 @@
     </header>
 
     <main class="max-w-4xl mx-auto px-4 pt-28">
-        <!-- نموذج إضافة محاضرة جديدة -->
+        <!-- نموذج إضافة / تعديل محاضرة -->
         <div class="glass-card p-6 sm:p-8 mb-8 shadow-xl">
-            <h2 class="text-lg font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-700/80 pb-3">
+            <h2 id="formHeading" class="text-lg font-bold text-white mb-6 flex items-center gap-2 border-b border-slate-700/80 pb-3">
                 <i class="fas fa-plus-circle text-blue-400"></i> إضافة محاضرة جديدة للمنهج
             </h2>
-            <form id="lectureForm" onsubmit="addLecture(event)" class="space-y-5">
+            <form id="lectureForm" onsubmit="saveLecture(event)" class="space-y-5">
+                <input type="hidden" id="editIndex" value="-1">
                 <div>
                     <label class="block text-sm text-gray-300 mb-2 font-semibold">عنوان المحاضرة</label>
                     <input type="text" id="lecTitle" required placeholder="مثال: مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm">
@@ -99,21 +100,26 @@
                 </div>
                 <div>
                     <label class="block text-sm text-gray-300 mb-2 font-semibold">كود التضمين (iframe) أو الرابط</label>
-                    <textarea id="lecIframe" rows="3" required placeholder="يرجى التأكد من نسخ كود الـ iframe كاملاً من إعدادات الخصوصية في فيديو Vimeo" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm"></textarea>
+                    <textarea id="lecIframe" rows="3" required placeholder="يرجى التأكد من نسخ كود الـ iframe كاملاً من إعدادات الخصوصية" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-blue-500 text-sm"></textarea>
                 </div>
-                <button type="submit" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-lg shadow-blue-600/30 flex items-center gap-2 text-sm">
-                    <i class="fas fa-save"></i> حفظ وإضافة للمنهج
-                </button>
+                <div class="flex gap-3">
+                    <button type="submit" id="submitBtn" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold px-6 py-3.5 rounded-xl transition shadow-lg shadow-blue-600/30 flex items-center gap-2 text-sm">
+                        <i class="fas fa-save"></i> حفظ وإضافة للمنهج
+                    </button>
+                    <button type="button" id="cancelBtn" onclick="resetForm()" class="hidden bg-slate-800 border border-slate-700 text-gray-300 hover:text-white px-5 py-3.5 rounded-xl transition text-sm font-bold">
+                        إلغاء التعديل
+                    </button>
+                </div>
             </form>
         </div>
 
-        <!-- قائمة المحاضرات المرفوعة حالياً مع أزرار التحكم في الترتيب -->
+        <!-- قائمة المحاضرات المرفوعة حالياً مع أزرار التحكم والترتيب والتعديل -->
         <div class="glass-card p-6 sm:p-8 shadow-xl">
             <div class="flex justify-between items-center mb-6 border-b border-slate-700/80 pb-3">
                 <h2 class="text-lg font-bold text-white flex items-center gap-2">
                     <i class="fas fa-list-ol text-blue-400"></i> المحاضرات المرفوعة حالياً
                 </h2>
-                <span class="text-xs text-gray-400 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700">يمكنك ترتيب المحاضرات بالأسهم</span>
+                <span class="text-xs text-gray-400 bg-slate-800/80 px-3 py-1.5 rounded-full border border-slate-700">يمكنك تعديل أو ترتيب المحاضرات</span>
             </div>
             
             <div id="lecturesList" class="space-y-4">
@@ -124,8 +130,8 @@
 
     <script>
         let lectures = JSON.parse(localStorage.getItem('courseLectures')) || [
-            { title: "مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل", duration: "45", platform: "Vimeo" },
-            { title: "شرح واجهة برنامج Revit المعماري والإنشائي", duration: "60", platform: "Vimeo" }
+            { title: "مقدمة في تكنولوجيا الـ BIM وتجهيز بيئة العمل", duration: "45", platform: "Vimeo", iframe: "" },
+            { title: "شرح واجهة برنامج Revit المعماري والإنشائي", duration: "60", platform: "Vimeo", iframe: "" }
         ];
 
         function renderLectures() {
@@ -155,13 +161,16 @@
                     </div>
                     
                     <div class="flex items-center gap-1.5">
+                        <button onclick="editLecture(${index})" title="تعديل المحاضرة" class="w-8 h-8 rounded-lg bg-blue-600/20 text-blue-400 hover:bg-blue-600 hover:text-white border border-blue-500/30 flex items-center justify-center transition">
+                            <i class="fas fa-pen text-xs"></i>
+                        </button>
                         <button onclick="moveUp(${index})" title="تحريك لأعلى" class="w-8 h-8 rounded-lg bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition ${index === 0 ? 'opacity-30 cursor-not-allowed' : ''}">
                             <i class="fas fa-chevron-up text-xs"></i>
                         </button>
                         <button onclick="moveDown(${index})" title="تحريك لأسفل" class="w-8 h-8 rounded-lg bg-slate-800 text-gray-300 hover:text-white hover:bg-slate-700 border border-slate-700 flex items-center justify-center transition ${index === lectures.length - 1 ? 'opacity-30 cursor-not-allowed' : ''}">
                             <i class="fas fa-chevron-down text-xs"></i>
                         </button>
-                        <button onclick="deleteLecture(${index})" title="حذف" class="w-8 h-8 rounded-lg bg-red-900/20 text-red-400 hover:bg-red-600 hover:text-white border border-red-500/30 flex items-center justify-center transition ml-2">
+                        <button onclick="deleteLecture(${index})" title="حذف" class="w-8 h-8 rounded-lg bg-red-900/20 text-red-400 hover:bg-red-600 hover:text-white border border-red-500/30 flex items-center justify-center transition ml-1">
                             <i class="fas fa-trash text-xs"></i>
                         </button>
                     </div>
@@ -170,17 +179,48 @@
             });
         }
 
-        function addLecture(e) {
+        function saveLecture(e) {
             e.preventDefault();
             const title = document.getElementById('lecTitle').value;
             const duration = document.getElementById('lecDuration').value;
             const platform = document.getElementById('lecPlatform').value;
-            
-            lectures.push({ title, duration, platform });
+            const iframe = document.getElementById('lecIframe').value;
+            const editIndex = parseInt(document.getElementById('editIndex').value);
+
+            if (editIndex > -1) {
+                // تعديل المحاضرة الحالية
+                lectures[editIndex] = { title, duration, platform, iframe };
+            } else {
+                // إضافة محاضرة جديدة
+                lectures.push({ title, duration, platform, iframe });
+            }
+
             localStorage.setItem('courseLectures', JSON.stringify(lectures));
-            
-            document.getElementById('lectureForm').reset();
+            resetForm();
             renderLectures();
+        }
+
+        function editLecture(index) {
+            const lec = lectures[index];
+            document.getElementById('lecTitle').value = lec.title;
+            document.getElementById('lecDuration').value = lec.duration;
+            document.getElementById('lecPlatform').value = lec.platform;
+            document.getElementById('lecIframe').value = lec.iframe || '';
+            document.getElementById('editIndex').value = index;
+
+            document.getElementById('formHeading').innerHTML = `<i class="fas fa-pen text-blue-400"></i> تعديل بيانات المحاضرة رقم (${index + 1})`;
+            document.getElementById('submitBtn').innerHTML = `<i class="fas fa-save"></i> حفظ التعديلات`;
+            document.getElementById('cancelBtn').classList.remove('hidden');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function resetForm() {
+            document.getElementById('lectureForm').reset();
+            document.getElementById('editIndex').value = -1;
+            document.getElementById('formHeading').innerHTML = `<i class="fas fa-plus-circle text-blue-400"></i> إضافة محاضرة جديدة للمنهج`;
+            document.getElementById('submitBtn').innerHTML = `<i class="fas fa-save"></i> حفظ وإضافة للمنهج`;
+            document.getElementById('cancelBtn').classList.add('hidden');
         }
 
         function moveUp(index) {
