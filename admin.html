@@ -3,261 +3,148 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>لوحة التحكم | 3 Engineers</title>
+    <title>لوحة التحكم - 3 Engineers</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Cairo Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body { font-family: 'Cairo', sans-serif; background-color: #0f172a; color: #f8fafc; }
-        .glass-panel { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-        .input-field { width: 100%; background: #0f172a; border: 1px solid #475569; border-radius: 0.5rem; padding: 0.5rem 1rem; color: white; margin-top: 0.25rem; }
-        .input-field:focus { outline: none; border-color: #3b82f6; }
-        
-        /* لتفعيل التبويبات في الـ Sidebar */
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        .sidebar-link.active { background-color: rgba(59, 130, 246, 0.2); color: #60a5fa; }
-        
-        /* Custom Scrollbar for modals */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #0f172a; }
-        ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #070b14; 
+            color: #f8fafc; 
+            overflow-x: hidden;
+        }
+
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+        }
+
+        .glass-card { 
+            background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(11, 17, 32, 0.9)); 
+            backdrop-filter: blur(16px); 
+            border: 1px solid rgba(56, 189, 248, 0.15); 
+            border-radius: 20px; 
+            transition: all 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.35);
+            box-shadow: 0 20px 40px -15px rgba(56, 189, 248, 0.1);
+        }
     </style>
 </head>
-<body class="flex h-screen overflow-hidden">
+<body class="antialiased relative min-h-screen">
 
-    <!-- القائمة الجانبية -->
-    <aside class="w-64 glass-panel flex flex-col hidden md:flex border-l border-slate-700">
-        <div class="h-20 flex items-center justify-center border-b border-slate-700">
-            <!-- اللوجو -->
-            <img src="New Lgogo_Gray Logo.png" alt="3 Engineers Logo" class="h-10">
+    <!-- حماية الصفحة: التأكد من أن المستخدم أدمن قبل العرض -->
+    <script>
+        const userRole = localStorage.getItem('userRole');
+        if (userRole !== 'admin') {
+            alert('عذراً، هذه الصفحة مخصصة للمدير فقط!');
+            window.location.href = 'index.html'; // تحويل للرئيسية لو مش أدمن
+        }
+    </script>
+
+    <!-- الخلفية الهندسية -->
+    <div class="blueprint-bg"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+    <!-- رأس الصفحة (Header) -->
+    <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div class="flex items-center gap-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center text-white justify-center text-xl font-bold shadow-lg shadow-blue-600/30">
+                أ
+            </div>
+            <div>
+                <h2 class="text-white font-extrabold text-lg">أحمد عبد الحميد</h2>
+                <span class="text-xs text-blue-400 font-semibold bg-blue-500/10 px-2.5 py-0.5 rounded-full border border-blue-500/20">مدير النظام (Admin)</span>
+            </div>
         </div>
-        <nav class="flex-1 px-4 py-6 space-y-2">
-            <button onclick="switchTab('dashboard')" id="nav-dashboard" class="sidebar-link active w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 transition text-right">
-                <i class="fas fa-home w-5 text-center"></i> الرئيسية
-            </button>
-            <button onclick="switchTab('courses')" id="nav-courses" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 transition text-right">
-                <i class="fas fa-book w-5 text-center"></i> إدارة الكورسات
-            </button>
-            <button onclick="switchTab('students')" id="nav-students" class="sidebar-link w-full flex items-center gap-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-slate-800 transition text-right">
-                <i class="fas fa-users w-5 text-center"></i> المتدربين
-            </button>
-        </nav>
-    </aside>
 
-    <!-- المحتوى الرئيسي -->
-    <main class="flex-1 flex flex-col h-screen overflow-y-auto relative">
-        <header class="h-20 glass-panel flex items-center justify-between px-8 border-b border-slate-700 sticky top-0 z-10">
-            <div class="text-xl font-semibold" id="header-title">لوحة المتابعة</div>
-            <div class="flex items-center gap-4">
-                <div class="flex items-center gap-3 border-r border-slate-700 pr-4">
-                    <div class="text-left">
-                        <div class="text-sm font-bold">أحمد</div>
-                        <div class="text-xs text-gray-400">مدير النظام</div>
-                    </div>
-                    <div class="h-10 w-10 rounded-full bg-blue-500 flex items-center justify-center font-bold">أ</div>
-                </div>
-            </div>
-        </header>
+        <!-- زر العودة للويب سايت -->
+        <a href="index.html" class="bg-slate-800/80 hover:bg-slate-700 text-gray-200 hover:text-white border border-slate-700 px-5 py-2.5 rounded-xl font-bold transition flex items-center gap-2 shadow-sm backdrop-blur-md">
+            <i class="fas fa-home text-blue-400"></i> العودة للويب سايت
+        </a>
+    </header>
 
-        <div class="p-8">
+    <!-- محتوى الداشبورد -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        
+        <!-- ترحيب وإحصائيات مصغرة -->
+        <div class="mb-10 text-center sm:text-right">
+            <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
+                لوحة تحكم المنصة
+            </h1>
+            <p class="text-gray-400 text-sm">إدارة الدورات التدريبية، المحاضرات، ومتابعة محتوى المركز بكل سهولة.</p>
+        </div>
+
+        <!-- كروت التحكم الرئيسية -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <!-- تبويب الرئيسية (Dashboard) -->
-            <div id="tab-dashboard" class="tab-content active">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-700">
-                        <p class="text-gray-400 text-sm mb-1">إجمالي الكورسات</p>
-                        <h3 class="text-3xl font-bold">12</h3>
+            <!-- كارت إدارة المحاضرات (منشىء محتوى الكورس) -->
+            <div class="glass-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-video"></i>
                     </div>
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-700">
-                        <p class="text-gray-400 text-sm mb-1">المسودات (Drafts)</p>
-                        <h3 class="text-3xl font-bold text-yellow-400">3</h3>
-                    </div>
-                    <div class="glass-panel p-6 rounded-2xl border border-slate-700">
-                        <p class="text-gray-400 text-sm mb-1">المتدربين</p>
-                        <h3 class="text-3xl font-bold">1,245</h3>
-                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">منشىء محتوى الكورس</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        إضافة محاضرات جديدة، تعديل الروابط، التحكم في الترتيب بالأسهم، وحذف المحاضرات القديمة.
+                    </p>
                 </div>
+                <a href="manage-lectures.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3 px-4 rounded-xl text-center transition shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2">
+                    فتح الإدارة <i class="fas fa-arrow-left text-xs"></i>
+                </a>
             </div>
 
-            <!-- تبويب إدارة الكورسات -->
-            <div id="tab-courses" class="tab-content">
-                <div class="glass-panel rounded-2xl border border-slate-700 p-6 relative">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-xl font-bold">الكورسات المرفوعة</h2>
-                        <button onclick="document.getElementById('addCourseModal').classList.remove('hidden')" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-semibold transition flex items-center gap-2">
-                            <i class="fas fa-plus"></i> إضافة كورس جديد
-                        </button>
+            <!-- كارت إدارة المسارات الهندسية (مستقبلي) -->
+            <div class="glass-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-indigo-600/20 border border-indigo-500/30 rounded-2xl flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-cubes"></i>
                     </div>
-
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-right border-collapse">
-                            <thead>
-                                <tr class="text-gray-400 border-b border-slate-700">
-                                    <th class="pb-3 px-4 font-medium">اسم الكورس</th>
-                                    <th class="pb-3 px-4 font-medium">المحاضر</th>
-                                    <th class="pb-3 px-4 font-medium">الحالة</th>
-                                    <th class="pb-3 px-4 font-medium text-center">إدارة المحاضرات</th>
-                                    <th class="pb-3 px-4 font-medium text-center">الإجراءات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="border-b border-slate-700/50 hover:bg-slate-800/30 transition">
-                                    <td class="py-4 px-4 font-semibold text-blue-400">دبلومة الـ BIM المتكاملة</td>
-                                    <td class="py-4 px-4 text-gray-300">م. صلاح البدوي</td>
-                                    <td class="py-4 px-4"><span class="bg-green-500/20 text-green-400 px-2 py-1 rounded text-xs">منشور</span></td>
-                                    <td class="py-4 px-4 text-center">
-                                        <!-- تم التعديل: رابط لصفحة إدارة المحاضرات -->
-                                        <a href="manage-lectures.html" class="inline-block bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded text-sm transition">
-                                            <i class="fas fa-video"></i> إدارة المحاضرات
-                                        </a>
-                                    </td>
-                                    <td class="py-4 px-4 text-center">
-                                        <button class="text-gray-400 hover:text-blue-400 mx-1 transition"><i class="fas fa-edit"></i></button>
-                                    </td>
-                                </tr>
-                                <tr class="hover:bg-slate-800/30 transition">
-                                    <td class="py-4 px-4 font-semibold text-blue-400">التصميم الإنشائي المتقدم</td>
-                                    <td class="py-4 px-4 text-gray-300">م. أحمد حسن</td>
-                                    <td class="py-4 px-4"><span class="bg-yellow-500/20 text-yellow-400 px-2 py-1 rounded text-xs">مسودة (Draft)</span></td>
-                                    <td class="py-4 px-4 text-center">
-                                        <!-- تم التعديل: رابط لصفحة إدارة المحاضرات -->
-                                        <a href="manage-lectures.html" class="inline-block bg-indigo-600/30 hover:bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded text-sm transition">
-                                            <i class="fas fa-video"></i> إضافة محاضرات
-                                        </a>
-                                    </td>
-                                    <td class="py-4 px-4 text-center">
-                                        <button class="text-gray-400 hover:text-blue-400 mx-1 transition"><i class="fas fa-edit"></i></button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">المسارات والدبلومات</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        التحكم في ظهور المسارات الهندسية (BIM، التصميم الإنشائي) وتعديل محتواها.
+                    </p>
                 </div>
+                <span class="bg-slate-800 text-slate-400 border border-slate-700 font-bold py-3 px-4 rounded-xl text-center text-sm cursor-not-allowed">
+                    قريباً...
+                </span>
             </div>
 
-            <!-- تبويب المتدربين (قريباً) -->
-            <div id="tab-students" class="tab-content">
-                <div class="glass-panel p-6 rounded-2xl border border-slate-700 text-center text-gray-400 py-20">
-                    <i class="fas fa-users text-4xl mb-4"></i>
-                    <p>جدول بيانات المتدربين سيظهر هنا.</p>
+            <!-- كارت إحصائيات الطلاب (مستقبلي) -->
+            <div class="glass-card p-8 flex flex-col justify-between group">
+                <div>
+                    <div class="w-14 h-14 bg-emerald-600/20 border border-emerald-500/30 rounded-2xl flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">المتدربين والطلاب</h3>
+                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+                        متابعة قائمة المهندسين المسجلين بالمنصة وإدارة الصلاحيات.
+                    </p>
                 </div>
+                <span class="bg-slate-800 text-slate-400 border border-slate-700 font-bold py-3 px-4 rounded-xl text-center text-sm cursor-not-allowed">
+                    قريباً...
+                </span>
             </div>
 
         </div>
     </main>
 
-    <!-- ========================================== -->
-    <!-- 1. Modal: إضافة كورس جديد (الهيكل الأساسي) -->
-    <!-- ========================================== -->
-    <div id="addCourseModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center hidden">
-        <div class="bg-slate-800 border border-slate-700 rounded-2xl w-full max-w-4xl p-6 relative shadow-2xl h-[90vh] overflow-y-auto">
-            <button onclick="document.getElementById('addCourseModal').classList.add('hidden')" class="absolute top-4 left-4 text-gray-400 hover:text-white text-2xl">
-                &times;
-            </button>
-            <h2 class="text-2xl font-bold mb-6 border-b border-slate-700 pb-4 text-blue-400">إضافة كورس جديد (البيانات الأساسية)</h2>
-            
-            <form class="space-y-6">
-                <!-- قسم بيانات الكورس -->
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold mb-4 border-b border-slate-700 pb-2"><i class="fas fa-book-open text-blue-500"></i> بيانات الكورس</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="text-sm text-gray-300">اسم الكورس</label>
-                            <input type="text" class="input-field" placeholder="مثال: دبلومة التصميم الإنشائي">
-                        </div>
-                        <div>
-                            <label class="text-sm text-gray-300">رابط صورة الكورس (Cover Image URL)</label>
-                            <input type="text" class="input-field" placeholder="https://example.com/image.jpg">
-                        </div>
-                    </div>
-                    <div>
-                        <label class="text-sm text-gray-300">وصف الكورس</label>
-                        <textarea class="input-field h-24" placeholder="اكتب وصفاً مفصلاً لما سيتعلمه المتدرب..."></textarea>
-                    </div>
-                </div>
+    <!-- تذييل الصفحة -->
+    <footer class="border-t border-slate-800/80 bg-slate-900/60 backdrop-blur-md py-6 text-center text-gray-500 text-xs">
+        © 2026 مركز 3 Engineers - لوحة التحكم الإدارية
+    </footer>
 
-                <!-- قسم بيانات المحاضر -->
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold mb-4 border-b border-slate-700 pb-2"><i class="fas fa-user-tie text-indigo-500"></i> بيانات المحاضر</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                        <div>
-                            <label class="text-sm text-gray-300">اسم المحاضر</label>
-                            <input type="text" class="input-field" placeholder="مثال: م. صلاح البدوي">
-                        </div>
-                        <div>
-                            <label class="text-sm text-gray-300">الموقع الإلكتروني / LinkedIn</label>
-                            <input type="text" class="input-field" placeholder="https://linkedin.com/in/...">
-                        </div>
-                    </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <label class="text-sm text-gray-300">وصف / خبرات المحاضر</label>
-                            <textarea class="input-field h-20" placeholder="نبذة عن خبرات المحاضر..."></textarea>
-                        </div>
-                        <div>
-                            <label class="text-sm text-gray-300">رابط صورة المحاضر</label>
-                            <input type="text" class="input-field" placeholder="https://example.com/instructor.jpg">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- قسم إعدادات النشر -->
-                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-700">
-                    <h3 class="text-lg font-bold mb-4 border-b border-slate-700 pb-2"><i class="fas fa-cogs text-gray-400"></i> إعدادات الكورس</h3>
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div>
-                            <label class="text-sm text-gray-300">السعر</label>
-                            <input type="number" class="input-field">
-                        </div>
-                        <div>
-                            <label class="text-sm text-gray-300">الساعات التدريبية</label>
-                            <input type="number" class="input-field">
-                        </div>
-                        <div>
-                            <label class="text-sm font-bold text-yellow-400">حالة الكورس</label>
-                            <select class="input-field bg-slate-800">
-                                <option value="draft">مسودة (Draft) - إخفاء مؤقت</option>
-                                <option value="published">منشور (Published) - متاح للجميع</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="flex gap-3 pt-4">
-                    <button type="button" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg font-bold transition">حفظ الكورس الأساسي</button>
-                    <button type="button" onclick="document.getElementById('addCourseModal').classList.add('hidden')" class="px-8 bg-slate-700 hover:bg-slate-600 text-white py-3 rounded-lg font-bold transition">إلغاء</button>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- سكربت تفاعل الصفحة -->
-    <script>
-        // دالة التنقل بين التبويبات في القائمة الجانبية
-        function switchTab(tabId) {
-            // إخفاء كل المحتوى
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
-            // إزالة التفعيل من كل الأزرار
-            document.querySelectorAll('.sidebar-link').forEach(el => el.classList.remove('active'));
-            
-            // إظهار المحتوى المطلوب
-            document.getElementById('tab-' + tabId).classList.add('active');
-            // تفعيل الزر المطلوب
-            document.getElementById('nav-' + tabId).classList.add('active');
-
-            // تغيير عنوان الـ Header
-            const titles = {
-                'dashboard': 'لوحة المتابعة',
-                'courses': 'إدارة الكورسات',
-                'students': 'إدارة المتدربين'
-            };
-            document.getElementById('header-title').textContent = titles[tabId];
-        }
-    </script>
 </body>
 </html>
