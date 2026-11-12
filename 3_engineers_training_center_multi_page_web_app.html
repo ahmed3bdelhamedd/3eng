@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Engineers Training Center | Master Your Engineering Career</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Inter & Cairo -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkBg: '#050507',
+                        cardBg: '#111116',
+                        cardBorder: '#22222d',
+                        accentSilver: '#e0e0e0',
+                        mutedSilver: '#9e9ea9',
+                        accentBlue: '#3b82f6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'Cairo', 'sans-serif'],
+                        arabic: ['Cairo', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050507;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #22222d;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3b3b4a;
+        }
+
+        /* Subtle grid background pattern */
+        .bg-grid-pattern {
+            background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+            background-size: 32px 32px;
+        }
+
+        /* Card Hover Animations */
+        .glow-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.6);
+        }
+        .glow-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(224, 224, 224, 0.3);
+            box-shadow: 0 12px 30px -5px rgba(255, 255, 255, 0.05);
+        }
+
+        /* Animation for page switching */
+        .page-view {
+            animation: fadeIn 0.35s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-darkBg text-accentSilver font-sans antialiased selection:bg-gray-700 selection:text-white flex flex-col min-h-screen">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-[#09090d] border-b border-cardBorder text-xs text-mutedSilver py-2 px-4 z-50 relative">
+        <div class="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <span><i class="fa-solid fa-location-dot text-gray-400 mr-1.5"></i> Main Campus: Cairo, Egypt</span>
+                <span class="hidden md:inline"><i class="fa-solid fa-phone text-gray-400 mr-1.5"></i> +20 100 000 0000</span>
+            </div>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <a href="https://wa.me/201000000000" target="_blank" class="hover:text-white transition-colors text-emerald-400">
+                    <i class="fa-brands fa-whatsapp mr-1"></i> Instant WhatsApp Support
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-darkBg/90 border-b border-cardBorder">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#home" class="flex items-center gap-3 group">
+                <img src="New Lgogo_Gray Logo.png" 
+                     alt="3 Engineers Training Center Logo" 
+                     class="h-10 w-auto object-contain transition-transform group-hover:scale-105"
+                     onerror="this.onerror=null; this.src='https://placehold.co/240x60/111116/e0e0e0?text=3+ENGINEERS';">
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+                <a href="#home" class="nav-link hover:text-white transition-colors py-1" data-page="home">Home</a>
+                
+                <!-- Courses Dropdown -->
+                <div class="relative group py-1 cursor-pointer">
+                    <span class="hover:text-white flex items-center gap-1">
+                        Courses & Diplomas <i class="fa-solid fa-chevron-down text-[10px] ml-1 transition-transform group-hover:rotate-180"></i>
+                    </span>
+                    <div class="absolute top-full left-0 w-64 pt-2 hidden group-hover:block transition-all">
+                        <div class="bg-cardBg border border-cardBorder rounded-xl p-2 shadow-2xl space-y-1">
+                            <a href="#course-bim" class="block px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-cardBorder transition-colors">
+                                <div class="font-bold">BIM Diploma</div>
+                                <div class="text-[10px] text-gray-400">Revit, Navisworks & Dynamo</div>
+                            </a>
+                            <a href="#course-structure" class="block px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-cardBorder transition-colors">
+                                <div class="font-bold">Structural Engineering</div>
+                                <div class="text-[10px] text-gray-400">ETABS, SAFE & SAP2000</div>
+                            </a>
+                            <a href="#course-arch" class="block px-3 py-2 rounded-lg text-xs text-gray-300 hover:text-white hover:bg-cardBorder transition-colors">
+                                <div class="font-bold">Architectural Visualization</div>
+                                <div class="text-[10px] text-gray-400">3ds Max, V-Ray & Enscape</div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="#instructors" class="nav-link hover:text-white transition-colors py-1" data-page="instructors">Instructors</a>
+                <a href="#about" class="nav-link hover:text-white transition-colors py-1" data-page="about">Why Us</a>
+                <a href="#register" class="nav-link hover:text-white transition-colors py-1" data-page="register">Contact & Location</a>
+            </nav>
+
+            <!-- CTA Register Button -->
+            <div class="hidden sm:flex items-center gap-4">
+                <a href="#register" class="px-5 py-2.5 rounded-xl border border-gray-600 bg-cardBg hover:bg-white hover:text-darkBg text-white text-sm font-semibold transition-all shadow-md">
+                    Apply Now <i class="fa-solid fa-arrow-right-long ml-1.5 text-xs"></i>
+                </a>
+            </div>
+
+            <!-- Mobile Drawer Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg text-gray-300 hover:text-white hover:bg-cardBg focus:outline-none">
+                <i class="fa-solid fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-cardBg border-b border-cardBorder px-4 pt-2 pb-6 space-y-3">
+            <a href="#home" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-white border-b border-gray-800">Home</a>
+            <a href="#course-bim" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-white border-b border-gray-800">BIM Diploma</a>
+            <a href="#course-structure" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-white border-b border-gray-800">Advanced Structural Eng.</a>
+            <a href="#course-arch" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-white border-b border-gray-800">Architectural Visualization</a>
+            <a href="#instructors" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-white border-b border-gray-800">Instructors</a>
+            <a href="#register" onclick="toggleMobileMenu()" class="block py-2 text-gray-200 hover:text-white">Register & Contact</a>
+        </div>
+    </header>
+
+
+    <!-- ================================================================= -->
+    <!-- VIEW 1: HOME PAGE -->
+    <!-- ================================================================= -->
+    <main id="view-home" class="page-view flex-grow">
+        <!-- Hero Section -->
+        <section class="relative pt-20 pb-28 md:pt-32 md:pb-36 bg-grid-pattern overflow-hidden">
+            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] bg-white/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gray-700 bg-cardBg/90 text-xs text-gray-300 mb-8 backdrop-blur">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    <span>Registration Open for New Practical Engineering Cohorts</span>
+                </div>
+
+                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+                    Master Your <span class="bg-gradient-to-r from-gray-100 via-gray-300 to-gray-500 bg-clip-text text-transparent">Engineering Career</span>
+                </h1>
+
+                <p class="text-lg sm:text-xl text-mutedSilver max-w-3xl mx-auto mb-10 leading-relaxed">
+                    Advanced hands-on engineering training led by senior industry consultants. Bridge the gap between academic theory and real-world project delivery in BIM, Structure, and Architecture.
+                </p>
+
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#course-bim" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-accentSilver text-darkBg hover:bg-white font-bold text-base transition-all shadow-xl hover:scale-105">
+                        Explore BIM Diploma <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+                    </a>
+                    <a href="#course-structure" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-cardBg border border-cardBorder text-gray-200 hover:text-white hover:bg-cardBorder font-semibold text-base transition-all">
+                        Structural Engineering <i class="fa-solid fa-chevron-right ml-2 text-xs"></i>
+                    </a>
+                </div>
+
+                <!-- Trust Metrics Bar -->
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16 pt-12 border-t border-cardBorder/60 text-left sm:text-center">
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-white">5,000+</h3>
+                        <p class="text-xs text-mutedSilver mt-1">Engineers Graduated</p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-white">45+</h3>
+                        <p class="text-xs text-mutedSilver mt-1">Practical Batches Completed</p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-white">100%</h3>
+                        <p class="text-xs text-mutedSilver mt-1">Real-World Mega Projects</p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-extrabold text-white">4.9 / 5</h3>
+                        <p class="text-xs text-mutedSilver mt-1">Student Satisfaction Rate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Diplomas Cards -->
+        <section class="py-24 bg-darkBg border-t border-cardBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Our Programs</h2>
+                    <h3 class="text-3xl font-extrabold text-white">Specialized Engineering Diplomas</h3>
+                    <p class="text-sm text-mutedSilver mt-3">Select a diploma below to view full curriculum, duration, prerequisites, and instructor profiles.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Course Card 1: BIM -->
+                    <div class="bg-cardBg rounded-2xl border border-cardBorder overflow-hidden glow-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-48 bg-gray-900 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?auto=format&fit=crop&w=800&q=80" 
+                                     alt="BIM Diploma" 
+                                     class="w-full h-full object-cover opacity-50 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-4 left-4 bg-darkBg/90 border border-gray-700 px-3 py-1 rounded-full text-xs text-white">
+                                    <i class="fa-solid fa-layer-group text-gray-400 mr-1"></i> BIM & Tech
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-bold text-white mb-2">Professional BIM Diploma</h4>
+                                <p class="text-sm text-mutedSilver mb-4 line-clamp-3">
+                                    Full workflow mastery: Revit Arch & Struct, Navisworks clash coordination, Dynamo automation, and ISO 19650 BEP execution.
+                                </p>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">Revit</span>
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">Navisworks</span>
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">Dynamo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <a href="#course-bim" class="block w-full text-center py-3 rounded-xl bg-accentSilver text-darkBg font-bold text-xs hover:bg-white transition-all">
+                                Dedicated Course Page <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 2: Structure -->
+                    <div class="bg-cardBg rounded-2xl border border-cardBorder overflow-hidden glow-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-48 bg-gray-900 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1541888946425-d0fbb186a5b3?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Structural Engineering" 
+                                     class="w-full h-full object-cover opacity-50 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-4 left-4 bg-darkBg/90 border border-gray-700 px-3 py-1 rounded-full text-xs text-white">
+                                    <i class="fa-solid fa-building text-gray-400 mr-1"></i> Structural
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-bold text-white mb-2">Advanced Structural Engineering</h4>
+                                <p class="text-sm text-mutedSilver mb-4 line-clamp-3">
+                                    High-rise building design, seismic modeling, foundation calculations, and shop drawings generation using ETABS, SAFE & SAP2000.
+                                </p>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">ETABS</span>
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">SAFE</span>
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">SAP2000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <a href="#course-structure" class="block w-full text-center py-3 rounded-xl bg-accentSilver text-darkBg font-bold text-xs hover:bg-white transition-all">
+                                Dedicated Course Page <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Course Card 3: Arch Viz -->
+                    <div class="bg-cardBg rounded-2xl border border-cardBorder overflow-hidden glow-card flex flex-col justify-between">
+                        <div>
+                            <div class="relative h-48 bg-gray-900 overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" 
+                                     alt="Architectural Visualization" 
+                                     class="w-full h-full object-cover opacity-50 hover:scale-105 transition-transform duration-500">
+                                <div class="absolute top-4 left-4 bg-darkBg/90 border border-gray-700 px-3 py-1 rounded-full text-xs text-white">
+                                    <i class="fa-solid fa-compass-drafting text-gray-400 mr-1"></i> Architecture
+                                </div>
+                            </div>
+                            <div class="p-6">
+                                <h4 class="text-xl font-bold text-white mb-2">Architectural Visualization</h4>
+                                <p class="text-sm text-mutedSilver mb-4 line-clamp-3">
+                                    From 3D architectural modeling to photorealistic lighting, materials, interior detailing, and VR presentation techniques.
+                                </p>
+                                <div class="flex flex-wrap gap-1.5 mb-4">
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">3ds Max</span>
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">V-Ray</span>
+                                    <span class="bg-gray-800 text-gray-300 text-[11px] px-2.5 py-1 rounded font-mono">Enscape</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6 pt-0">
+                            <a href="#course-arch" class="block w-full text-center py-3 rounded-xl bg-accentSilver text-darkBg font-bold text-xs hover:bg-white transition-all">
+                                Dedicated Course Page <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Instructor Spotlight Summary -->
+        <section class="py-20 bg-[#09090d] border-t border-cardBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-cardBg border border-cardBorder rounded-2xl p-8 sm:p-12 flex flex-col md:flex-row items-center gap-8 glow-card">
+                    <div class="w-32 h-32 rounded-2xl bg-gray-800 border-2 border-gray-600 flex items-center justify-center shrink-0">
+                        <i class="fa-solid fa-user-gear text-5xl text-gray-500"></i>
+                    </div>
+                    <div class="space-y-3 text-center md:text-left">
+                        <div class="inline-block bg-gray-800 text-gray-300 text-xs px-3 py-1 rounded-full font-mono">Lead Instructor</div>
+                        <h3 class="text-2xl font-bold text-white">Eng. Salah El-Badawy</h3>
+                        <p class="text-sm text-gray-400">Senior BIM Manager & Structural Engineering Consultant</p>
+                        <p class="text-sm text-mutedSilver leading-relaxed max-w-3xl">
+                            With over 15+ years of active field consultancy in major structural projects across Egypt and the Gulf, Eng. Salah leads our BIM & Structural programs, ensuring every student learns real consultant-grade workflows.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================================================================= -->
+    <!-- VIEW 2: COURSE DETAILS - BIM DIPLOMA -->
+    <!-- ================================================================= -->
+    <main id="view-course-bim" class="page-view hidden flex-grow">
+        <!-- Header Banner -->
+        <section class="bg-gradient-to-b from-[#0e0e14] to-darkBg py-16 border-b border-cardBorder relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <a href="#home" class="hover:text-white">Home</a>
+                    <span>/</span>
+                    <span class="text-white">BIM Diploma</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="inline-block bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-1 rounded-full font-mono">
+                            <i class="fa-solid fa-layer-group mr-1.5 text-gray-400"></i> Building Information Modeling
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                            Professional BIM Diploma
+                        </h1>
+                        <p class="text-base sm:text-lg text-mutedSilver leading-relaxed">
+                            Master the complete BIM lifecycle according to ISO 19650 standards. Learn Revit Architecture & Structure, advanced Navisworks 4D/5D clash detection, Dynamo visual scripting, and shop drawings extraction.
+                        </p>
+                        <!-- Key Metadata Pills -->
+                        <div class="flex flex-wrap gap-4 pt-4 text-xs text-gray-300">
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">DURATION</div>
+                                    <div class="font-bold">80 Practical Hours</div>
+                                </div>
+                            </div>
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-solid fa-chalkboard-user text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">INSTRUCTOR</div>
+                                    <div class="font-bold">Eng. Salah El-Badawy</div>
+                                </div>
+                            </div>
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-solid fa-laptop-code text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">FORMAT</div>
+                                    <div class="font-bold">In-Center & Live Online</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Enroll Card -->
+                    <div class="lg:col-span-4">
+                        <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl glow-card space-y-6">
+                            <div class="border-b border-cardBorder pb-4">
+                                <div class="text-xs text-gray-400 uppercase">Status</div>
+                                <div class="text-xl font-bold text-emerald-400 mt-1">Enrollment Open (New Cohort)</div>
+                                <div class="text-xs text-mutedSilver mt-1"><i class="fa-solid fa-user-group mr-1"></i> Limited to 15 engineers per batch</div>
+                            </div>
+                            <ul class="space-y-3 text-xs text-gray-300">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> ISO 19650 Workflows & BEP</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Real Project Shop Drawings</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Autodesk Certification Support</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Live Recording Recordings Access</li>
+                            </ul>
+                            <a href="#register" onclick="preselectCourse('bim')" class="block w-full text-center py-4 rounded-xl bg-accentSilver hover:bg-white text-darkBg font-bold text-sm transition-all shadow-xl">
+                                Register For BIM Diploma <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Syllabus Breakdown Section -->
+        <section class="py-20 bg-darkBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Main Content Left -->
+                    <div class="lg:col-span-8 space-y-12">
+                        <!-- Overview -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">Course Overview & Objectives</h2>
+                            <p class="text-sm text-mutedSilver leading-relaxed mb-4">
+                                The **Professional BIM Diploma** is engineered to transform traditional engineers into BIM Specialists and Coordinators. You won't just learn tool buttons; you will execute full architectural and structural BIM modeling, establish BIM Execution Plans (BEP), resolve complex multi-disciplinary clashes in Navisworks, and automate tedious tasks using Dynamo.
+                            </p>
+                        </div>
+
+                        <!-- Modules Accordion / List -->
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-6">Detailed Curriculum & Modules</h2>
+                            <div class="space-y-4">
+                                
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 1: Revit Architecture & Modeling Standards</h3>
+                                        <span class="text-xs font-mono text-gray-400">20 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Project setup, levels, grids, and shared coordinates.</li>
+                                        <li>• Parametric wall types, curtain walls, floors, roofs, and complex family creation.</li>
+                                        <li>• Room tags, area schedules, and sheet setup according to consultant standards.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 2: Revit Structure & Reinforcement</h3>
+                                        <span class="text-xs font-mono text-gray-400">25 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Structural foundations, columns, beams, trusses, and shear walls.</li>
+                                        <li>• Rebar modeling (3D rebar, rebar sets, stirrups, and bar bending schedules - BBS).</li>
+                                        <li>• Analytical model checking and linking with structural analysis software.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 3: Navisworks Manage & Coordination</h3>
+                                        <span class="text-xs font-mono text-gray-400">20 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Aggregating multi-disciplinary models (Arch, Struct, MEP).</li>
+                                        <li>• Automated Clash Detection matrix and clash resolution reports.</li>
+                                        <li>• 4D Construction Sequencing Simulation (TimeLiner) and 5D Quantity Take-off.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 4: Dynamo Scripting & BIM Management (ISO 19650)</h3>
+                                        <span class="text-xs font-mono text-gray-400">15 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Visual programming basics in Dynamo for automated parameter editing & sheet creation.</li>
+                                        <li>• Understanding ISO 19650 terminology: CDE, EIR, BEP, LOD 100 to 400.</li>
+                                        <li>• Final Graduation Project: Full shop drawings submission for a multi-story building.</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <!-- Instructor Profile -->
+                        <div class="border-t border-cardBorder pt-10">
+                            <h2 class="text-2xl font-bold text-white mb-6">Course Instructor</h2>
+                            <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl flex flex-col sm:flex-row items-center gap-6">
+                                <div class="w-24 h-24 rounded-2xl bg-gray-800 border-2 border-gray-600 flex items-center justify-center shrink-0">
+                                    <i class="fa-solid fa-user-gear text-4xl text-gray-400"></i>
+                                </div>
+                                <div class="space-y-2 text-center sm:text-left">
+                                    <h3 class="text-xl font-bold text-white">Eng. Salah El-Badawy</h3>
+                                    <p class="text-xs text-gray-400 font-mono">Senior BIM Manager & Principal Structural Lead</p>
+                                    <p class="text-xs text-mutedSilver leading-relaxed">
+                                        Specialist in BIM implementation for mega infrastructure and high-rise developments across the Middle East. Over 15 years of practical project management experience.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Info Right -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl space-y-4">
+                            <h3 class="text-base font-bold text-white border-b border-cardBorder pb-3">Target Audience</h3>
+                            <ul class="space-y-2 text-xs text-mutedSilver">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-400"></i> Civil Engineers</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-400"></i> Architectural Engineers</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-400"></i> Site & Design Engineers</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-gray-400"></i> Fresh Engineering Graduates</li>
+                            </ul>
+                        </div>
+
+                        <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl space-y-4">
+                            <h3 class="text-base font-bold text-white border-b border-cardBorder pb-3">Prerequisites</h3>
+                            <p class="text-xs text-mutedSilver leading-relaxed">
+                                Basic knowledge of engineering drawing concepts or AutoCAD. No prior Revit or BIM experience is required; we start from ground zero up to expert level.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================================================================= -->
+    <!-- VIEW 3: COURSE DETAILS - STRUCTURAL ENGINEERING -->
+    <!-- ================================================================= -->
+    <main id="view-course-structure" class="page-view hidden flex-grow">
+        <!-- Header Banner -->
+        <section class="bg-gradient-to-b from-[#0e0e14] to-darkBg py-16 border-b border-cardBorder relative">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <a href="#home" class="hover:text-white">Home</a>
+                    <span>/</span>
+                    <span class="text-white">Structural Engineering</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="inline-block bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-1 rounded-full font-mono">
+                            <i class="fa-solid fa-building mr-1.5 text-gray-400"></i> Structural Analysis & Design
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                            Advanced Structural Engineering Diploma
+                        </h1>
+                        <p class="text-base sm:text-lg text-mutedSilver leading-relaxed">
+                            Comprehensive structural design program for high-rise towers and concrete structures. Master ETABS for seismic analysis, SAFE for foundation systems, and SAP2000 according to Egyptian (ECP) and American (ACI/ASCE) codes.
+                        </p>
+                        <!-- Key Metadata Pills -->
+                        <div class="flex flex-wrap gap-4 pt-4 text-xs text-gray-300">
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">DURATION</div>
+                                    <div class="font-bold">95 Practical Hours</div>
+                                </div>
+                            </div>
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-solid fa-chalkboard-user text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">INSTRUCTORS</div>
+                                    <div class="font-bold">Eng. Salah & Senior Team</div>
+                                </div>
+                            </div>
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-solid fa-laptop-code text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">FORMAT</div>
+                                    <div class="font-bold">In-Center & Live Online</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Enroll Card -->
+                    <div class="lg:col-span-4">
+                        <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl glow-card space-y-6">
+                            <div class="border-b border-cardBorder pb-4">
+                                <div class="text-xs text-gray-400 uppercase">Status</div>
+                                <div class="text-xl font-bold text-emerald-400 mt-1">Enrollment Open</div>
+                                <div class="text-xs text-mutedSilver mt-1"><i class="fa-solid fa-user-group mr-1"></i> Weekend & Evening Batches Available</div>
+                            </div>
+                            <ul class="space-y-3 text-xs text-gray-300">
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> High-Rise Lateral Loads (Wind & Quake)</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Deep Foundations & Raft/Pile Design</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> Full Calculation Notes & Reports</li>
+                                <li class="flex items-center gap-2"><i class="fa-solid fa-check text-green-400"></i> CSI Detail & AutoCAD Workflows</li>
+                            </ul>
+                            <a href="#register" onclick="preselectCourse('structure')" class="block w-full text-center py-4 rounded-xl bg-accentSilver hover:bg-white text-darkBg font-bold text-sm transition-all shadow-xl">
+                                Register For Structural Diploma <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Syllabus Breakdown Section -->
+        <section class="py-20 bg-darkBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <div class="lg:col-span-8 space-y-12">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-4">Course Overview</h2>
+                            <p class="text-sm text-mutedSilver leading-relaxed mb-4">
+                                Designed specifically for structural and civil engineers seeking real-world consulting experience. This diploma covers full structural modeling, dynamic analysis, lateral stability under wind and earthquake forces, foundation design, and preparation of complete technical calculation reports for authority approvals.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h2 class="text-2xl font-bold text-white mb-6">Curriculum Modules</h2>
+                            <div class="space-y-4">
+                                
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 1: Gravity Load Analysis & Slab Systems (SAFE)</h3>
+                                        <span class="text-xs font-mono text-gray-400">25 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Modeling Solid, Flat, Hollow Block, and Paneled Beam Slab systems.</li>
+                                        <li>• Long-term deflection calculations and cracking verification.</li>
+                                        <li>• Punching shear verification and reinforcement detailing.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 2: High-Rise Seismic & Wind Analysis (ETABS)</h3>
+                                        <span class="text-xs font-mono text-gray-400">35 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• 3D building modeling, diaphragm assignment, and mass source setup.</li>
+                                        <li>• Equivalent Static & Response Spectrum seismic analysis methods.</li>
+                                        <li>• Shear wall design, core wall coupling beams, and drift/p-delta checks.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 3: Foundations & Soil-Structure Interaction</h3>
+                                        <span class="text-xs font-mono text-gray-400">20 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Isolated, combined, and strip footing design.</li>
+                                        <li>• Raft on elastic foundation modeling and soil spring stiffness.</li>
+                                        <li>• Pile cap design and pile load distribution calculations.</li>
+                                    </ul>
+                                </div>
+
+                                <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <h3 class="text-lg font-bold text-white">Module 4: Steel Framing & Calculation Reports (SAP2000)</h3>
+                                        <span class="text-xs font-mono text-gray-400">15 Hours</span>
+                                    </div>
+                                    <ul class="space-y-2 text-xs text-mutedSilver">
+                                        <li>• Steel trusses, portal frames, and connection details.</li>
+                                        <li>• Exporting automated structural shop drawings via CSI Detail.</li>
+                                        <li>• Preparing structural calculation notes for consultant submittal.</li>
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar Right -->
+                    <div class="lg:col-span-4 space-y-6">
+                        <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl space-y-4">
+                            <h3 class="text-base font-bold text-white border-b border-cardBorder pb-3">Software Covered</h3>
+                            <div class="grid grid-cols-2 gap-2 text-xs font-mono text-gray-300">
+                                <div class="bg-darkBg p-3 rounded-xl border border-cardBorder text-center">ETABS 21</div>
+                                <div class="bg-darkBg p-3 rounded-xl border border-cardBorder text-center">SAFE 21</div>
+                                <div class="bg-darkBg p-3 rounded-xl border border-cardBorder text-center">SAP2000</div>
+                                <div class="bg-darkBg p-3 rounded-xl border border-cardBorder text-center">CSI Detail</div>
+                                <div class="bg-darkBg p-3 rounded-xl border border-cardBorder text-center">AutoCAD</div>
+                                <div class="bg-darkBg p-3 rounded-xl border border-cardBorder text-center">Prokon</div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================================================================= -->
+    <!-- VIEW 4: COURSE DETAILS - ARCHITECTURAL VISUALIZATION -->
+    <!-- ================================================================= -->
+    <main id="view-course-arch" class="page-view hidden flex-grow">
+        <section class="bg-gradient-to-b from-[#0e0e14] to-darkBg py-16 border-b border-cardBorder">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex items-center gap-2 text-xs text-gray-400 mb-4">
+                    <a href="#home" class="hover:text-white">Home</a>
+                    <span>/</span>
+                    <span class="text-white">Architectural Visualization</span>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-8 space-y-4">
+                        <span class="inline-block bg-gray-800 border border-gray-700 text-gray-200 text-xs px-3 py-1 rounded-full font-mono">
+                            <i class="fa-solid fa-compass-drafting mr-1.5 text-gray-400"></i> Architecture & 3D Render
+                        </span>
+                        <h1 class="text-3xl sm:text-5xl font-extrabold text-white leading-tight">
+                            Architectural Design & Visualization
+                        </h1>
+                        <p class="text-base sm:text-lg text-mutedSilver leading-relaxed">
+                            Master modern architectural modeling, photorealistic interior and exterior rendering, lighting setup, material creation, and post-production using 3ds Max, V-Ray/Corona, and Photoshop.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-4 text-xs text-gray-300">
+                            <div class="bg-cardBg border border-cardBorder px-4 py-2 rounded-xl flex items-center gap-2">
+                                <i class="fa-regular fa-clock text-gray-400 text-base"></i>
+                                <div>
+                                    <div class="text-[10px] text-gray-500">DURATION</div>
+                                    <div class="font-bold">75 Hours</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-4">
+                        <div class="bg-cardBg border border-cardBorder p-6 rounded-2xl glow-card space-y-6">
+                            <a href="#register" onclick="preselectCourse('arch')" class="block w-full text-center py-4 rounded-xl bg-accentSilver hover:bg-white text-darkBg font-bold text-sm transition-all shadow-xl">
+                                Register For Arch Viz <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================================================================= -->
+    <!-- VIEW 5: INSTRUCTORS & ABOUT -->
+    <!-- ================================================================= -->
+    <main id="view-instructors" class="page-view hidden flex-grow">
+        <section class="py-20 bg-darkBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Our Instructors</h2>
+                    <h3 class="text-3xl font-extrabold text-white">Engineers Teaching Engineers</h3>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                    <div class="bg-cardBg border border-cardBorder p-8 rounded-2xl glow-card space-y-4">
+                        <div class="w-20 h-20 rounded-2xl bg-gray-800 border-2 border-gray-600 flex items-center justify-center">
+                            <i class="fa-solid fa-user-gear text-3xl text-gray-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Eng. Salah El-Badawy</h4>
+                        <p class="text-xs text-gray-400 font-mono">Senior BIM Manager & Structural Expert</p>
+                        <p class="text-sm text-mutedSilver leading-relaxed">
+                            Lead consultant in BIM systems and structural design with 15+ years of mega-project experience.
+                        </p>
+                    </div>
+                    <div class="bg-cardBg border border-cardBorder p-8 rounded-2xl glow-card space-y-4">
+                        <div class="w-20 h-20 rounded-2xl bg-gray-800 border-2 border-gray-600 flex items-center justify-center">
+                            <i class="fa-solid fa-user-tie text-3xl text-gray-400"></i>
+                        </div>
+                        <h4 class="text-xl font-bold text-white">Eng. Ahmed Hassan</h4>
+                        <p class="text-xs text-gray-400 font-mono">Senior Architectural Specialist</p>
+                        <p class="text-sm text-mutedSilver leading-relaxed">
+                            Expert in architectural design, 3D parametric modeling, and high-end visualization workflows.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- ================================================================= -->
+    <!-- VIEW 6: REGISTRATION & CONTACT PAGE -->
+    <!-- ================================================================= -->
+    <main id="view-register" class="page-view hidden flex-grow">
+        <section class="py-20 bg-darkBg">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Contact Details Left -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div>
+                            <h2 class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-2">Registration & Admissions</h2>
+                            <h3 class="text-3xl font-extrabold text-white">Reserve Your Seat</h3>
+                            <p class="text-sm text-mutedSilver mt-3 leading-relaxed">
+                                Fill out the registration form. Our academic coordinators will reach out on WhatsApp within hours to confirm your schedule and enrollment details.
+                            </p>
+                        </div>
+
+                        <div class="space-y-4 text-sm">
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-cardBg border border-cardBorder">
+                                <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-white shrink-0">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-semibold">Training Center Campus</h5>
+                                    <p class="text-xs text-mutedSilver mt-0.5">Nasr City, Cairo, Egypt</p>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4 p-4 rounded-xl bg-cardBg border border-cardBorder">
+                                <div class="w-10 h-10 rounded-lg bg-gray-800 flex items-center justify-center text-white shrink-0">
+                                    <i class="fa-brands fa-whatsapp text-emerald-400 text-lg"></i>
+                                </div>
+                                <div>
+                                    <h5 class="text-white font-semibold">Direct WhatsApp Line</h5>
+                                    <p class="text-xs text-mutedSilver mt-0.5">+20 100 000 0000</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Registration Form Right -->
+                    <div class="lg:col-span-7">
+                        <div class="bg-cardBg p-8 sm:p-10 rounded-2xl border border-cardBorder shadow-2xl">
+                            <h4 class="text-2xl font-bold text-white mb-2">Course Application Form</h4>
+                            <p class="text-xs text-mutedSilver mb-8">Select your diploma and enter your contact details.</p>
+
+                            <form id="mainRegistrationForm" onsubmit="handleFormSubmit(event)" class="space-y-6">
+                                <div>
+                                    <label for="fullName" class="block text-xs font-semibold text-gray-300 uppercase mb-2">Full Name *</label>
+                                    <input type="text" id="fullName" required 
+                                           placeholder="e.g. Eng. Mohamed Ali" 
+                                           class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gray-400">
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                                    <div>
+                                        <label for="phone" class="block text-xs font-semibold text-gray-300 uppercase mb-2">Phone / WhatsApp Number *</label>
+                                        <input type="tel" id="phone" required 
+                                               placeholder="+20 100 000 0000" 
+                                               class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gray-400">
+                                    </div>
+                                    <div>
+                                        <label for="email" class="block text-xs font-semibold text-gray-300 uppercase mb-2">Email Address</label>
+                                        <input type="email" id="email" 
+                                               placeholder="engineer@domain.com" 
+                                               class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gray-400">
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label for="courseSelect" class="block text-xs font-semibold text-gray-300 uppercase mb-2">Selected Program *</label>
+                                    <select id="courseSelect" required 
+                                            class="w-full bg-darkBg border border-cardBorder rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-gray-400">
+                                        <option value="" disabled selected>-- Choose Diploma --</option>
+                                        <option value="bim">Professional BIM Diploma (Revit + Navisworks)</option>
+                                        <option value="structure">Advanced Structural Engineering (ETABS + SAFE)</option>
+                                        <option value="arch">Architectural Visualization (3ds Max + V-Ray)</option>
+                                        <option value="general">General Inquiry</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold text-gray-300 uppercase mb-2">Preferred Mode</label>
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <label class="flex items-center gap-2 p-3 rounded-xl border border-cardBorder bg-darkBg cursor-pointer">
+                                            <input type="radio" name="mode" value="in-center" checked class="accent-white">
+                                            <span class="text-xs text-gray-300">In-Center (Nasr City)</span>
+                                        </label>
+                                        <label class="flex items-center gap-2 p-3 rounded-xl border border-cardBorder bg-darkBg cursor-pointer">
+                                            <input type="radio" name="mode" value="online" class="accent-white">
+                                            <span class="text-xs text-gray-300">Live Online Interactive</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <button type="submit" class="w-full py-4 rounded-xl bg-accentSilver hover:bg-white text-darkBg font-bold text-base transition-all shadow-xl">
+                                    Submit Application <i class="fa-solid fa-paper-plane ml-2"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+    <!-- Footer -->
+    <footer class="bg-[#040406] border-t border-cardBorder py-10 text-xs text-gray-500 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <img src="New Lgogo_Gray Logo.png" 
+                     alt="3 Engineers Training Center Logo" 
+                     class="h-7 w-auto opacity-70"
+                     onerror="this.onerror=null; this.src='https://placehold.co/180x45/111116/e0e0e0?text=3+ENGINEERS';">
+                <span>&copy; <span id="year"></span> 3 Engineers Training Center. All rights reserved.</span>
+            </div>
+            
+            <div class="flex items-center gap-6">
+                <a href="#home" class="hover:text-gray-300">Home</a>
+                <a href="#course-bim" class="hover:text-gray-300">BIM Diploma</a>
+                <a href="#course-structure" class="hover:text-gray-300">Structural Diploma</a>
+                <a href="#register" class="hover:text-gray-300">Register</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 hidden bg-cardBg border border-emerald-500 text-white px-6 py-4 rounded-xl shadow-2xl flex items-center gap-3">
+        <i class="fa-solid fa-circle-check text-emerald-400 text-xl"></i>
+        <div>
+            <h5 class="text-sm font-bold">Application Received!</h5>
+            <p class="text-xs text-gray-300">We will reach out on WhatsApp shortly.</p>
+        </div>
+    </div>
+
+
+    <!-- Page Navigation Router Script -->
+    <script>
+        document.getElementById('year').innerText = new Date().getFullYear();
+
+        // Single Page Router Logic
+        function handleRouting() {
+            const hash = window.location.hash.replace('#', '') || 'home';
+            const views = document.querySelectorAll('.page-view');
+            
+            views.forEach(view => {
+                if (view.id === `view-${hash}`) {
+                    view.classList.remove('hidden');
+                } else {
+                    view.classList.add('hidden');
+                }
+            });
+
+            // Update navbar links active state
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.dataset.page === hash) {
+                    link.classList.add('text-white', 'font-bold');
+                } else {
+                    link.classList.remove('text-white', 'font-bold');
+                }
+            });
+
+            // Scroll smooth to top on page change
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Listen for URL changes
+        window.addEventListener('hashchange', handleRouting);
+        window.addEventListener('load', handleRouting);
+
+        // Preselect course helper when navigating to register
+        function preselectCourse(courseKey) {
+            const select = document.getElementById('courseSelect');
+            if (select) {
+                select.value = courseKey;
+            }
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('hidden');
+        }
+
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toast');
+            toast.classList.remove('hidden');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 4500);
+
+            document.getElementById('mainRegistrationForm').reset();
+        }
+    </script>
+</body>
+</html>
