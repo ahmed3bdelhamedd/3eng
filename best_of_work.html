@@ -94,12 +94,6 @@
             position: relative;
             background-color: #18181b;
         }
-        .task-img-container img {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .task-img-container:hover img {
-            transform: scale(1.08);
-        }
     </style>
     
     <script>
@@ -183,7 +177,7 @@
         </div>
         
         <div class="w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid">
-            <!-- Files & Images Injected Here -->
+            <!-- Files & PDFs Injected Here -->
         </div>
     </div>
 
@@ -233,37 +227,37 @@
             }
         };
 
-        // هيكل بيانات التاسكات المعتمد على أسماء فولديرات التاسك الفعلية
+        // هيكل بيانات التاسكات مطابق تماماً لمسميات فولديرات التاسكات الفعلية على جيت هاب
         const portfolioData = {
             abdallah: [
-                { id: 0, title: "Task 0 - A limitless model, create your opportunity", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.png", "Task-0-2.png", "Report.pdf"] },
-                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.png", "Report.pdf"] },
-                { id: 2, title: "Task 2 - Be Specialist in Modeling - Part 1", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.png", "Task-2-2.png"] },
-                { id: 3, title: "Task 3 - Be Specialist in Modeling - Part 2", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.png", "Task-3-2.png", "Task-3-3.png"] },
-                { id: 4, title: "Task 4 - Be Specialist in Modeling - Part 3", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.png"] },
-                { id: 5, title: "Task 5 - Secret of Design Drawing - Part 1", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.png", "Task-5-2.png"] },
-                { id: 6, title: "Task 6 - Secret of Design Drawing - Part 2", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.png"] },
-                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.png", "Task-7-2.png"] }
+                { id: 0, title: "Task 0 - A limitless model, create your opportunity", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.pdf", "Task-0-1.png"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.pdf", "Task-1-1.png"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling - Part 1", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.pdf", "Task-2-1.png"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling - Part 2", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.pdf", "Task-3-1.png", "Task-3-2.png", "Task-3-3.png"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling - Part 3", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.pdf", "Task-4-4.pdf", "Task-4-1.png"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing - Part 1", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.pdf", "sections.pdf", "سقف الارضي.pdf", "سقف الاول والمتكرر.pdf"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing - Part 2", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.pdf", "Task-6-1.png"] },
+                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.pdf", "Task-7-1.png"] }
             ],
             saman: [
-                { id: 0, title: "Task 0 - A limitless model", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.png"] },
-                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.png"] },
-                { id: 2, title: "Task 2 - Be Specialist in Modeling", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.png"] },
-                { id: 3, title: "Task 3 - Be Specialist in Modeling", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.png"] },
-                { id: 4, title: "Task 4 - Be Specialist in Modeling", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.png"] },
-                { id: 5, title: "Task 5 - Secret of Design Drawing", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.png"] },
-                { id: 6, title: "Task 6 - Secret of Design Drawing", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.png"] },
-                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.png"] }
+                { id: 0, title: "Task 0 - A limitless model", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.pdf"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.pdf"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.pdf"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.pdf"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.pdf"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.pdf"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.pdf"] },
+                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.pdf"] }
             ],
             youssef: [
-                { id: 0, title: "Task 0 - A limitless model", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.png"] },
-                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.png"] },
-                { id: 2, title: "Task 2 - Be Specialist in Modeling", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.png"] },
-                { id: 3, title: "Task 3 - Be Specialist in Modeling", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.png"] },
-                { id: 4, title: "Task 4 - Be Specialist in Modeling", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.png"] },
-                { id: 5, title: "Task 5 - Secret of Design Drawing", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.png"] },
-                { id: 6, title: "Task 6 - Secret of Design Drawing", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.png"] },
-                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.png"] }
+                { id: 0, title: "Task 0 - A limitless model", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.pdf"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.pdf"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.pdf"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.pdf"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.pdf"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.pdf"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.pdf"] },
+                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.pdf"] }
             ]
         };
 
@@ -326,15 +320,23 @@
             tasks.forEach(task => {
                 const card = document.createElement('div');
                 card.className = "glass-card p-6 flex flex-col justify-between";
-                const firstImg = task.files.find(f => f.endsWith('.png') || f.endsWith('.jpg')) || 'preview.png';
-                const previewPath = `best_of_work/${engFolder}/${task.folderName}/${firstImg}`;
+                
+                // البحث عن أول صورة لعرضها كمعاينة في الكارت، وإذا لم توجد يتم عرض أيقونة PDF
+                const firstImg = task.files.find(f => f.toLowerCase().endsWith('.png') || f.toLowerCase().endsWith('.jpg'));
+                const previewPath = firstImg ? `best_of_work/${engFolder}/${task.folderName}/${firstImg}` : '';
                 
                 card.innerHTML = `
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick='openTaskGallery("${engFolder}", ${JSON.stringify(task)})'>
-                            <img src="${previewPath}" alt="${task.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-folder-open text-2xl"></i> <span class="text-xs">Browse Task Files & PDFs</span>
+                        <div class="task-img-container mb-4 h-52 cursor-pointer bg-zinc-900 border border-zinc-800 flex items-center justify-center overflow-hidden rounded-xl group" onclick='openTaskGallery("${engFolder}", ${JSON.stringify(task)})'>
+                            ${firstImg ? 
+                                `<img src="${previewPath}" alt="${task.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" onerror="this.parentElement.innerHTML='<div class=\'flex flex-col items-center justify-center text-yellow-500\'><i class=\'fas fa-file-pdf text-5xl mb-2 text-red-500\'></i><span class=\'text-xs text-gray-300\'>Click to View Task Files</span></div>'">` :
+                                `<div class="flex flex-col items-center justify-center text-yellow-500">
+                                    <i class="fas fa-folder-open text-5xl mb-2 text-yellow-400"></i>
+                                    <span class="text-xs text-gray-300">Browse Task PDFs</span>
+                                </div>`
+                            }
+                            <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
+                                <i class="fas fa-folder-open text-2xl"></i> <span class="text-xs">Browse Task Folder</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
@@ -345,7 +347,7 @@
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains execution shop drawings, structural models, and calculation reports.</p>
                     </div>
                     <button onclick='openTaskGallery("${engFolder}", ${JSON.stringify(task)})' class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-images"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
+                        <i class="fas fa-folder-open"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
                     </button>
                 `;
                 container.appendChild(card);
@@ -369,13 +371,15 @@
                 if(file.toLowerCase().endsWith('.pdf')) {
                     itemDiv.innerHTML = `
                         <i class="fas fa-file-pdf text-red-500 text-4xl mb-2"></i>
-                        <span class="text-xs text-gray-300 truncate max-w-full">${file}</span>
-                        <a href="${filePath}" target="_blank" class="mt-2 bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500 hover:text-zinc-950 font-bold px-3 py-1.5 rounded-lg text-xs transition">Open PDF Report</a>
+                        <span class="text-xs text-gray-300 truncate max-w-full" title="${file}">${file}</span>
+                        <a href="${filePath}" target="_blank" class="mt-2 bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500 hover:text-zinc-950 font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center gap-1.5">
+                            <i class="fas fa-external-link-alt"></i> Open PDF File
+                        </a>
                     `;
                 } else {
                     itemDiv.innerHTML = `
                         <img src="${filePath}" alt="Task File" class="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
-                        <span class="text-xs text-gray-300 truncate max-w-full">${file}</span>
+                        <span class="text-xs text-gray-300 truncate max-w-full" title="${file}">${file}</span>
                     `;
                 }
                 gridEl.appendChild(itemDiv);
