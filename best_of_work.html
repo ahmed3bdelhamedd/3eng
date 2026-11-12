@@ -149,109 +149,33 @@
             </div>
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
                 <span data-i18n="main_title1">Student Best Works &</span> <br>
-                <span class="text-gradient" data-i18n="main_title2">Complete Task Files Exhibition</span>
+                <span class="text-gradient" data-i18n="main_title2">R25 Tasks Exhibition</span>
             </h1>
             <p class="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto" data-i18n="main_desc">
-                Explore comprehensive student deliverables, drawings, and PDF reports grouped by tasks and engineers directly inside the website.
+                Browse student tasks from Task 0 to Task 7 pulled directly from GitHub repository folders.
             </p>
 
             <!-- Engineer Filter Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mt-8">
-                <button onclick="filterEngineer('all')" id="btn-all" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all">All Engineers</button>
-                <button onclick="filterEngineer('abdallah')" id="btn-abdallah" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">Abdallah Nagy</button>
-                <button onclick="filterEngineer('youssef')" id="btn-youssef" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">Youssef Adel</button>
-                <button onclick="filterEngineer('saman')" id="btn-saman" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">Abdallah El Saman</button>
+                <button onclick="filterEngineer('abdallah')" id="btn-abdallah" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all">Abdallah Nagy - R25</button>
+                <button onclick="filterEngineer('saman')" id="btn-saman" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">عبدالله السمان - R25</button>
+                <button onclick="filterEngineer('youssef')" id="btn-youssef" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">يوسف عادل - R25</button>
             </div>
         </div>
     </section>
 
-    <!-- Tasks Cards Grid -->
+    <!-- Tasks Grid Section -->
     <section class="pb-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tasksContainer">
                 
-                <!-- Task Card Example (Abdallah Nagy) -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-engineer="abdallah">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openTaskGallery('Abdallah Nagy - Task 0', [
-                            'best-of-work/abdallah-nagy/task0/img1.jpg',
-                            'best-of-work/abdallah-nagy/task0/img2.jpg'
-                        ])">
-                            <img src="best-of-work/abdallah-nagy/task0/img1.jpg" alt="Task 0" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-images text-2xl"></i> <span class="text-xs" data-i18n="view_all_files">View All Task Files & PDFs</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 00</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">A Limitless Model, Create Your Opportunity</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains multiple execution drawings, calculation sheets, and project reports.</p>
-                    </div>
-                    <button onclick="openTaskGallery('Abdallah Nagy - Task 0', [
-                        'best-of-work/abdallah-nagy/task0/img1.jpg',
-                        'best-of-work/abdallah-nagy/task0/img2.jpg'
-                    ])" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-folder-open"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
-                    </button>
-                </div>
-
-                <!-- Task Card Example (Youssef Adel) -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-engineer="youssef">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openTaskGallery('Youssef Adel - Task 1', [
-                            'best-of-work/youssef-adel/task1/img1.jpg'
-                        ])">
-                            <img src="best-of-work/youssef-adel/task1/img1.jpg" alt="Task 1" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-images text-2xl"></i> <span class="text-xs" data-i18n="view_all_files">View All Task Files & PDFs</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 01</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Youssef Adel</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Structural BIM Fundamentals</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains multiple execution drawings, calculation sheets, and project reports.</p>
-                    </div>
-                    <button onclick="openTaskGallery('Youssef Adel - Task 1', [
-                        'best-of-work/youssef-adel/task1/img1.jpg'
-                    ])" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-folder-open"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
-                    </button>
-                </div>
-
-                <!-- Task Card Example (Abdallah El Saman) -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-engineer="saman">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openTaskGallery('Abdallah El Saman - Task 2', [
-                            'best-of-work/abdallah-saman/task2/img1.jpg'
-                        ])">
-                            <img src="best-of-work/abdallah-saman/task2/img1.jpg" alt="Task 2" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop'">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-images text-2xl"></i> <span class="text-xs" data-i18n="view_all_files">View All Task Files & PDFs</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 02</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah El Saman</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 1</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains multiple execution drawings, calculation sheets, and project reports.</p>
-                    </div>
-                    <button onclick="openTaskGallery('Abdallah El Saman - Task 2', [
-                        'best-of-work/abdallah-saman/task2/img1.jpg'
-                    ])" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-folder-open"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
-                    </button>
-                </div>
+                <!-- سيتم تعبئة التاسكات ديناميكياً هنا عبر الجافاسكريبت لكل مهندس -->
 
             </div>
         </div>
     </section>
 
-    <!-- Multi-File Gallery Modal Viewer -->
+    <!-- Task Files Modal Viewer -->
     <div id="taskGalleryModal" class="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl hidden flex flex-col items-center justify-center p-4 sm:p-6">
         <div class="w-full max-w-5xl flex justify-between items-center mb-4">
             <h3 id="galleryTitle" class="text-xl font-bold text-yellow-400"></h3>
@@ -261,7 +185,7 @@
         </div>
         
         <div class="w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid">
-            <!-- Dynamic Files Injected Here -->
+            <!-- الملفات والصور ستظهر هنا -->
         </div>
     </div>
 
@@ -292,9 +216,9 @@
                 nav_best_work: "Best Of Work",
                 badge_title: "Structural Engineering Diploma Showcase",
                 main_title1: "Student Best Works &",
-                main_title2: "Complete Task Files Exhibition",
-                main_desc: "Explore comprehensive student deliverables, drawings, and PDF reports grouped by tasks and engineers directly inside the website.",
-                view_all_files: "View All Task Files & PDFs",
+                main_title2: "R25 Tasks Exhibition",
+                main_desc: "Browse student tasks from Task 0 to Task 7 pulled directly from GitHub repository folders.",
+                view_task_files: "View Task Files & PDFs",
                 open_gallery: "Browse Task Folder",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
@@ -305,12 +229,46 @@
                 nav_best_work: "أفضل الأعمال",
                 badge_title: "معرض مشاريع الدبلومة الهندسية الإنشائية",
                 main_title1: "أفضل أعمال الطلبة",
-                main_title2: "ومعرض ملفات التاسكات بالكامل",
-                main_desc: "تصفح مشاريع الطلبة واللوحات الهندسية والتقارير المرتبطة بكل تاسك مباشرة من داخل المنصة.",
-                view_all_files: "عرض جميع ملفات التاسك والـ PDF",
+                main_title2: "ومعرض تاسكات R25 (من 0 إلى 7)",
+                main_desc: "تصفح جميع تاسكات الطلبة والملفات والتقارير مباشرة من مجلدات جيت هاب.",
+                view_task_files: "عرض ملفات التاسك والـ PDFs",
                 open_gallery: "تصفح فولدر التاسك",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
+        };
+
+        // هيكل بيانات التاسكات لكل مهندس بناءً على مجلدات جيت هاب الخاصة بك
+        const portfolioData = {
+            abdallah: [
+                { id: 0, title: "Task 0 - A limitless model, create your opportunity", folder: "Abdallah Nagy - R25", files: ["task0.jpg", "report.pdf"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folder: "Abdallah Nagy - R25", files: ["task1.jpg"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling - Part 1", folder: "Abdallah Nagy - R25", files: ["task2.jpg"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling - Part 2", folder: "Abdallah Nagy - R25", files: ["task3.jpg"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling - Part 3", folder: "Abdallah Nagy - R25", files: ["task4.jpg"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing - Part 1", folder: "Abdallah Nagy - R25", files: ["task5.jpg"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing - Part 2", folder: "Abdallah Nagy - R25", files: ["task6.jpg"] },
+                { id: 7, title: "Task 7 - BIM Department System", folder: "Abdallah Nagy - R25", files: ["task7.jpg"] }
+            ],
+            saman: [
+                { id: 0, title: "Task 0 - A limitless model", folder: "عبدالله السمان - R25", files: ["task0.jpg"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folder: "عبدالله السمان - R25", files: ["task1.jpg"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling", folder: "عبدالله السمان - R25", files: ["task2.jpg"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling", folder: "عبدالله السمان - R25", files: ["task3.jpg"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling", folder: "عبدالله السمان - R25", files: ["task4.jpg"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing", folder: "عبدالله السمان - R25", files: ["task5.jpg"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing", folder: "عبدالله السمان - R25", files: ["task6.jpg"] },
+                { id: 7, title: "Task 7 - BIM Department System", folder: "عبدالله السمان - R25", files: ["task7.jpg"] }
+            ],
+            youssef: [
+                { id: 0, title: "Task 0 - A limitless model", folder: "يوسف عادل - R25", files: ["task0.jpg"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folder: "يوسف عادل - R25", files: ["task1.jpg"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling", folder: "يوسف عادل - R25", files: ["task2.jpg"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling", folder: "يوسف عادل - R25", files: ["task3.jpg"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling", folder: "يوسف عادل - R25", files: ["task4.jpg"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing", folder: "يوسف عادل - R25", files: ["task5.jpg"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing", folder: "يوسف عادل - R25", files: ["task6.jpg"] },
+                { id: 7, title: "Task 7 - BIM Department System", folder: "يوسف عادل - R25", files: ["task7.jpg"] }
+            ]
         };
 
         let currentLang = 'en';
@@ -348,53 +306,79 @@
             }
         }
 
-        function filterEngineer(eng) {
-            const cards = document.querySelectorAll('#tasksContainer > div');
-            const btnAll = document.getElementById('btn-all');
-            const btnAbdallah = document.getElementById('btn-abdallah');
-            const btnYoussef = document.getElementById('btn-youssef');
-            const btnSaman = document.getElementById('btn-saman');
-
-            [btnAll, btnAbdallah, btnYoussef, btnSaman].forEach(btn => {
-                if(btn) btn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all";
-            });
-
-            const activeBtn = document.getElementById(`btn-${eng}`);
-            if(activeBtn) activeBtn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all";
-
-            cards.forEach(card => {
-                if (eng === 'all' || card.getAttribute('data-engineer') === eng) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
+        function filterEngineer(engKey) {
+            ['abdallah', 'saman', 'youssef'].forEach(k => {
+                const btn = document.getElementById(`btn-${k}`);
+                if(btn) {
+                    btn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all";
                 }
+            });
+            const activeBtn = document.getElementById(`btn-${engKey}`);
+            if(activeBtn) {
+                activeBtn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all";
+            }
+
+            renderTasks(engKey);
+        }
+
+        function renderTasks(engKey) {
+            const container = document.getElementById('tasksContainer');
+            container.innerHTML = '';
+            const tasks = portfolioData[engKey];
+
+            tasks.forEach(task => {
+                const folderName = task.folder;
+                const taskFolderName = `Task ${task.id} - ...`; // أو اسم الفولدر الفعلي على جيت هاب
+                const card = document.createElement('div');
+                card.className = "glass-card p-6 flex flex-col justify-between";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick='openTaskGallery(${JSON.stringify(task)})'>
+                            <img src="best_of_work/${folderName}/Task ${task.id}/preview.jpg" alt="${task.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
+                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
+                                <i class="fas fa-folder-open text-2xl"></i> <span class="text-xs" data-i18n="view_task_files">View Task Files & PDFs</span>
+                            </div>
+                        </div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 0${task.id}</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">${folderName}</span>
+                        </div>
+                        <h3 class="text-lg font-bold mb-2">${task.title}</h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains execution shop drawings, structural models, and calculation reports.</p>
+                    </div>
+                    <button onclick='openTaskGallery(${JSON.stringify(task)})' class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fas fa-images"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
+                    </button>
+                `;
+                container.appendChild(card);
             });
         }
 
-        // Open Multi-File Task Gallery Modal
-        function openTaskGallery(title, filesArray) {
+        function openTaskGallery(task) {
             const modal = document.getElementById('taskGalleryModal');
             const titleEl = document.getElementById('galleryTitle');
             const gridEl = document.getElementById('galleryGrid');
 
             modal.classList.remove('hidden');
-            titleEl.innerText = title;
+            titleEl.innerText = `${task.folder} - ${task.title}`;
             gridEl.innerHTML = '';
 
-            filesArray.forEach(file => {
+            task.files.forEach(file => {
+                const filePath = `best_of_work/${task.folder}/Task ${task.id}/${file}`;
                 const itemDiv = document.createElement('div');
                 itemDiv.className = "bg-zinc-800/60 border border-zinc-700 rounded-xl p-3 flex flex-col items-center justify-center gap-2 h-48 overflow-hidden relative group";
                 
                 if(file.endsWith('.pdf')) {
                     itemDiv.innerHTML = `
                         <i class="fas fa-file-pdf text-red-500 text-4xl mb-2"></i>
-                        <span class="text-xs text-gray-300 truncate max-w-full">${file.split('/').pop()}</span>
-                        <a href="${file}" target="_blank" class="mt-2 bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500 hover:text-zinc-950 font-bold px-3 py-1.5 rounded-lg text-xs transition">Open PDF</a>
+                        <span class="text-xs text-gray-300 truncate max-w-full">${file}</span>
+                        <a href="${filePath}" target="_blank" class="mt-2 bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500 hover:text-zinc-950 font-bold px-3 py-1.5 rounded-lg text-xs transition">Open PDF Report</a>
                     `;
                 } else {
                     itemDiv.innerHTML = `
-                        <img src="${file}" alt="Task File" class="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition duration-300">
-                        <span class="text-xs text-gray-300 truncate max-w-full">${file.split('/').pop()}</span>
+                        <img src="${filePath}" alt="Task File" class="w-full h-32 object-cover rounded-lg group-hover:scale-105 transition duration-300" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
+                        <span class="text-xs text-gray-300 truncate max-w-full">${file}</span>
                     `;
                 }
                 gridEl.appendChild(itemDiv);
@@ -412,6 +396,7 @@
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
             }
+            renderTasks('abdallah'); // العرض الافتراضي لعبدالله نغي
         });
     </script>
 </body>
