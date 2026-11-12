@@ -19,7 +19,6 @@
             overflow-x: hidden;
         }
 
-        /* خلفية هندسية (Blueprint Grid) فخمة ومطورة */
         .blueprint-bg {
             background-image: 
                 linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
@@ -89,17 +88,17 @@
                     </a>
                 </div>
                 
-                <!-- روابط التنقل -->
+                <!-- روابط التنقل (البرامج التدريبية تنزل على قسم الكورسات أو صفحة الكورسات) -->
                 <div class="hidden md:flex items-center space-x-8 space-x-reverse">
                     <a href="index.html" class="text-white font-semibold transition border-b-2 border-blue-500 pb-1">الرئيسية</a>
                     <a href="#courses" class="text-gray-300 hover:text-white font-semibold transition pb-1">البرامج التدريبية</a>
-                    <!-- رابط صفحة الإدارة (مخفي افتراضياً) -->
+                    <!-- رابط صفحة الإدارة (الداشبورد) مخفي ويظهر للأدمن فقط أو من admin.html -->
                     <a href="admin.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/40 border border-blue-500/30 px-3 py-1.5 rounded-lg shadow-sm">
-                        <i class="fas fa-tools ml-1"></i> لوحة التحكم
+                        <i class="fas fa-tools ml-1"></i> لوحة التحكم (الداشبورد)
                     </a>
                 </div>
                 
-                <!-- أزرار الزائر (تم التعديل لتضمين "ابدا الآن" في مكان "سجل الآن" وإزالة الزر المجاور) -->
+                <!-- زر ابدا الآن (بدون تكرار) -->
                 <div id="guestLinks" class="flex items-center gap-4">
                     <a href="login.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-7 py-2.5 rounded-xl font-bold transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.35)] hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transform hover:-translate-y-0.5">
                         ابدا الآن
@@ -123,7 +122,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="text-right">
                     <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-bold mb-6 backdrop-blur-md shadow-sm">
-                        <i class="fas fa-drafting-compass animate-spin-slow"></i> المركز الهندسي المعتمد
+                        <i class="fas fa-drafting-compass"></i> المركز الهندسي المعتمد
                     </div>
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6 leading-tight">
                         نبني مستقبلك <br>
@@ -136,13 +135,12 @@
                         <a href="#courses" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-8 py-3.5 rounded-xl font-bold transition-all duration-300 shadow-lg shadow-blue-600/30 flex items-center gap-2 transform hover:-translate-y-0.5">
                             تصفح المسارات <i class="fas fa-arrow-left text-xs mt-0.5"></i>
                         </a>
-                        <a href="#features" class="bg-slate-800/80 hover:bg-slate-700/80 backdrop-blur-md border border-slate-700 text-white px-8 py-3.5 rounded-xl font-bold transition-all duration-300">
-                            لماذا نحن؟
+                        <a href="admin.html" class="bg-slate-800/80 hover:bg-slate-700/80 backdrop-blur-md border border-slate-700 text-white px-8 py-3.5 rounded-xl font-bold transition-all duration-300 flex items-center gap-2">
+                            <i class="fas fa-tools text-blue-400"></i> لوحة التحكم (الداشبورد)
                         </a>
                     </div>
                 </div>
                 
-                <!-- شكل هندسي في الـ Hero -->
                 <div class="hidden lg:flex justify-center relative">
                     <div class="w-72 h-72 border-2 border-blue-500/20 rounded-full absolute animate-[spin_25s_linear_infinite]"></div>
                     <div class="w-96 h-96 border border-indigo-500/15 rounded-full absolute animate-[spin_35s_linear_infinite_reverse]"></div>
@@ -182,11 +180,11 @@
         </div>
     </section>
 
-    <!-- قسم المسارات الهندسية -->
+    <!-- قسم البرامج التدريبية (الكورسات) -->
     <section id="courses" class="py-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">المسارات <span class="text-gradient">الهندسية المتاحة</span></h2>
+                <h2 class="text-3xl lg:text-4xl font-extrabold mb-4">البرامج التدريبية <span class="text-gradient">والمسارات الهندسية</span></h2>
                 <p class="text-gray-400 text-base">اختر مسارك وابدأ رحلة الاحتراف بخطوات عملية ومدروسة.</p>
             </div>
             
@@ -194,7 +192,7 @@
                 
                 <!-- كارت 1: مسار الـ BIM -->
                 <div class="glass-card p-8 flex flex-col group cursor-pointer">
-                    <div class="w-14 h-14 bg-blue-900/40 rounded-2xl flex items-center justify-center mb-6 text-blue-400 border border-blue-500/30 group-hover:bg-blue-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-blue-500/30 transition-all duration-300">
+                    <div class="w-14 h-14 bg-blue-900/40 rounded-2xl flex items-center justify-center mb-6 text-blue-400 border border-blue-500/30 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                         <i class="fas fa-cubes text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">نمذجة معلومات البناء (BIM)</h3>
@@ -208,7 +206,7 @@
 
                 <!-- كارت 2: التصميم الإنشائي -->
                 <div class="glass-card p-8 flex flex-col group cursor-pointer">
-                    <div class="w-14 h-14 bg-indigo-900/40 rounded-2xl flex items-center justify-center mb-6 text-indigo-400 border border-indigo-500/30 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-lg group-hover:shadow-indigo-500/30 transition-all duration-300">
+                    <div class="w-14 h-14 bg-indigo-900/40 rounded-2xl flex items-center justify-center mb-6 text-indigo-400 border border-indigo-500/30 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                         <i class="fas fa-building text-2xl"></i>
                     </div>
                     <h3 class="text-xl font-bold mb-3 text-white group-hover:text-indigo-400 transition-colors">التصميم الإنشائي المتقدم</h3>
@@ -246,26 +244,24 @@
                 <span class="text-gray-500 text-sm font-medium">© 2026 جميع الحقوق محفوظة لمركز 3 Engineers</span>
             </div>
             <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 hover:border-blue-500 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/201116512028" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600 hover:border-green-500 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
-    <!-- سكربت الصلاحيات والدخول -->
+    <!-- سكربت الصلاحيات والدخول والتحكم -->
     <script>
         document.addEventListener("DOMContentLoaded", () => {
             const userRole = localStorage.getItem('userRole');
             const userName = localStorage.getItem('userName');
 
             if (userRole) {
-                // المستخدم مسجل دخول
                 document.getElementById('guestLinks').classList.add('hidden-el');
                 document.getElementById('userLinks').classList.remove('hidden-el');
                 document.getElementById('userNameDisplay').innerHTML = `<i class="fas fa-user-circle text-blue-400 ml-1.5 text-base"></i> ${userName}`;
 
-                // لو أدمن
                 if (userRole === 'admin') {
                     document.getElementById('adminLink').classList.remove('hidden-el');
                 }
