@@ -17,6 +17,7 @@
             background-color: #070b14; 
             color: #f8fafc; 
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .blueprint-bg {
@@ -90,15 +91,15 @@
                 
                 <!-- روابط التنقل -->
                 <div class="hidden md:flex items-center space-x-8 space-x-reverse">
-                    <a href="index.html" class="text-white font-semibold transition border-b-2 border-blue-500 pb-1">الرئيسية</a>
-                    <a href="#courses" class="text-gray-300 hover:text-white font-semibold transition pb-1">البرامج التدريبية</a>
-                    <!-- رابط لوحة التحكم (مخفي افتراضياً ولا يظهر إلا للأدمن المسجل) -->
+                    <a href="index.html" class="text-gray-300 hover:text-white font-semibold transition pb-1">الرئيسية</a>
+                    <a href="#courses" class="text-white font-semibold transition border-b-2 border-blue-500 pb-1">البرامج التدريبية</a>
+                    <!-- رابط لوحة التحكم (مخفي ولا يظهر إلا للأدمن) -->
                     <a href="admin.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/40 border border-blue-500/30 px-3 py-1.5 rounded-lg shadow-sm">
                         <i class="fas fa-tools ml-1"></i> لوحة التحكم
                     </a>
                 </div>
                 
-                <!-- زر ابدا الآن (بدون أي أزرار بجانبه) -->
+                <!-- زر ابدا الآن -->
                 <div id="guestLinks" class="flex items-center gap-4">
                     <a href="login.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-7 py-2.5 rounded-xl font-bold transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.35)] hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transform hover:-translate-y-0.5">
                         ابدا الآن
@@ -259,12 +260,10 @@
             const userName = localStorage.getItem('userName');
 
             if (userRole) {
-                // المستخدم مسجل دخول
                 document.getElementById('guestLinks').classList.add('hidden-el');
                 document.getElementById('userLinks').classList.remove('hidden-el');
                 document.getElementById('userNameDisplay').innerHTML = `<i class="fas fa-user-circle text-blue-400 ml-1.5 text-base"></i> ${userName}`;
 
-                // لو أدمن، يظهر زر لوحة التحكم
                 if (userRole === 'admin') {
                     document.getElementById('adminLink').classList.remove('hidden-el');
                 }
