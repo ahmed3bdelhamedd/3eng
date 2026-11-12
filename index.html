@@ -4,25 +4,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3 Engineers Training Center</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css">
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .glass-card {
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            transition: all 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-glow {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .btn-glow:hover {
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
+        }
+    </style>
 </head>
 <body class="antialiased">
 
-    <!-- Navbar -->
+    <!-- Navbar متصل بكل الصفحات -->
     <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
+                <!-- اللوجو -->
                 <div class="flex-shrink-0">
-                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-12">
+                    <a href="index.html">
+                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-12">
+                    </a>
                 </div>
-                <div class="hidden md:flex space-x-8 space-x-reverse">
+                
+                <!-- روابط التنقل -->
+                <div class="hidden md:flex items-center space-x-8 space-x-reverse">
                     <a href="index.html" class="text-gray-300 hover:text-white transition">الرئيسية</a>
                     <a href="#courses" class="text-gray-300 hover:text-white transition">دبلوماتنا</a>
-                    <a href="https://wa.me/201116512028" class="text-gray-300 hover:text-white transition">تواصل معنا</a>
+                    <!-- رابط صفحة الإدارة (ممكن تخفيه بعدين أو تخليه يظهر للأدمن بس) -->
+                    <a href="admin.html" class="text-gray-300 hover:text-blue-400 transition text-sm"><i class="fas fa-cog"></i> لوحة الإدارة</a>
+                    <!-- رابط تسجيل الدخول -->
+                    <a href="login.html" class="text-gray-300 hover:text-white transition font-bold">تسجيل الدخول</a>
                 </div>
+                
+                <!-- زر التسجيل الجديد -->
                 <div>
-                    <a href="#courses" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-semibold btn-glow">ابدأ رحلتك</a>
+                    <a href="login.html" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-full font-semibold btn-glow transition">
+                        حساب جديد
+                    </a>
                 </div>
             </div>
         </div>
@@ -39,6 +97,10 @@
             <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10">
                 المركز المعتمد الأول لتقديم الدبلومات الهندسية العملية بأحدث التقنيات وأقوى المحاضرين في السوق.
             </p>
+            <!-- زر استعراض الكورسات -->
+            <a href="#courses" class="inline-block bg-transparent border-2 border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white px-8 py-3 rounded-full font-bold transition">
+                تصفح الكورسات المتاحة
+            </a>
         </div>
     </section>
 
@@ -48,7 +110,7 @@
             <h2 class="text-3xl font-bold text-center mb-12">أقوى <span class="text-gradient">البرامج التدريبية</span></h2>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- BIM Course Card -->
+                <!-- كارت دبلومة BIM (مربوط بملف bim.html) -->
                 <div class="glass-card p-8 flex flex-col">
                     <div class="bg-blue-500/20 w-16 h-16 rounded-lg flex items-center justify-center mb-6 text-blue-400 text-2xl font-bold">BIM</div>
                     <h3 class="text-2xl font-bold mb-3">دبلومة الـ BIM المتكاملة</h3>
@@ -56,7 +118,7 @@
                     <a href="bim.html" class="mt-auto w-full text-center border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white py-3 rounded-lg transition-colors font-semibold">التفاصيل والتسجيل &larr;</a>
                 </div>
 
-                <!-- Structure Course Card -->
+                <!-- كارت التصميم الإنشائي (مربوط بملف structure.html) -->
                 <div class="glass-card p-8 flex flex-col">
                     <div class="bg-indigo-500/20 w-16 h-16 rounded-lg flex items-center justify-center mb-6 text-indigo-400 text-2xl font-bold">Str</div>
                     <h3 class="text-2xl font-bold mb-3">التصميم الإنشائي المتقدم</h3>
