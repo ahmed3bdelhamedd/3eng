@@ -4,89 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title data-i18n="page_title">Login | 3 Engineers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        brand: { 500: '#38bdf8', 600: '#0284c7' }
-                    }
-                }
-            }
+            theme: { extend: { colors: { brand: { 500: '#38bdf8', 600: '#0284c7' } } } }
         }
     </script>
-    <!-- Cairo Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        body {
-            font-family: 'Cairo', sans-serif;
-            transition: background-color 0.4s ease, color 0.4s ease;
-        }
+        body { font-family: 'Cairo', sans-serif; transition: background-color 0.4s ease, color 0.4s ease; }
         .dark body { background-color: #070b14; color: #f8fafc; }
         .light body { background-color: #f1f5f9; color: #0f172a; }
 
         .blueprint-bg {
-            background-image: 
-                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
-            background-size: 40px 40px;
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -2;
+            background-image: linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px; position: absolute; top: 0; left: 0; right: 0; bottom: 0; z-index: -2;
         }
 
-        .glass-nav { 
-            backdrop-filter: blur(16px); 
-            transition: all 0.3s ease;
-        }
+        .glass-nav { backdrop-filter: blur(16px); transition: all 0.3s ease; }
         .dark .glass-nav { background: rgba(7, 11, 20, 0.9); border-bottom: 1px solid rgba(56, 189, 248, 0.15); }
         .light .glass-nav { background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
 
-        .glass-panel {
-            backdrop-filter: blur(16px);
-            border-radius: 24px;
-            transition: all 0.4s ease;
-        }
+        .glass-panel { backdrop-filter: blur(16px); border-radius: 24px; transition: all 0.4s ease; }
         .dark .glass-panel { background: rgba(15, 23, 42, 0.75); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6); }
         .light .glass-panel { background: rgba(255, 255, 255, 0.9); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.08); }
 
-        .input-field {
-            width: 100%;
-            border-radius: 0.75rem;
-            padding: 0.85rem 1rem;
-            transition: all 0.3s ease;
-        }
+        .input-field { width: 100%; border-radius: 0.75rem; padding: 0.85rem 1rem; transition: all 0.3s ease; }
         .dark .input-field { background: rgba(11, 17, 32, 0.8); border: 1px solid rgba(56, 189, 248, 0.2); color: white; }
         .light .input-field { background: rgba(241, 245, 249, 1); border: 1px solid rgba(203, 213, 225, 1); color: #0f172a; }
-        
-        .input-field:focus {
-            outline: none;
-            border-color: #38bdf8;
-            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25);
-        }
+        .input-field:focus { outline: none; border-color: #38bdf8; box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.25); }
 
-        .btn-glow {
-            transition: all 0.3s ease;
-        }
-        .btn-glow:hover {
-            box-shadow: 0 0 25px rgba(56, 189, 248, 0.5);
-            transform: translateY(-2px);
-        }
+        .btn-glow { transition: all 0.3s ease; }
+        .btn-glow:hover { box-shadow: 0 0 25px rgba(56, 189, 248, 0.5); transform: translateY(-2px); }
     </style>
 </head>
 <body class="min-h-screen flex flex-col justify-between relative overflow-x-hidden">
 
-    <!-- الخلفية الهندسية -->
     <div class="blueprint-bg"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
-    <!-- Navbar -->
     <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -96,16 +58,13 @@
                     </a>
                 </div>
                 
-                <!-- أدوات التحكم في الهيدر (اللغة + الوضع الليلي/النهاري + زر الرئيسية) -->
                 <div class="flex items-center gap-3">
                     <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
                         <i class="fas fa-globe"></i> <span id="langText">AR</span>
                     </button>
-
                     <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
                         <i id="themeIcon" class="fas fa-sun text-sm"></i>
                     </button>
-
                     <a href="index.html" class="bg-slate-800 hover:bg-slate-700 text-gray-200 border border-slate-700 px-4 py-2 rounded-xl font-bold transition text-xs sm:text-sm flex items-center gap-2">
                         <i class="fas fa-arrow-left"></i> <span data-i18n="back_home">Back to Home</span>
                     </a>
@@ -114,57 +73,41 @@
         </div>
     </nav>
 
-    <!-- Main Container -->
     <div class="flex-grow flex items-center justify-center px-4 pt-32 pb-16 relative z-10">
         <div class="glass-panel w-full max-w-md p-8 rounded-3xl relative">
-            
-            <!-- أزرار التبديل (Tabs) -->
             <div class="flex mb-8 border-b border-slate-700/50">
-                <button id="loginTabBtn" onclick="toggleForm('login')" class="flex-1 pb-3 text-center font-bold text-blue-400 border-b-2 border-blue-500 transition-colors text-base" data-i18n="tab_login">
-                    Login
-                </button>
-                <button id="signupTabBtn" onclick="toggleForm('signup')" class="flex-1 pb-3 text-center font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-200 transition-colors text-base" data-i18n="tab_signup">
-                    Sign Up
-                </button>
+                <button id="loginTabBtn" onclick="toggleForm('login')" class="flex-1 pb-3 text-center font-bold text-blue-400 border-b-2 border-blue-500 transition-colors text-base" data-i18n="tab_login">Login</button>
+                <button id="signupTabBtn" onclick="toggleForm('signup')" class="flex-1 pb-3 text-center font-bold text-gray-400 border-b-2 border-transparent hover:text-gray-200 transition-colors text-base" data-i18n="tab_signup">Sign Up</button>
             </div>
 
-            <!-- فورم تسجيل الدخول (Login Form) -->
+            <!-- Login Form -->
             <form id="loginForm" onsubmit="handleLogin(event)" class="space-y-5">
                 <div>
                     <label class="block text-sm text-gray-400 mb-2 font-semibold" data-i18n="email_label">Email Address</label>
                     <div class="relative">
                         <i class="fas fa-envelope absolute left-3.5 top-4 text-gray-500 rtl:right-3.5 rtl:left-auto"></i>
-                        <input type="email" id="loginEmail" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="***@gmail.com" required>
+                        <input type="email" id="loginEmail" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="ahmed3bdelhamedwork@gmail.com" required>
                     </div>
                 </div>
                 <div>
                     <div class="flex justify-between items-center mb-2">
                         <label class="block text-sm text-gray-400 font-semibold" data-i18n="pass_label">Password</label>
-                        <a href="#" class="text-xs text-blue-400 hover:text-blue-300 font-medium" data-i18n="forgot_pass">Forgot password?</a>
                     </div>
                     <div class="relative">
                         <i class="fas fa-lock absolute left-3.5 top-4 text-gray-500 rtl:right-3.5 rtl:left-auto"></i>
                         <input type="password" id="loginPassword" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="••••••••" required>
                     </div>
                 </div>
-                
-                <div class="flex items-center gap-2 mt-2">
-                    <input type="checkbox" id="remember" class="rounded border-gray-600 bg-slate-800 text-blue-500 focus:ring-blue-500 w-4 h-4">
-                    <label for="remember" class="text-sm text-gray-400 cursor-pointer" data-i18n="remember_me">Remember me on this device</label>
-                </div>
-
-                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl mt-6 btn-glow shadow-lg shadow-blue-600/30" data-i18n="btn_login">
-                    Login
-                </button>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl mt-6 btn-glow shadow-lg shadow-blue-600/30" data-i18n="btn_login">Login</button>
             </form>
 
-            <!-- فورم إنشاء الحساب (Sign Up Form) -->
+            <!-- Signup Form -->
             <form id="signupForm" onsubmit="handleSignup(event)" class="space-y-4 hidden">
                 <div>
                     <label class="block text-sm text-gray-400 mb-1.5 font-semibold" data-i18n="name_label">Full Name</label>
                     <div class="relative">
                         <i class="fas fa-user absolute left-3.5 top-3.5 text-gray-500 rtl:right-3.5 rtl:left-auto"></i>
-                        <input type="text" id="signupName" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="Full Name" required>
+                        <input type="text" id="signupName" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="Ahmed Abdelhamed" required>
                     </div>
                 </div>
                 <div>
@@ -175,92 +118,42 @@
                     </div>
                 </div>
                 <div>
-                    <label class="block text-sm text-gray-400 mb-1.5 font-semibold" data-i18n="phone_label">Phone Number</label>
-                    <div class="relative">
-                        <i class="fas fa-phone absolute left-3.5 top-3.5 text-gray-500 rtl:right-3.5 rtl:left-auto"></i>
-                        <input type="tel" id="signupPhone" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="01116512028" required>
-                    </div>
-                </div>
-                <div>
                     <label class="block text-sm text-gray-400 mb-1.5 font-semibold" data-i18n="pass_label">Password</label>
                     <div class="relative">
                         <i class="fas fa-lock absolute left-3.5 top-3.5 text-gray-500 rtl:right-3.5 rtl:left-auto"></i>
                         <input type="password" id="signupPassword" class="input-field pl-10 rtl:pr-10 rtl:pl-4" placeholder="••••••••" required>
                     </div>
                 </div>
-
-                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl mt-4 btn-glow shadow-lg shadow-blue-600/30" data-i18n="btn_signup">
-                    Create Account
-                </button>
+                <button type="submit" class="w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3.5 rounded-xl mt-4 btn-glow shadow-lg shadow-blue-600/30" data-i18n="btn_signup">Create Account</button>
             </form>
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="border-t border-slate-200 dark:border-slate-800/80 bg-white/60 dark:bg-slate-900/60 backdrop-blur-md py-8">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
             <div class="flex items-center gap-4">
                 <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 grayscale hover:grayscale-0 transition">
                 <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
             </div>
-            <div class="flex gap-4">
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/201116512028" class="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 flex items-center justify-center text-gray-600 dark:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300"><i class="fab fa-whatsapp"></i></a>
-            </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Authentication, Theme & Translation -->
     <script>
-        // Multi-language Dictionary
         const translations = {
-            en: {
-                page_title: "Login | 3 Engineers",
-                back_home: "Back to Home",
-                tab_login: "Login",
-                tab_signup: "Sign Up",
-                email_label: "Email Address",
-                pass_label: "Password",
-                forgot_pass: "Forgot password?",
-                remember_me: "Remember me on this device",
-                btn_login: "Login",
-                name_label: "Full Name",
-                phone_label: "Phone Number",
-                btn_signup: "Create Account",
-                footer_rights: "© 2026 3 Engineers Center. All rights reserved."
-            },
-            ar: {
-                page_title: "تسجيل الدخول | 3 Engineers",
-                back_home: "العودة للرئيسية",
-                tab_login: "تسجيل الدخول",
-                tab_signup: "حساب جديد",
-                email_label: "البريد الإلكتروني",
-                pass_label: "كلمة المرور",
-                forgot_pass: "نسيت كلمة المرور؟",
-                remember_me: "تذكرني على هذا الجهاز",
-                btn_login: "دخول",
-                name_label: "الاسم بالكامل",
-                phone_label: "رقم الهاتف",
-                btn_signup: "إنشاء الحساب",
-                footer_rights: "© 2026 مركز 3 Engineers - جميع الحقوق محفوظة."
-            }
+            en: { page_title: "Login | 3 Engineers", back_home: "Back to Home", tab_login: "Login", tab_signup: "Sign Up", email_label: "Email Address", pass_label: "Password", btn_login: "Login", name_label: "Full Name", btn_signup: "Create Account", footer_rights: "© 2026 3 Engineers Center. All rights reserved." },
+            ar: { page_title: "تسجيل الدخول | 3 Engineers", back_home: "العودة للرئيسية", tab_login: "تسجيل الدخول", tab_signup: "حساب جديد", email_label: "البريد الإلكتروني", pass_label: "كلمة المرور", btn_login: "دخول", name_label: "الاسم بالكامل", btn_signup: "إنشاء الحساب", footer_rights: "© 2026 مركز 3 Engineers - جميع الحقوق محفوظة." }
         };
 
         let currentLang = 'en';
-
         function toggleLanguage() {
             currentLang = currentLang === 'en' ? 'ar' : 'en';
             const htmlRoot = document.getElementById('htmlRoot');
             htmlRoot.setAttribute('lang', currentLang);
             htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
             document.getElementById('langText').innerText = currentLang === 'en' ? 'AR' : 'EN';
-
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[currentLang][key]) {
-                    el.innerText = translations[currentLang][key];
-                }
+                if (translations[currentLang][key]) el.innerText = translations[currentLang][key];
             });
         }
 
@@ -268,15 +161,11 @@
             const htmlRoot = document.getElementById('htmlRoot');
             const themeIcon = document.getElementById('themeIcon');
             if (htmlRoot.classList.contains('dark')) {
-                htmlRoot.classList.remove('dark');
-                htmlRoot.classList.add('light');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
+                htmlRoot.classList.remove('dark'); htmlRoot.classList.add('light');
+                themeIcon.classList.remove('fa-sun'); themeIcon.classList.add('fa-moon');
             } else {
-                htmlRoot.classList.remove('light');
-                htmlRoot.classList.add('dark');
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
+                htmlRoot.classList.remove('light'); htmlRoot.classList.add('dark');
+                themeIcon.classList.remove('fa-moon'); themeIcon.classList.add('fa-sun');
             }
         }
 
@@ -285,55 +174,39 @@
             const signupForm = document.getElementById('signupForm');
             const loginBtn = document.getElementById('loginTabBtn');
             const signupBtn = document.getElementById('signupTabBtn');
-
             if (type === 'login') {
-                loginForm.classList.remove('hidden');
-                signupForm.classList.add('hidden');
-                loginBtn.classList.add('text-blue-400', 'border-blue-500');
-                loginBtn.classList.remove('text-gray-400', 'border-transparent');
-                signupBtn.classList.remove('text-blue-400', 'border-blue-500');
-                signupBtn.classList.add('text-gray-400', 'border-transparent');
+                loginForm.classList.remove('hidden'); signupForm.classList.add('hidden');
+                loginBtn.classList.add('text-blue-400', 'border-blue-500'); loginBtn.classList.remove('text-gray-400', 'border-transparent');
+                signupBtn.classList.remove('text-blue-400', 'border-blue-500'); signupBtn.classList.add('text-gray-400', 'border-transparent');
             } else {
-                signupForm.classList.remove('hidden');
-                loginForm.classList.add('hidden');
-                signupBtn.classList.add('text-blue-400', 'border-blue-500');
-                signupBtn.classList.remove('text-gray-400', 'border-transparent');
-                loginBtn.classList.remove('text-blue-400', 'border-blue-500');
-                loginBtn.classList.add('text-gray-400', 'border-transparent');
+                signupForm.classList.remove('hidden'); loginForm.classList.add('hidden');
+                signupBtn.classList.add('text-blue-400', 'border-blue-500'); signupBtn.classList.remove('text-gray-400', 'border-transparent');
+                loginBtn.classList.remove('text-blue-400', 'border-blue-500'); loginBtn.classList.add('text-gray-400', 'border-transparent');
             }
         }
 
-        // التعامل مع تسجيل الدخول والتحقق من إيميل الأدمن
         function handleLogin(event) {
             event.preventDefault();
             const email = document.getElementById('loginEmail').value.trim();
             const password = document.getElementById('loginPassword').value.trim();
 
-            // فحص إيميل وباسورد الأدمن
             if (email === 'ahmed3bdelhamedwork@gmail.com' && password === '123456') {
                 localStorage.setItem('userRole', 'admin');
                 localStorage.setItem('userName', 'أحمد عبد الحميد');
-                alert(currentLang === 'ar' ? 'مرحباً بك يا بشمهندس أحمد (مدير النظام)' : 'Welcome Admin Ahmed Abdelhamed');
                 window.location.href = 'admin.html';
             } else {
-                // مستخدم عشوائي أو طالب
                 localStorage.setItem('userRole', 'student');
                 localStorage.setItem('userName', email.split('@')[0]);
-                alert(currentLang === 'ar' ? 'تم تسجيل الدخول بنجاح!' : 'Logged in successfully!');
                 window.location.href = 'index.html';
             }
         }
 
-        // التعامل مع إنشاء الحساب الجديد
         function handleSignup(event) {
             event.preventDefault();
             const name = document.getElementById('signupName').value.trim();
             const email = document.getElementById('signupEmail').value.trim();
-
             localStorage.setItem('userRole', email === 'ahmed3bdelhamedwork@gmail.com' ? 'admin' : 'student');
             localStorage.setItem('userName', name);
-            
-            alert(currentLang === 'ar' ? 'تم إنشاء الحساب وتسجيل الدخول بنجاح!' : 'Account created & logged in successfully!');
             window.location.href = 'index.html';
         }
     </script>
