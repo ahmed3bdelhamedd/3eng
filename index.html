@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3 Engineers Training Center</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Cairo Font -->
@@ -74,7 +76,6 @@
 </head>
 <body class="antialiased relative">
 
-    <!-- الخلفية الهندسية -->
     <div class="blueprint-bg"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
@@ -82,31 +83,26 @@
     <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300 shadow-lg shadow-black/20">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- اللوجو -->
                 <div class="flex-shrink-0">
                     <a href="index.html" class="flex items-center gap-2">
                         <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
                     </a>
                 </div>
                 
-                <!-- روابط التنقل -->
                 <div class="hidden md:flex items-center space-x-8 space-x-reverse">
                     <a href="index.html" class="text-gray-300 hover:text-white font-semibold transition pb-1">الرئيسية</a>
                     <a href="#courses" class="text-white font-semibold transition border-b-2 border-blue-500 pb-1">البرامج التدريبية</a>
-                    <!-- رابط لوحة التحكم (مخفي ولا يظهر إلا للأدمن) -->
                     <a href="admin.html" id="adminLink" class="hidden-el text-blue-400 hover:text-blue-300 transition text-sm font-bold bg-blue-900/40 border border-blue-500/30 px-3 py-1.5 rounded-lg shadow-sm">
                         <i class="fas fa-tools ml-1"></i> لوحة التحكم
                     </a>
                 </div>
                 
-                <!-- زر ابدا الآن (للزوائر) -->
                 <div id="guestLinks" class="flex items-center gap-4">
                     <a href="login.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white px-7 py-2.5 rounded-xl font-bold transition-all duration-300 shadow-[0_0_20px_rgba(37,99,235,0.35)] hover:shadow-[0_0_25px_rgba(56,189,248,0.5)] transform hover:-translate-y-0.5">
                         ابدا الآن
                     </a>
                 </div>
 
-                <!-- أزرار المستخدم المسجل -->
                 <div id="userLinks" class="hidden-el flex items-center gap-4">
                     <span id="userNameDisplay" class="text-white font-bold text-sm bg-slate-800/90 px-4 py-2 rounded-xl border border-slate-700 shadow-inner flex items-center"></span>
                     <button onclick="logout()" class="text-red-400 hover:text-white hover:bg-red-600 transition text-sm font-bold border border-red-500/30 px-3.5 py-2 rounded-xl shadow-sm">
@@ -139,7 +135,6 @@
                     </div>
                 </div>
                 
-                <!-- شكل هندسي في الـ Hero -->
                 <div class="hidden lg:flex justify-center relative">
                     <div class="w-72 h-72 border-2 border-blue-500/20 rounded-full absolute animate-[spin_25s_linear_infinite]"></div>
                     <div class="w-96 h-96 border border-indigo-500/15 rounded-full absolute animate-[spin_35s_linear_infinite_reverse]"></div>
@@ -179,7 +174,7 @@
         </div>
     </section>
 
-    <!-- قسم البرامج التدريبية (المسارات) -->
+    <!-- قسم البرامج التدريبية -->
     <section id="courses" class="py-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -188,9 +183,7 @@
             </div>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                
-                <!-- كارت 1: مسار الـ BIM -->
-                <div class="glass-card p-8 flex flex-col group cursor-pointer">
+                <div class="glass-card p-8 flex flex-col group cursor-pointer" onclick="location.href='bim.html'">
                     <div class="w-14 h-14 bg-blue-900/40 rounded-2xl flex items-center justify-center mb-6 text-blue-400 border border-blue-500/30 group-hover:bg-blue-600 group-hover:text-white transition-all duration-300">
                         <i class="fas fa-cubes text-2xl"></i>
                     </div>
@@ -203,8 +196,7 @@
                     </a>
                 </div>
 
-                <!-- كارت 2: التصميم الإنشائي -->
-                <div class="glass-card p-8 flex flex-col group cursor-pointer">
+                <div class="glass-card p-8 flex flex-col group cursor-pointer" onclick="location.href='structure.html'">
                     <div class="w-14 h-14 bg-indigo-900/40 rounded-2xl flex items-center justify-center mb-6 text-indigo-400 border border-indigo-500/30 group-hover:bg-indigo-600 group-hover:text-white transition-all duration-300">
                         <i class="fas fa-building text-2xl"></i>
                     </div>
@@ -217,7 +209,6 @@
                     </a>
                 </div>
 
-                <!-- كارت 3: مسارات أخرى -->
                 <div class="glass-card p-8 flex flex-col group cursor-pointer border-dashed border-slate-700 bg-transparent hover:bg-slate-900/30">
                     <div class="w-14 h-14 bg-slate-800/80 rounded-2xl flex items-center justify-center mb-6 text-slate-400 border border-slate-700">
                         <i class="fas fa-plus text-2xl"></i>
@@ -230,7 +221,6 @@
                         <span class="w-2 h-2 rounded-full bg-slate-500 animate-pulse"></span> قريباً...
                     </span>
                 </div>
-
             </div>
         </div>
     </section>
@@ -250,22 +240,30 @@
         </div>
     </footer>
 
-    <!-- سكربت الصلاحيات والدخول -->
     <script>
-        document.addEventListener("DOMContentLoaded", () => {
+        try {
             const userRole = localStorage.getItem('userRole');
             const userName = localStorage.getItem('userName');
 
             if (userRole) {
-                document.getElementById('guestLinks').classList.add('hidden-el');
-                document.getElementById('userLinks').classList.remove('hidden-el');
-                document.getElementById('userNameDisplay').innerHTML = `<i class="fas fa-user-circle text-blue-400 ml-1.5 text-base"></i> ${userName}`;
+                const guestLinks = document.getElementById('guestLinks');
+                const userLinks = document.getElementById('userLinks');
+                const userNameDisplay = document.getElementById('userNameDisplay');
+                const adminLink = document.getElementById('adminLink');
 
-                if (userRole === 'admin') {
-                    document.getElementById('adminLink').classList.remove('hidden-el');
+                if (guestLinks) guestLinks.classList.add('hidden-el');
+                if (userLinks) userLinks.classList.remove('hidden-el');
+                if (userNameDisplay) {
+                    userNameDisplay.innerHTML = `<i class="fas fa-user-circle text-blue-400 ml-1.5 text-base"></i> ${userName || 'مستخدم'}`;
+                }
+
+                if (userRole === 'admin' && adminLink) {
+                    adminLink.classList.remove('hidden-el');
                 }
             }
-        });
+        } catch (error) {
+            console.error("Auth error:", error);
+        }
 
         function logout() {
             localStorage.removeItem('userRole');
