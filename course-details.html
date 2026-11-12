@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3DS MAX Course - 3 Engineers</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            background-color: #f8fafc; 
+            color: #0f172a; 
+        }
+        .glass-sidebar {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="antialiased min-h-screen">
+
+    <!-- Navbar / Tabs Bar -->
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex space-x-8">
+                    <a href="#about" class="border-b-2 border-slate-900 text-slate-900 font-bold py-5 text-sm transition">About Course</a>
+                    <a href="#instructor" class="border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold py-5 text-sm transition">Instructor</a>
+                    <a href="#reviews" class="border-b-2 border-transparent text-slate-500 hover:text-slate-900 font-semibold py-5 text-sm transition">Reviews</a>
+                </div>
+                <a href="index.html" class="text-sm font-bold text-slate-600 hover:text-slate-900 flex items-center gap-2">
+                    <i class="fas fa-arrow-left"></i> Back to Home
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            
+            <!-- Left & Center Content (2 Columns) -->
+            <div class="lg:col-span-2 space-y-12">
+                
+                <!-- About Course Section -->
+                <section id="about">
+                    <h1 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-6">3DS MAX COURSE</h1>
+                    <p class="text-slate-600 text-base leading-relaxed mb-8">
+                        This course is the result of 10 years of professional experience working and training on 3DS MAX. It is designed to help you learn the software practically, starting from the basics and progressing to professional-level results.
+                    </p>
+
+                    <h2 class="text-xl font-bold text-slate-900 mb-4">What Will You Learn?</h2>
+                    <ul class="space-y-3 text-slate-700 text-sm">
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> How to think and work efficiently in 3DS MAX and create models using basic shapes.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> How to create advanced models using different Modifiers.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> The most important Modifiers and how to use them to achieve the best results.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> How to use advanced tools for creating complex shapes professionally.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> How to use ready-made furniture libraries for different spaces.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Different lighting types and how to use them for Interior and Exterior scenes.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Different material types and the basic properties of each material.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> How to adjust materials and their dimensions on any element in the project.
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="text-slate-900 font-bold">•</span> Different Rendering tools and techniques to create realistic renders with detailed results.
+                        </li>
+                    </ul>
+                </section>
+
+                <!-- Course Curriculum Section -->
+                <section>
+                    <h2 class="text-2xl font-bold text-slate-900 mb-6">Course Curriculum</h2>
+                    
+                    <div class="space-y-4">
+                        <!-- Accordion Item 1 (Open by default) -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-1')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>1. The Perfect Starting Point</span>
+                                <i id="icon-acc-1" class="fas fa-chevron-up text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-1" class="px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Build a strong foundation in 3DS MAX and learn how to navigate the software, understand its core tools, and start creating your first models with confidence.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 2 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-2')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>2. Project-Based Modeling</span>
+                                <i id="icon-acc-2" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-2" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Apply practical modeling techniques on real architectural projects from scratch.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 3 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-3')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>3. Design Hacking</span>
+                                <i id="icon-acc-3" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-3" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Learn shortcuts, advanced modifiers, and pro tips to speed up your workflow.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 4 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-4')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>4. Lighting Secrets</span>
+                                <i id="icon-acc-4" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-4" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Master V-Ray or Corona lighting for both interior and exterior realistic environments.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 5 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-5')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>5. Material Thinking</span>
+                                <i id="icon-acc-5" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-5" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Understand bump, reflection, refraction, and texture mapping for realistic shaders.
+                            </div>
+                        </div>
+
+                        <!-- Accordion Item 6 -->
+                        <div class="border border-slate-200 rounded-xl bg-slate-100 overflow-hidden shadow-sm">
+                            <button onclick="toggleAccordion('acc-6')" class="w-full px-6 py-4 text-left font-bold text-slate-900 flex justify-between items-center">
+                                <span>6. Professional Render Techniques</span>
+                                <i id="icon-acc-6" class="fas fa-chevron-down text-xs text-slate-600 transition-transform"></i>
+                            </button>
+                            <div id="content-acc-6" class="hidden px-6 pb-5 text-slate-600 text-sm leading-relaxed border-t border-slate-200 pt-3">
+                                Fine-tune render settings, camera angles, and post-production touch-ups.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Sidebar (Pricing & Instructor Card) -->
+            <div class="space-y-6">
+                
+                <!-- Pricing & Buy Box -->
+                <div class="glass-sidebar p-6 text-center">
+                    <div class="text-3xl font-extrabold text-slate-900 mb-6 flex items-center justify-center gap-3">
+                        <span class="line-through text-slate-400 text-xl">5,999 LE</span>
+                        <span class="text-blue-600">2999 LE</span>
+                    </div>
+
+                    <div class="space-y-3 text-left text-sm text-slate-600 mb-6 border-y border-slate-100 py-4">
+                        <div class="flex items-center gap-3">
+                            <i class="far fa-clock text-slate-400 w-5"></i> 3 hours and 30 minutes
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <i class="fas fa-video text-slate-400 w-5"></i> Online (Recorded)
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-xl transition shadow-lg shadow-slate-900/20 mb-4">
+                        buy it now
+                    </button>
+                </div>
+
+                <!-- Download File Button -->
+                <a href="#" class="block bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 px-6 rounded-2xl text-center transition shadow-md flex items-center justify-center gap-3">
+                    <span>Download the course details file - AR</span>
+                    <i class="fas fa-file-pdf text-red-400"></i>
+                </a>
+
+                <!-- Instructor Card -->
+                <div class="glass-sidebar p-6">
+                    <h3 class="text-lg font-bold text-slate-900 mb-4">Instructor</h3>
+                    <div class="flex items-center gap-4">
+                        <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" alt="Instructor" class="w-16 h-16 rounded-full object-cover border-2 border-slate-200 shadow-sm">
+                        <div>
+                            <h4 class="font-bold text-slate-900">Ahmed Abdelhamed</h4>
+                            <p class="text-xs text-slate-500">BIM & 3D Expert</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- JavaScript for Accordion -->
+    <script>
+        function toggleAccordion(id) {
+            const content = document.getElementById('content-' + id);
+            const icon = document.getElementById('icon-' + id);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.classList.remove('fa-chevron-down');
+                icon.classList.add('fa-chevron-up');
+            } else {
+                content.classList.add('hidden');
+                icon.classList.remove('fa-chevron-up');
+                icon.classList.add('fa-chevron-down');
+            }
+        }
+    </script>
+</body>
+</html>
