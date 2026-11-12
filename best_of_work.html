@@ -92,6 +92,7 @@
             overflow: hidden;
             border-radius: 12px;
             position: relative;
+            background-color: #18181b;
         }
         .task-img-container img {
             transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
@@ -159,189 +160,149 @@
                 <span class="text-gradient" data-i18n="main_title2">Structural Tasks Exhibition</span>
             </h1>
             <p class="text-base sm:text-lg text-gray-500 dark:text-gray-400 mb-8 leading-relaxed max-w-2xl mx-auto" data-i18n="main_desc">
-                Browse through the integrated execution projects, structural modeling, and shop drawings directly here on the platform with instant interactive previews.
+                Browse through the integrated execution projects, structural modeling, and student deliverables directly here on the platform with instant interactive previews.
             </p>
 
             <!-- Student Filter Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mt-8">
-                <button onclick="filterStudent('all')" id="btn-all" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all">All Tasks</button>
+                <button onclick="filterStudent('all')" id="btn-all" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all">All Students</button>
                 <button onclick="filterStudent('abdallah')" id="btn-abdallah" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">Abdallah Nagy</button>
                 <button onclick="filterStudent('youssef')" id="btn-youssef" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">Youssef Adel</button>
+                <button onclick="filterStudent('abdalsamad')" id="btn-abdalsamad" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all">Abdallah El Saman</button>
             </div>
         </div>
     </section>
 
-    <!-- Tasks Grid Section -->
+    <!-- Tasks Grid Section (Linked directly to R25 Student Folders content) -->
     <section class="pb-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tasksContainer">
                 
-                <!-- Task 0 -->
+                <!-- Task 0: Abdallah Nagy -->
                 <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop', 'Task 0: A Limitless Model', 'Executed by Abdallah Nagy')">
-                            <img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop" alt="Task 0" class="w-full h-full object-cover">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task0_abdallah.jpg', 'Task 0: A Limitless Model', 'Executed by Abdallah Nagy (R25)')">
+                            <!-- ضع مسار صورة شغل الطالب الحقيقي هنا بدلاً من src -->
+                            <img src="task0_abdallah.jpg" alt="Task 0 Abdallah" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
+                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 00</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">A Limitless Model, Create Your Opportunity</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Initial foundational orientation project and introductory structural framework setup.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Initial foundational orientation project and introductory structural framework setup from R25.</p>
                     </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop', 'Task 0: A Limitless Model', 'Executed by Abdallah Nagy')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
+                    <a href="https://drive.google.com/drive/folders/1Ogt0yTTn2TcRgBt6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
+                    </a>
                 </div>
 
-                <!-- Task 1 -->
+                <!-- Task 1: Youssef Adel -->
                 <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop', 'Task 1: BIM Fundamentals', 'Executed by Youssef Adel')">
-                            <img src="https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop" alt="Task 1" class="w-full h-full object-cover">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task1_youssef.jpg', 'Task 1: BIM Fundamentals', 'Executed by Youssef Adel (R25)')">
+                            <img src="task1_youssef.jpg" alt="Task 1 Youssef" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
+                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 01</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Youssef Adel</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Youssef Adel</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Structural BIM Fundamentals</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Core concepts of structural grid setups, levels, analytical modeling, and system coordination.</p>
                     </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1541888946425-d0fbb18f06f5?q=80&w=800&auto=format&fit=crop', 'Task 1: BIM Fundamentals', 'Executed by Youssef Adel')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
+                    <a href="https://drive.google.com/drive/folders/1UPOCvVXxhBlGaQNrlW3TDdyiOrnwzWrc" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
+                    </a>
                 </div>
 
-                <!-- Task 2 -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
+                <!-- Task 2: Abdallah El Saman -->
+                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdalsamad">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop', 'Task 2: Be Specialist in Modeling - Part 1', 'Executed by Abdallah Nagy')">
-                            <img src="https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop" alt="Task 2" class="w-full h-full object-cover">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task2_abdalsaman.jpg', 'Task 2: Be Specialist in Modeling', 'Executed by Abdallah El Saman (R25)')">
+                            <img src="task2_abdalsaman.jpg" alt="Task 2 Abdallah El Saman" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
+                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 02</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah El Saman</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 1</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Advanced structural elements modeling including foundations, columns, and retaining walls.</p>
                     </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1581094288338-2314dddb7ece?q=80&w=800&auto=format&fit=crop', 'Task 2: Be Specialist in Modeling - Part 1', 'Executed by Abdallah Nagy')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
+                    <a href="https://drive.google.com/drive/folders/1zMVnPt4h9pxZ5g85r9cjpxSPWQIlb2u_" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
+                    </a>
                 </div>
 
-                <!-- Task 3 -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
+                <!-- Task 3: Abdallah Nagy -->
+                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=800&auto=format&fit=crop', 'Task 3: Be Specialist in Modeling - Part 2', 'Executed by Youssef Adel')">
-                            <img src="https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=800&auto=format&fit=crop" alt="Task 3" class="w-full h-full object-cover">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task3_abdallah.jpg', 'Task 3: Be Specialist in Modeling - Part 2', 'Executed by Abdallah Nagy')">
+                            <img src="task3_abdallah.jpg" alt="Task 3 Abdallah" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
+                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 03</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Youssef Adel</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 2</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Detailed framing layouts, slab systems (solid, flat, ribbed), and reinforcement detailing simulations.</p>
+                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Detailed framing layouts, slab systems, and reinforcement detailing simulations.</p>
                     </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1590381105924-c72589b9ef3f?q=80&w=800&auto=format&fit=crop', 'Task 3: Be Specialist in Modeling - Part 2', 'Executed by Youssef Adel')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
+                    <a href="https://drive.google.com/drive/folders/1Ogt0yTTn2TcRgBt6A7vZvhBua9gCLZ0c" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
+                    </a>
                 </div>
 
-                <!-- Task 4 -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
+                <!-- Task 4: Youssef Adel -->
+                <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop', 'Task 4: Be Specialist in Modeling - Part 3', 'Executed by Abdallah Nagy')">
-                            <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop" alt="Task 4" class="w-full h-full object-cover">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task4_youssef.jpg', 'Task 4: Be Specialist in Modeling - Part 3', 'Executed by Youssef Adel')">
+                            <img src="task4_youssef.jpg" alt="Task 4 Youssef" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
+                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 04</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Youssef Adel</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Be Specialist in Modeling - Part 3</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Complex geometrical profiles, ramps, staircases, and multi-story structural integrations.</p>
                     </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=800&auto=format&fit=crop', 'Task 4: Be Specialist in Modeling - Part 3', 'Executed by Abdallah Nagy')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
+                    <a href="https://drive.google.com/drive/folders/1UPOCvVXxhBlGaQNrlW3TDdyiOrnwzWrc" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
+                    </a>
                 </div>
 
-                <!-- Task 5 -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
+                <!-- Task 5: Abdallah El Saman -->
+                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdalsamad">
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1574689224896-b7e562148b89?q=80&w=800&auto=format&fit=crop', 'Task 5: Secret of Design Drawing - Part 1', 'Executed by Youssef Adel')">
-                            <img src="https://images.unsplash.com/photo-1574689224896-b7e562148b89?q=80&w=800&auto=format&fit=crop" alt="Task 5" class="w-full h-full object-cover">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('task5_abdalsaman.jpg', 'Task 5: Secret of Design Drawing - Part 1', 'Executed by Abdallah El Saman')">
+                            <img src="task5_abdalsaman.jpg" alt="Task 5 Abdallah El Saman" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1574689224896-b7e562148b89?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
+                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Preview Student Work</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 05</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Youssef Adel</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">Abdallah El Saman</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">Secret of Design Drawing - Part 1</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Decoding structural calculation sheets into execution shop drawings with code compliance.</p>
                     </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1574689224896-b7e562148b89?q=80&w=800&auto=format&fit=crop', 'Task 5: Secret of Design Drawing - Part 1', 'Executed by Youssef Adel')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
-                </div>
-
-                <!-- Task 6 -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="abdallah">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop', 'Task 6: Secret of Design Drawing - Part 2', 'Executed by Abdallah Nagy')">
-                            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop" alt="Task 6" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 06</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Abdallah Nagy</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Secret of Design Drawing - Part 2</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Advanced reinforcement detailing for beams, moment frames, and seismic joint connections.</p>
-                    </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1524758631624-e2822e304c36?q=80&w=800&auto=format&fit=crop', 'Task 6: Secret of Design Drawing - Part 2', 'Executed by Abdallah Nagy')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
-                </div>
-
-                <!-- Task 7 -->
-                <div class="glass-card p-6 flex flex-col justify-between" data-student="youssef">
-                    <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick="openLightbox('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop', 'Task 7: BIM Department System', 'Executed by Youssef Adel')">
-                            <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop" alt="Task 7" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-search-plus text-2xl"></i> <span class="text-xs">Click to Preview Work</span>
-                            </div>
-                        </div>
-                        <div class="flex justify-between items-start mb-2">
-                            <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 07</span>
-                            <span class="text-xs font-bold text-gray-400 bg-zinc-800 px-2.5 py-1 rounded-md">Youssef Adel</span>
-                        </div>
-                        <h3 class="text-lg font-bold mb-2">Structural Department System</h3>
-                        <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Establishing engineering office standards, template automation, and full project delivery workflow.</p>
-                    </div>
-                    <button onclick="openLightbox('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=800&auto=format&fit=crop', 'Task 7: BIM Department System', 'Executed by Youssef Adel')" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-eye"></i> <span data-i18n="view_work">View Live Showcase</span>
-                    </button>
+                    <a href="https://drive.google.com/drive/folders/1zMVnPt4h9pxZ5g85r9cjpxSPWQIlb2u_" target="_blank" class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fab fa-google-drive"></i> <span data-i18n="view_folder">Open Student Folder</span>
+                    </a>
                 </div>
 
             </div>
@@ -354,7 +315,7 @@
             <i class="fas fa-times"></i>
         </button>
         <div class="max-w-4xl w-full text-center">
-            <img id="lightboxImg" src="" alt="Enlarged Work Preview" class="max-h-[75vh] mx-auto rounded-xl shadow-2xl border border-yellow-500/30 object-contain transform scale-95 transition-transform duration-300">
+            <img id="lightboxImg" src="" alt="Enlarged Student Work" class="max-h-[75vh] mx-auto rounded-xl shadow-2xl border border-yellow-500/30 object-contain transform scale-95 transition-transform duration-300">
             <div class="mt-4">
                 <h3 id="lightboxTitle" class="text-xl font-bold text-yellow-400"></h3>
                 <p id="lightboxSubtitle" class="text-sm text-gray-400 mt-1"></p>
@@ -391,8 +352,8 @@
                 badge_title: "Structural Engineering Diploma Showcase",
                 main_title1: "Student Best Works &",
                 main_title2: "Structural Tasks Exhibition",
-                main_desc: "Browse through the integrated execution projects, structural modeling, and shop drawings directly here on the platform with instant interactive previews.",
-                view_work: "View Live Showcase",
+                main_desc: "Browse through the integrated execution projects, structural modeling, and student deliverables directly here on the platform with instant interactive previews.",
+                view_folder: "Open Student Folder",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
             ar: {
@@ -404,8 +365,8 @@
                 badge_title: "معرض مشاريع الدبلومة الهندسية الإنشائية",
                 main_title1: "أفضل أعمال الطلبة",
                 main_title2: "ومعرض التاسكات الإنشائية",
-                main_desc: "تصفح مشاريع التنفيذ والنمذجة الإنشائية واللوحات التنفيذية مباشرة من داخل المنصة مع معاينة تفاعلية فورية.",
-                view_work: "عرض العمل تفصيلياً",
+                main_desc: "تصفح مشاريع التنفيذ والنمذجة الإنشائية واللوحات التنفيذية للطلبة (عبدالله Nagy، يوسف عادل، عبدالله السمان) مباشرة من داخل المنصة.",
+                view_folder: "فتح فولدر الطالب",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
         };
@@ -451,15 +412,14 @@
             const btnAll = document.getElementById('btn-all');
             const btnAbdallah = document.getElementById('btn-abdallah');
             const btnYoussef = document.getElementById('btn-youssef');
+            const btnAbdalsamad = document.getElementById('btn-abdalsamad');
 
-            // Reset buttons style
-            [btnAll, btnAbdallah, btnYoussef].forEach(btn => {
-                btn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all";
+            [btnAll, btnAbdallah, btnYoussef, btnAbdalsamad].forEach(btn => {
+                if(btn) btn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-zinc-800/80 text-gray-300 border border-zinc-700 hover:bg-yellow-500/20 hover:text-yellow-400 transition-all";
             });
 
-            // Activate current button
             const activeBtn = document.getElementById(`btn-${student}`);
-            activeBtn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all";
+            if(activeBtn) activeBtn.className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-yellow-500 text-zinc-950 shadow-md transition-all";
 
             cards.forEach(card => {
                 if (student === 'all' || card.getAttribute('data-student') === student) {
@@ -470,7 +430,7 @@
             });
         }
 
-        // Lightbox Functions with Title & Subtitle
+        // Lightbox Functions
         function openLightbox(imgSrc, title, subtitle) {
             const modal = document.getElementById('lightboxModal');
             const modalImg = document.getElementById('lightboxImg');
@@ -499,7 +459,7 @@
         }
 
         window.addEventListener('DOMContentLoaded', () => {
-            const currentTheme = localStorage.getItem('siteTheme') || 'dark';
+            const currentTheme = localStorage.getItem('siteTheme')|| 'dark';
             const themeIcon = document.getElementById('themeIcon');
             if (currentTheme === 'light') {
                 themeIcon.classList.remove('fa-sun');
