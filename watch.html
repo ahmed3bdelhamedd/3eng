@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="htmlRoot" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-i18n="page_title">Watch Course - 3 Engineers Academy</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { 
+                extend: { 
+                    colors: { 
+                        brand: { 
+                            500: '#38bdf8', 
+                            600: '#0284c7' 
+                        } 
+                    } 
+                } 
+            }
+        }
+    </script>
+    <!-- Cairo Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { 
+            font-family: 'Cairo', sans-serif; 
+            transition: background-color 0.4s ease, color 0.4s ease;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        .dark body { background-color: #070b14; color: #f8fafc; }
+        .light body { background-color: #f1f5f9; color: #0f172a; }
+
+        .blueprint-bg {
+            background-image: 
+                linear-gradient(rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+            background-size: 40px 40px;
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: -2;
+        }
+
+        .glass-nav { 
+            backdrop-filter: blur(16px); 
+            transition: all 0.3s ease;
+        }
+        .dark .glass-nav { background: rgba(7, 11, 20, 0.9); border-bottom: 1px solid rgba(56, 189, 248, 0.15); }
+        .light .glass-nav { background: rgba(255, 255, 255, 0.9); border-bottom: 1px solid rgba(226, 232, 240, 0.8); }
+
+        .glass-box {
+            backdrop-filter: blur(12px);
+            border-radius: 20px;
+            transition: all 0.4s ease;
+        }
+        .dark .glass-box { background: rgba(15, 23, 42, 0.8); border: 1px solid rgba(56, 189, 248, 0.15); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2); }
+        .light .glass-box { background: rgba(255, 255, 255, 0.95); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        .lesson-item {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .dark .lesson-item { background: rgba(30, 41, 59, 0.5); border: 1px solid rgba(56, 189, 248, 0.1); }
+        .light .lesson-item { background: rgba(248, 250, 252, 1); border: 1px solid rgba(226, 232, 240, 1); }
+        .lesson-item:hover { transform: translateX(4px); border-color: rgba(56, 189, 248, 0.5); }
+        .lesson-item.active { border-color: #38bdf8; background: rgba(56, 189, 248, 0.15); }
+
+        .text-gradient { 
+            background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc); 
+            -webkit-background-clip: text; 
+            -webkit-text-fill-color: transparent; 
+        }
+    </style>
+    
+    <script>
+        const savedTheme = localStorage.getItem('siteTheme') || 'dark';
+        document.documentElement.className = savedTheme;
+    </script>
+</head>
+<body class="antialiased min-h-screen relative">
+
+    <div class="blueprint-bg"></div>
+    <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[650px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
+
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex items-center space-x-6 rtl:space-x-reverse">
+                    <a href="index.html" class="flex-shrink-0">
+                        <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
+                    </a>
+                    <h1 class="text-base font-bold text-gradient hidden sm:block" id="navCourseTitle">Engineering Masterclass</h1>
+                </div>
+                
+                <div class="flex items-center gap-3">
+                    <button onclick="toggleLanguage()" class="px-3.5 py-2 rounded-xl text-xs font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 hover:bg-blue-500/20 transition flex items-center gap-1.5">
+                        <i class="fas fa-globe"></i> <span id="langText">AR</span>
+                    </button>
+
+                    <button onclick="toggleTheme()" class="w-10 h-10 rounded-xl bg-slate-800/50 dark:bg-slate-800/80 text-gray-300 dark:text-yellow-400 border border-slate-700 flex items-center justify-center transition hover:scale-105">
+                        <i id="themeIcon" class="fas fa-sun text-sm"></i>
+                    </button>
+
+                    <a href="courses.html" class="text-sm font-bold text-gray-300 hover:text-white flex items-center gap-2 bg-slate-800/60 px-4 py-2 rounded-xl border border-slate-700 transition">
+                        <i class="fas fa-arrow-left rtl:rotate-180"></i> <span data-i18n="back_courses">All Courses</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Layout -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left: Video Player & Info (2 Columns) -->
+            <div class="lg:col-span-2 space-y-6">
+                <div class="video-wrapper">
+                    <!-- YouTube Iframe Embed -->
+                    <iframe id="youtubePlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
+                </div>
+
+                <div class="glass-box p-6">
+                    <span class="px-3 py-1 bg-blue-500/10 border border-blue-500/30 text-blue-400 text-xs font-bold rounded-lg inline-block mb-3" id="currentLessonBadge">Lecture 01</span>
+                    <h2 class="text-2xl font-black mb-3" id="currentLessonTitle">Loading Lesson...</h2>
+                    <p class="text-sm text-gray-400 leading-relaxed" id="currentLessonDesc">
+                        Select any lesson from the course playlist on the right to start watching instantly.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right: Playlist Lessons Sidebar (1 Column) -->
+            <div class="space-y-4">
+                <div class="glass-box p-5">
+                    <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2">
+                        <i class="fas fa-list-ul text-blue-400"></i> <span data-i18n="playlist_title">Course Playlist</span>
+                    </h3>
+                    <!-- Playlist Container -->
+                    <div id="playlistContainer" class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
+                        <!-- Dynamic Lessons injected via JS -->
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-slate-800 bg-slate-900/60 backdrop-blur-md py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-4">
+                <a href="index.html">
+                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-8 opacity-60 hover:opacity-100 grayscale hover:grayscale-0 transition">
+                </a>
+                <span class="text-gray-500 text-sm font-medium" data-i18n="footer_rights">© 2026 3 Engineers Center. All rights reserved.</span>
+            </div>
+            <div class="flex gap-4">
+                <a href="https://facebook.com/your-page" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://linkedin.com/in/your-profile" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const translations = {
+            en: {
+                page_title: "Watch Course - 3 Engineers Academy",
+                back_courses: "All Courses",
+                playlist_title: "Course Playlist",
+                footer_rights: "© 2026 3 Engineers Center. All rights reserved."
+            },
+            ar: {
+                page_title: "مشاهدة الكورس - أكاديمية 3 Engineers",
+                back_courses: "جميع الكورسات",
+                playlist_title: "قائمة محاضرات الكورس",
+                footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
+            }
+        };
+
+        // قائمة فيديوهات اليوتيوب (يمكنك إضافة أي فيديوهات أو ربطها بالبلاليست مباشرة)
+        const courseLessons = [
+            { id: "dQw4w9WgXcQ", title: "Introduction to Engineering & BIM Workflow", desc: "Overview of the training program and what you will achieve." },
+            { id: "3JZ_D3ELwOQ", title: "BIM Fundamentals & Interface Navigation", desc: "Understanding the core principles and navigating the workspace." },
+            { id: "kJQP7kiw5Fk", title: "Structural Modeling & Grid Setup", desc: "Setting up levels, grids, and initial structural elements." },
+            { id: "5qap5aO4i9A", title: "Reinforcement & Shop Drawing Essentials", desc: "Creating detailed steel reinforcement and professional sheets." }
+        ];
+
+        let currentLang = 'en';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'en' ? 'ar' : 'en';
+            const htmlRoot = document.getElementById('htmlRoot');
+            htmlRoot.setAttribute('lang', currentLang);
+            htmlRoot.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            document.getElementById('langText').innerText = currentLang === 'en' ? 'AR' : 'EN';
+
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+        }
+
+        function toggleTheme() {
+            const htmlRoot = document.getElementById('htmlRoot');
+            const themeIcon = document.getElementById('themeIcon');
+            if (htmlRoot.classList.contains('dark')) {
+                htmlRoot.classList.remove('dark');
+                htmlRoot.classList.add('light');
+                localStorage.setItem('siteTheme', 'light');
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            } else {
+                htmlRoot.classList.remove('light');
+                htmlRoot.classList.add('dark');
+                localStorage.setItem('siteTheme', 'dark');
+                themeIcon.classList.remove('fa-moon');
+                themeIcon.classList.add('fa-sun');
+            }
+        }
+
+        function loadPlaylist() {
+            const container = document.getElementById('playlistContainer');
+            container.innerHTML = '';
+
+            courseLessons.forEach((lesson, index) => {
+                const item = document.createElement('div');
+                item.className = `lesson-item p-3.5 rounded-xl flex items-center gap-3 ${index === 0 ? 'active' : ''}`;
+                item.id = `lesson-item-${index}`;
+                item.innerHTML = `
+                    <div class="w-8 h-8 rounded-lg bg-blue-500/10 text-blue-400 flex items-center justify-center font-bold text-xs flex-shrink-0">
+                        0${index + 1}
+                    </div>
+                    <div class="overflow-hidden">
+                        <h4 class="text-sm font-bold truncate">${lesson.title}</h4>
+                        <span class="text-xs text-gray-400">YouTube Lecture</span>
+                    </div>
+                `;
+                item.onclick = () => playLesson(index);
+                container.appendChild(item);
+            });
+
+            // تشغيل أول درس افتراضياً
+            playLesson(0);
+        }
+
+        function playLesson(index) {
+            const lesson = courseLessons[index];
+            document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${lesson.id}?autoplay=1`;
+            document.getElementById('currentLessonBadge').innerText = `Lecture 0${index + 1}`;
+            document.getElementById('currentLessonTitle').innerText = lesson.title;
+            document.getElementById('currentLessonDesc').innerText = lesson.desc;
+
+            // تحديث كلاس النشط في القائمة
+            document.querySelectorAll('.lesson-item').forEach((el, i) => {
+                if (i === index) {
+                    el.classList.add('active');
+                } else {
+                    el.classList.remove('active');
+                }
+            });
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            const currentTheme = localStorage.getItem('siteTheme') || 'dark';
+            const themeIcon = document.getElementById('themeIcon');
+            if (currentTheme === 'light') {
+                themeIcon.classList.remove('fa-sun');
+                themeIcon.classList.add('fa-moon');
+            }
+            loadPlaylist();
+        });
+    </script>
+</body>
+</html>
