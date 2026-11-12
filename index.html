@@ -4,39 +4,68 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3 Engineers Training Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header class="navbar">
-        <div class="logo">
-            <img src="New Lgogo_Gray Logo.png" alt="3 Engineers Logo">
-        </div>
-        <nav>
-            <a href="index.html">الرئيسية</a>
-            <a href="#courses">الكورسات</a>
-            <a href="#contact" class="btn-primary">تواصل معنا</a>
-        </nav>
-    </header>
+<body class="antialiased">
 
-    <section class="hero">
-        <h1>Master Your Engineering Career</h1>
-        <p>مركز تدريب هندسي معتمد يقدم أقوى الدبلومات العملية في السوق.</p>
-    </section>
-
-    <section id="courses" class="courses-section">
-        <h2>أهم البرامج التدريبية</h2>
-        <div class="grid-container">
-            <div class="card">
-                <h3>دبلومة الـ BIM المتكاملة</h3>
-                <p>تعلم تكنولوجيا نمذجة معلومات البناء من الصفر للاحتراف.</p>
-                <a href="bim.html" class="btn-secondary">التفاصيل والتسجيل</a>
-            </div>
-            <div class="card">
-                <h3>التصميم الإنشائي المتقدم</h3>
-                <p>تصميم الأبراج والمنشآت الخرسانية ومقاومة الزلازل.</p>
-                <a href="#" class="btn-secondary">قريباً</a>
+    <!-- Navbar -->
+    <nav class="glass-nav fixed w-full z-50 top-0 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0">
+                    <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-12">
+                </div>
+                <div class="hidden md:flex space-x-8 space-x-reverse">
+                    <a href="index.html" class="text-gray-300 hover:text-white transition">الرئيسية</a>
+                    <a href="#courses" class="text-gray-300 hover:text-white transition">دبلوماتنا</a>
+                    <a href="https://wa.me/201116512028" class="text-gray-300 hover:text-white transition">تواصل معنا</a>
+                </div>
+                <div>
+                    <a href="#courses" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full font-semibold btn-glow">ابدأ رحلتك</a>
+                </div>
             </div>
         </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-500/10 rounded-full blur-3xl -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h1 class="text-5xl lg:text-7xl font-bold tracking-tight mb-6">
+                ارتقِ بمسارك الهندسي مع <br>
+                <span class="text-gradient">3 Engineers</span>
+            </h1>
+            <p class="mt-4 text-xl text-gray-400 max-w-2xl mx-auto mb-10">
+                المركز المعتمد الأول لتقديم الدبلومات الهندسية العملية بأحدث التقنيات وأقوى المحاضرين في السوق.
+            </p>
+        </div>
     </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-20 bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">أقوى <span class="text-gradient">البرامج التدريبية</span></h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- BIM Course Card -->
+                <div class="glass-card p-8 flex flex-col">
+                    <div class="bg-blue-500/20 w-16 h-16 rounded-lg flex items-center justify-center mb-6 text-blue-400 text-2xl font-bold">BIM</div>
+                    <h3 class="text-2xl font-bold mb-3">دبلومة الـ BIM المتكاملة</h3>
+                    <p class="text-gray-400 mb-6 flex-grow">تعلم تكنولوجيا نمذجة معلومات البناء وتطبيقها على مشاريع حقيقية مع م. صلاح البدوي.</p>
+                    <a href="bim.html" class="mt-auto w-full text-center border border-blue-500 text-blue-400 hover:bg-blue-500 hover:text-white py-3 rounded-lg transition-colors font-semibold">التفاصيل والتسجيل &larr;</a>
+                </div>
+
+                <!-- Structure Course Card -->
+                <div class="glass-card p-8 flex flex-col">
+                    <div class="bg-indigo-500/20 w-16 h-16 rounded-lg flex items-center justify-center mb-6 text-indigo-400 text-2xl font-bold">Str</div>
+                    <h3 class="text-2xl font-bold mb-3">التصميم الإنشائي المتقدم</h3>
+                    <p class="text-gray-400 mb-6 flex-grow">احتراف تصميم الأبراج، المنشآت الخرسانية، ومقاومة أحمال الزلازل باستخدام برامج CSI.</p>
+                    <a href="structure.html" class="mt-auto w-full text-center border border-indigo-500 text-indigo-400 hover:bg-indigo-500 hover:text-white py-3 rounded-lg transition-colors font-semibold">التفاصيل والتسجيل &larr;</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>
 </html>
