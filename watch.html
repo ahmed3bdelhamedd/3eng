@@ -108,7 +108,7 @@
                     <a href="index.html" class="flex-shrink-0">
                         <img src="New Lgogo_Gray Logo.png" alt="3 Engineers" class="h-10 hover:opacity-90 transition">
                     </a>
-                    <h1 class="text-base font-bold text-gradient hidden sm:block" id="navCourseTitle">Engineering Masterclass</h1>
+                    <h1 class="text-base font-bold text-gradient hidden sm:block" id="navCourseTitle">Revit Architecture Masterclass</h1>
                 </div>
                 
                 <div class="flex items-center gap-3">
@@ -135,7 +135,6 @@
             <!-- Left: Video Player & Info (2 Columns) -->
             <div class="lg:col-span-2 space-y-6">
                 <div class="video-wrapper">
-                    <!-- YouTube Iframe Embed -->
                     <iframe id="youtubePlayer" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="w-full h-full"></iframe>
                 </div>
 
@@ -154,7 +153,6 @@
                     <h3 class="font-extrabold text-lg mb-4 flex items-center gap-2">
                         <i class="fas fa-list-ul text-blue-400"></i> <span data-i18n="playlist_title">Course Playlist</span>
                     </h3>
-                    <!-- Playlist Container -->
                     <div id="playlistContainer" class="space-y-3 max-h-[600px] overflow-y-auto pr-2">
                         <!-- Dynamic Lessons injected via JS -->
                     </div>
@@ -176,7 +174,7 @@
             <div class="flex gap-4">
                 <a href="https://facebook.com/your-page" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://linkedin.com/in/your-profile" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-blue-600 transition-all duration-300" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://wa.me/201116512028" target="_blank" class="w-10 h-10 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-center text-gray-400 hover:text-gray-400 hover:text-white hover:bg-green-600 transition-all duration-300" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
@@ -198,12 +196,12 @@
             }
         };
 
-        // قائمة فيديوهات اليوتيوب (يمكنك إضافة أي فيديوهات أو ربطها بالبلاليست مباشرة)
+        // دروس كورس الريفيت المعماري (يمكنك نسخ معرفات فيديوهات البليليست الخاصة بك ووضعها هنا)
         const courseLessons = [
-            { id: "dQw4w9WgXcQ", title: "Introduction to Engineering & BIM Workflow", desc: "Overview of the training program and what you will achieve." },
-            { id: "3JZ_D3ELwOQ", title: "BIM Fundamentals & Interface Navigation", desc: "Understanding the core principles and navigating the workspace." },
-            { id: "kJQP7kiw5Fk", title: "Structural Modeling & Grid Setup", desc: "Setting up levels, grids, and initial structural elements." },
-            { id: "5qap5aO4i9A", title: "Reinforcement & Shop Drawing Essentials", desc: "Creating detailed steel reinforcement and professional sheets." }
+            { id: "dQw4w9WgXcQ", title: "1. Introduction to Revit Architecture", desc: "Setting up project templates, levels, and grids from scratch." },
+            { id: "3JZ_D3ELwOQ", title: "2. Modeling Walls, Doors, and Windows", desc: "Creating architectural walls, editing types, and placing components." },
+            { id: "kJQP7kiw5Fk", title: "3. Floors, Roofs, and Ceilings", desc: "Building accurate slab profiles and sloped architectural roofs." },
+            { id: "5qap5aO4i9A", title: "4. Stairs, Ramps, and Railings", desc: "Designing multi-level stairs and custom architectural railings." }
         ];
 
         let currentLang = 'en';
@@ -255,25 +253,24 @@
                     </div>
                     <div class="overflow-hidden">
                         <h4 class="text-sm font-bold truncate">${lesson.title}</h4>
-                        <span class="text-xs text-gray-400">YouTube Lecture</span>
+                        <span class="text-xs text-gray-400">Revit Architecture Lecture</span>
                     </div>
                 `;
                 item.onclick = () => playLesson(index);
                 container.appendChild(item);
             });
 
-            // تشغيل أول درس افتراضياً
             playLesson(0);
         }
 
         function playLesson(index) {
             const lesson = courseLessons[index];
             document.getElementById('youtubePlayer').src = `https://www.youtube.com/embed/${lesson.id}?autoplay=1`;
+            document.getElementById('currentLessonBadge', 'Lecture 0' + (index + 1));
             document.getElementById('currentLessonBadge').innerText = `Lecture 0${index + 1}`;
             document.getElementById('currentLessonTitle').innerText = lesson.title;
             document.getElementById('currentLessonDesc').innerText = lesson.desc;
 
-            // تحديث كلاس النشط في القائمة
             document.querySelectorAll('.lesson-item').forEach((el, i) => {
                 if (i === index) {
                     el.classList.add('active');
