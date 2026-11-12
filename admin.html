@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>لوحة التحكم - 3 Engineers</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="New Lgogo_Gray Logo.png">
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Cairo Font -->
@@ -45,20 +47,17 @@
 </head>
 <body class="antialiased relative min-h-screen">
 
-    <!-- حماية الصفحة: التأكد من أن المستخدم أدمن قبل العرض -->
     <script>
         const userRole = localStorage.getItem('userRole');
         if (userRole !== 'admin') {
             alert('عذراً، هذه الصفحة مخصصة للمدير فقط!');
-            window.location.href = 'index.html'; // تحويل للرئيسية لو مش أدمن
+            window.location.href = 'index.html';
         }
     </script>
 
-    <!-- الخلفية الهندسية -->
     <div class="blueprint-bg"></div>
     <div class="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-blue-600/10 rounded-full blur-[140px] -z-10 pointer-events-none"></div>
 
-    <!-- رأس الصفحة (Header) -->
     <header class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-6 flex flex-col sm:flex-row justify-between items-center gap-4">
         <div class="flex items-center gap-4">
             <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center text-white justify-center text-xl font-bold shadow-lg shadow-blue-600/30">
@@ -70,16 +69,12 @@
             </div>
         </div>
 
-        <!-- زر العودة للويب سايت -->
         <a href="index.html" class="bg-slate-800/80 hover:bg-slate-700 text-gray-200 hover:text-white border border-slate-700 px-5 py-2.5 rounded-xl font-bold transition flex items-center gap-2 shadow-sm backdrop-blur-md">
             <i class="fas fa-home text-blue-400"></i> العودة للويب سايت
         </a>
     </header>
 
-    <!-- محتوى الداشبورد -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-        
-        <!-- ترحيب وإحصائيات مصغرة -->
         <div class="mb-10 text-center sm:text-right">
             <h1 class="text-3xl sm:text-4xl font-extrabold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-gray-400">
                 لوحة تحكم المنصة
@@ -87,10 +82,7 @@
             <p class="text-gray-400 text-sm">إدارة الدورات التدريبية، المحاضرات، ومتابعة محتوى المركز بكل سهولة.</p>
         </div>
 
-        <!-- كروت التحكم الرئيسية -->
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            
-            <!-- كارت إدارة المحاضرات (منشىء محتوى الكورس) -->
             <div class="glass-card p-8 flex flex-col justify-between group">
                 <div>
                     <div class="w-14 h-14 bg-blue-600/20 border border-blue-500/30 rounded-2xl flex items-center justify-center text-blue-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
@@ -98,53 +90,18 @@
                     </div>
                     <h3 class="text-xl font-bold text-white mb-3">منشىء محتوى الكورس</h3>
                     <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        إضافة محاضرات جديدة، تعديل الروابط، التحكم في الترتيب بالأسهم، وحذف المحاضرات القديمة.
+                        إضافة محاضرات جديدة، تعديل الروابط، التحكم في الترتيب بالأسهم، وحذف المحاضرات.
                     </p>
                 </div>
                 <a href="manage-lectures.html" class="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white font-bold py-3 px-4 rounded-xl text-center transition shadow-lg shadow-blue-600/25 flex items-center justify-center gap-2">
                     فتح الإدارة <i class="fas fa-arrow-left text-xs"></i>
                 </a>
             </div>
-
-            <!-- كارت إدارة المسارات الهندسية (مستقبلي) -->
-            <div class="glass-card p-8 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 bg-indigo-600/20 border border-indigo-500/30 rounded-2xl flex items-center justify-center text-indigo-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-cubes"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">المسارات والدبلومات</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        التحكم في ظهور المسارات الهندسية (BIM، التصميم الإنشائي) وتعديل محتواها.
-                    </p>
-                </div>
-                <span class="bg-slate-800 text-slate-400 border border-slate-700 font-bold py-3 px-4 rounded-xl text-center text-sm cursor-not-allowed">
-                    قريباً...
-                </span>
-            </div>
-
-            <!-- كارت إحصائيات الطلاب (مستقبلي) -->
-            <div class="glass-card p-8 flex flex-col justify-between group">
-                <div>
-                    <div class="w-14 h-14 bg-emerald-600/20 border border-emerald-500/30 rounded-2xl flex items-center justify-center text-emerald-400 text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">المتدربين والطلاب</h3>
-                    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
-                        متابعة قائمة المهندسين المسجلين بالمنصة وإدارة الصلاحيات.
-                    </p>
-                </div>
-                <span class="bg-slate-800 text-slate-400 border border-slate-700 font-bold py-3 px-4 rounded-xl text-center text-sm cursor-not-allowed">
-                    قريباً...
-                </span>
-            </div>
-
         </div>
     </main>
 
-    <!-- تذييل الصفحة -->
     <footer class="border-t border-slate-800/80 bg-slate-900/60 backdrop-blur-md py-6 text-center text-gray-500 text-xs">
         © 2026 مركز 3 Engineers - لوحة التحكم الإدارية
     </footer>
-
 </body>
 </html>
