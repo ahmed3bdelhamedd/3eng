@@ -168,9 +168,7 @@
     <section class="pb-28 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="tasksContainer">
-                
-                <!-- سيتم تعبئة التاسكات ديناميكياً هنا عبر الجافاسكريبت لكل مهندس -->
-
+                <!-- Dynamic Content -->
             </div>
         </div>
     </section>
@@ -185,7 +183,7 @@
         </div>
         
         <div class="w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid">
-            <!-- الملفات والصور ستظهر هنا -->
+            <!-- Files & Images Injected Here -->
         </div>
     </div>
 
@@ -218,7 +216,6 @@
                 main_title1: "Student Best Works &",
                 main_title2: "R25 Tasks Exhibition",
                 main_desc: "Browse student tasks from Task 0 to Task 7 pulled directly from GitHub repository folders.",
-                view_task_files: "View Task Files & PDFs",
                 open_gallery: "Browse Task Folder",
                 footer_rights: "© 2026 3 Engineers Center. All rights reserved."
             },
@@ -230,44 +227,43 @@
                 badge_title: "معرض مشاريع الدبلومة الهندسية الإنشائية",
                 main_title1: "أفضل أعمال الطلبة",
                 main_title2: "ومعرض تاسكات R25 (من 0 إلى 7)",
-                main_desc: "تصفح جميع تاسكات الطلبة والملفات والتقارير مباشرة من مجلدات جيت هاب.",
-                view_task_files: "عرض ملفات التاسك والـ PDFs",
+                main_desc: "تصفح جميع تاسكات الطلبة والملفات بصيغتي الصور والـ PDF مباشرة من مجلدات جيت هاب.",
                 open_gallery: "تصفح فولدر التاسك",
                 footer_rights: "© 2026 جميع الحقوق محفوظة لمركز 3 Engineers"
             }
         };
 
-        // هيكل بيانات التاسكات لكل مهندس بناءً على مجلدات جيت هاب الخاصة بك
+        // هيكل بيانات التاسكات المعتمد على أسماء فولديرات التاسك الفعلية
         const portfolioData = {
             abdallah: [
-                { id: 0, title: "Task 0 - A limitless model, create your opportunity", folder: "Abdallah Nagy - R25", files: ["task0.jpg", "report.pdf"] },
-                { id: 1, title: "Task 1 - BIM Fundamentals", folder: "Abdallah Nagy - R25", files: ["task1.jpg"] },
-                { id: 2, title: "Task 2 - Be Specialist in Modeling - Part 1", folder: "Abdallah Nagy - R25", files: ["task2.jpg"] },
-                { id: 3, title: "Task 3 - Be Specialist in Modeling - Part 2", folder: "Abdallah Nagy - R25", files: ["task3.jpg"] },
-                { id: 4, title: "Task 4 - Be Specialist in Modeling - Part 3", folder: "Abdallah Nagy - R25", files: ["task4.jpg"] },
-                { id: 5, title: "Task 5 - Secret of Design Drawing - Part 1", folder: "Abdallah Nagy - R25", files: ["task5.jpg"] },
-                { id: 6, title: "Task 6 - Secret of Design Drawing - Part 2", folder: "Abdallah Nagy - R25", files: ["task6.jpg"] },
-                { id: 7, title: "Task 7 - BIM Department System", folder: "Abdallah Nagy - R25", files: ["task7.jpg"] }
+                { id: 0, title: "Task 0 - A limitless model, create your opportunity", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.png", "Task-0-2.png", "Report.pdf"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.png", "Report.pdf"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling - Part 1", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.png", "Task-2-2.png"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling - Part 2", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.png", "Task-3-2.png", "Task-3-3.png"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling - Part 3", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.png"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing - Part 1", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.png", "Task-5-2.png"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing - Part 2", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.png"] },
+                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.png", "Task-7-2.png"] }
             ],
             saman: [
-                { id: 0, title: "Task 0 - A limitless model", folder: "عبدالله السمان - R25", files: ["task0.jpg"] },
-                { id: 1, title: "Task 1 - BIM Fundamentals", folder: "عبدالله السمان - R25", files: ["task1.jpg"] },
-                { id: 2, title: "Task 2 - Be Specialist in Modeling", folder: "عبدالله السمان - R25", files: ["task2.jpg"] },
-                { id: 3, title: "Task 3 - Be Specialist in Modeling", folder: "عبدالله السمان - R25", files: ["task3.jpg"] },
-                { id: 4, title: "Task 4 - Be Specialist in Modeling", folder: "عبدالله السمان - R25", files: ["task4.jpg"] },
-                { id: 5, title: "Task 5 - Secret of Design Drawing", folder: "عبدالله السمان - R25", files: ["task5.jpg"] },
-                { id: 6, title: "Task 6 - Secret of Design Drawing", folder: "عبدالله السمان - R25", files: ["task6.jpg"] },
-                { id: 7, title: "Task 7 - BIM Department System", folder: "عبدالله السمان - R25", files: ["task7.jpg"] }
+                { id: 0, title: "Task 0 - A limitless model", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.png"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.png"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.png"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.png"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.png"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.png"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.png"] },
+                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.png"] }
             ],
             youssef: [
-                { id: 0, title: "Task 0 - A limitless model", folder: "يوسف عادل - R25", files: ["task0.jpg"] },
-                { id: 1, title: "Task 1 - BIM Fundamentals", folder: "يوسف عادل - R25", files: ["task1.jpg"] },
-                { id: 2, title: "Task 2 - Be Specialist in Modeling", folder: "يوسف عادل - R25", files: ["task2.jpg"] },
-                { id: 3, title: "Task 3 - Be Specialist in Modeling", folder: "يوسف عادل - R25", files: ["task3.jpg"] },
-                { id: 4, title: "Task 4 - Be Specialist in Modeling", folder: "يوسف عادل - R25", files: ["task4.jpg"] },
-                { id: 5, title: "Task 5 - Secret of Design Drawing", folder: "يوسف عادل - R25", files: ["task5.jpg"] },
-                { id: 6, title: "Task 6 - Secret of Design Drawing", folder: "يوسف عادل - R25", files: ["task6.jpg"] },
-                { id: 7, title: "Task 7 - BIM Department System", folder: "يوسف عادل - R25", files: ["task7.jpg"] }
+                { id: 0, title: "Task 0 - A limitless model", folderName: "Task 0 - A limitless model, create your opportunity", files: ["Task-0-1.png"] },
+                { id: 1, title: "Task 1 - BIM Fundamentals", folderName: "Task 1 - BIM Fundamentals", files: ["Task-1-1.png"] },
+                { id: 2, title: "Task 2 - Be Specialist in Modeling", folderName: "Task 2 - Be Specialist in Modeling - Part 1", files: ["Task-2-1.png"] },
+                { id: 3, title: "Task 3 - Be Specialist in Modeling", folderName: "Task 3 - Be Specialist in Modeling - Part 2", files: ["Task-3-1.png"] },
+                { id: 4, title: "Task 4 - Be Specialist in Modeling", folderName: "Task 4 - Be Specialist in Modeling - Part 3", files: ["Task-4-1.png"] },
+                { id: 5, title: "Task 5 - Secret of Design Drawing", folderName: "Task 5 - Secret of Design Drawing - Part 1", files: ["Task-5-1.png"] },
+                { id: 6, title: "Task 6 - Secret of Design Drawing", folderName: "Task 6 - Secret of Design Drawing - Part 2", files: ["Task-6-1.png"] },
+                { id: 7, title: "Task 7 - BIM Department System", folderName: "Task 7 - BIM Department System", files: ["Task-7-1.png"] }
             ]
         };
 
@@ -325,29 +321,30 @@
             const container = document.getElementById('tasksContainer');
             container.innerHTML = '';
             const tasks = portfolioData[engKey];
+            const engFolder = engKey === 'abdallah' ? 'Abdallah Nagy - R25' : (engKey === 'saman' ? 'عبدالله السمان - R25' : 'يوسف عادل - R25');
 
             tasks.forEach(task => {
-                const folderName = task.folder;
-                const taskFolderName = `Task ${task.id} - ...`; // أو اسم الفولدر الفعلي على جيت هاب
                 const card = document.createElement('div');
                 card.className = "glass-card p-6 flex flex-col justify-between";
+                const firstImg = task.files.find(f => f.endsWith('.png') || f.endsWith('.jpg')) || 'preview.png';
+                const previewPath = `best_of_work/${engFolder}/${task.folderName}/${firstImg}`;
                 
                 card.innerHTML = `
                     <div>
-                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick='openTaskGallery(${JSON.stringify(task)})'>
-                            <img src="best_of_work/${folderName}/Task ${task.id}/preview.jpg" alt="${task.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
+                        <div class="task-img-container mb-4 h-52 cursor-pointer" onclick='openTaskGallery("${engFolder}", ${JSON.stringify(task)})'>
+                            <img src="${previewPath}" alt="${task.title}" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=800&auto=format&fit=crop'">
                             <div class="absolute inset-0 bg-black/50 opacity-0 hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-yellow-400 font-bold gap-1">
-                                <i class="fas fa-folder-open text-2xl"></i> <span class="text-xs" data-i18n="view_task_files">View Task Files & PDFs</span>
+                                <i class="fas fa-folder-open text-2xl"></i> <span class="text-xs">Browse Task Files & PDFs</span>
                             </div>
                         </div>
                         <div class="flex justify-between items-start mb-2">
                             <span class="px-3 py-1 bg-yellow-500/10 border border-yellow-500/30 text-yellow-500 text-xs font-bold rounded-lg">Task 0${task.id}</span>
-                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">${folderName}</span>
+                            <span class="text-xs font-bold text-yellow-400 bg-yellow-500/10 border border-yellow-500/20 px-2.5 py-1 rounded-md">${engFolder.split(' - ')[0]}</span>
                         </div>
                         <h3 class="text-lg font-bold mb-2">${task.title}</h3>
                         <p class="text-sm text-gray-500 dark:text-gray-400 mb-6">Contains execution shop drawings, structural models, and calculation reports.</p>
                     </div>
-                    <button onclick='openTaskGallery(${JSON.stringify(task)})' class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                    <button onclick='openTaskGallery("${engFolder}", ${JSON.stringify(task)})' class="w-full bg-yellow-500/10 hover:bg-yellow-500 hover:text-zinc-950 text-yellow-500 border border-yellow-500/30 font-bold py-2.5 px-4 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 text-sm">
                         <i class="fas fa-images"></i> <span data-i18n="open_gallery">Browse Task Folder</span>
                     </button>
                 `;
@@ -355,21 +352,21 @@
             });
         }
 
-        function openTaskGallery(task) {
+        function openTaskGallery(engFolder, task) {
             const modal = document.getElementById('taskGalleryModal');
             const titleEl = document.getElementById('galleryTitle');
             const gridEl = document.getElementById('galleryGrid');
 
             modal.classList.remove('hidden');
-            titleEl.innerText = `${task.folder} - ${task.title}`;
+            titleEl.innerText = `${engFolder} - ${task.title}`;
             gridEl.innerHTML = '';
 
             task.files.forEach(file => {
-                const filePath = `best_of_work/${task.folder}/Task ${task.id}/${file}`;
+                const filePath = `best_of_work/${engFolder}/${task.folderName}/${file}`;
                 const itemDiv = document.createElement('div');
                 itemDiv.className = "bg-zinc-800/60 border border-zinc-700 rounded-xl p-3 flex flex-col items-center justify-center gap-2 h-48 overflow-hidden relative group";
                 
-                if(file.endsWith('.pdf')) {
+                if(file.toLowerCase().endsWith('.pdf')) {
                     itemDiv.innerHTML = `
                         <i class="fas fa-file-pdf text-red-500 text-4xl mb-2"></i>
                         <span class="text-xs text-gray-300 truncate max-w-full">${file}</span>
@@ -396,7 +393,7 @@
                 themeIcon.classList.remove('fa-sun');
                 themeIcon.classList.add('fa-moon');
             }
-            renderTasks('abdallah'); // العرض الافتراضي لعبدالله نغي
+            renderTasks('abdallah');
         });
     </script>
 </body>
