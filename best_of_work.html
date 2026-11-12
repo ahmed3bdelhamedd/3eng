@@ -62,22 +62,20 @@
         .glass-card-st { 
             backdrop-filter: blur(12px); border-radius: 20px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; 
         }
-        .dark .glass-card-st { background: linear-gradient(145deg, rgba(24, 24, 27, 0.8), rgba(9, 9, 11, 0.9)); border: 1px solid rgba(234, 179, 8, 0.15); }
-        .light .glass-card-st { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(244, 244, 5, 0.02)); border: 1px solid rgba(228, 228, 231, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
-        .glass-card-st:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(234, 179, 8, 0.5); box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.25); }
+        .dark .glass-card-st { background: linear-gradient(145deg, rgba(24, 24, 27, 0.85), rgba(9, 9, 11, 0.95)); border: 1px solid rgba(234, 179, 8, 0.2); }
+        .light .glass-card-st { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(244, 244, 5, 0.02)); border: 1px solid rgba(228, 228, 231, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .glass-card-st:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(234, 179, 8, 0.6); box-shadow: 0 25px 50px -12px rgba(234, 179, 8, 0.25); }
 
         /* ARCH Card (Blue & Black) */
         .glass-card-arch { 
             backdrop-filter: blur(12px); border-radius: 20px; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); position: relative; overflow: hidden; 
         }
-        .dark .glass-card-arch { background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(7, 11, 20, 0.9)); border: 1px solid rgba(56, 189, 248, 0.15); }
-        .light .glass-card-arch { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(56, 189, 248, 0.02)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.03); }
-        .glass-card-arch:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(56, 189, 248, 0.5); box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25); }
+        .dark .glass-card-arch { background: linear-gradient(145deg, rgba(15, 23, 42, 0.85), rgba(7, 11, 20, 0.95)); border: 1px solid rgba(56, 189, 248, 0.2); }
+        .light .glass-card-arch { background: linear-gradient(145deg, rgba(255, 255, 255, 0.95), rgba(56, 189, 248, 0.02)); border: 1px solid rgba(226, 232, 240, 1); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05); }
+        .glass-card-arch:hover { transform: translateY(-8px) scale(1.01); border-color: rgba(56, 189, 248, 0.6); box-shadow: 0 25px 50px -12px rgba(56, 189, 248, 0.25); }
 
         .text-gradient-st { background: linear-gradient(135deg, #facc15, #eab308, #ca8a04); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .text-gradient-arch { background: linear-gradient(135deg, #38bdf8, #0284c7, #1e3a8a); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-        .hidden-el { display: none !important; }
     </style>
     
     <script>
@@ -143,7 +141,7 @@
                 </button>
             </div>
 
-            <!-- Student Filter Tabs (Dynamic per Department) -->
+            <!-- Student Filter Tabs -->
             <div class="flex flex-wrap justify-center gap-3 mt-6" id="studentFilters">
                 <!-- Injected via JS -->
             </div>
@@ -168,7 +166,7 @@
             </button>
         </div>
         
-        <div class="w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="galleryGrid">
+        <div id="galleryModalBox" class="w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             <!-- Files Injected Here -->
         </div>
     </div>
@@ -221,7 +219,6 @@
             }
         };
 
-        // بيانات الأقسام (الإنشائي ST والمعماري ARCH)
         const departmentsData = {
             st: {
                 name: "Structural (ST)",
@@ -327,6 +324,7 @@
             const headerBadge = document.getElementById('headerBadge');
             const mainTitleGradient = document.getElementById('mainTitleGradient');
             const langBtn = document.getElementById('langBtn');
+            const modalBox = document.getElementById('galleryModalBox');
 
             if (deptKey === 'st') {
                 // ST Theme: Yellow & White
@@ -337,6 +335,7 @@
                 headerBadge.className = "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-500 text-sm font-bold mb-6 backdrop-blur-md shadow-sm animate-pulse";
                 mainTitleGradient.className = "text-gradient-st";
                 langBtn.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-yellow-500/10 text-yellow-500 border border-yellow-500/20 hover:bg-yellow-500/20 transition flex items-center gap-1.5";
+                modalBox.className = "w-full max-w-5xl h-[80vh] bg-zinc-900 border border-yellow-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4";
                 currentStudent = 'abdallah';
             } else {
                 // ARCH Theme: Blue & Black
@@ -347,6 +346,7 @@
                 headerBadge.className = "inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-arch-500/10 border border-arch-500/20 text-arch-500 text-sm font-bold mb-6 backdrop-blur-md shadow-sm animate-pulse";
                 mainTitleGradient.className = "text-gradient-arch";
                 langBtn.className = "px-3.5 py-2 rounded-xl text-xs font-bold bg-arch-500/10 text-arch-500 border border-arch-500/20 hover:bg-arch-500/20 transition flex items-center gap-1.5";
+                modalBox.className = "w-full max-w-5xl h-[80vh] bg-zinc-900 border border-arch-500/30 rounded-2xl overflow-y-auto p-6 shadow-2xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4";
                 currentStudent = 'student1';
             }
 
